@@ -1,0 +1,24 @@
+.en_tete {
+  position: static;
+  background-color: #8ede99;
+}
+
+.buttonlog {
+  position: absolute;
+  color: rgb(#61ce70);
+  background-color: #61ce70;
+  border-radius: 1px;
+  float: right;
+}
+
+.cdr {
+  position: static;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#logo_clim_action.png {
+  position: absolute;
+  height: 15px;
+  max-width: 12px;
+}

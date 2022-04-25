@@ -1,0 +1,46 @@
+#content {
+	width:380px;
+	height:400px;
+	float: left;
+}
+
+
+body {
+background-color: rgb(255, 255, 255);
+}
+
+.div2{
+  width: 30px;height:5px;border:1px solid rgb(118, 238, 71);
+margin-left: 600px; margin-top: 150px;
+  position: absolute; margin-bottom: 10px;
+   background-color: rgba(0, 0, 0, 0.788);
+}
+.titre{
+  width: 300px;height:50px;border:10px solid rgb(118, 238, 71);
+}
+ .auteur{
+  width: 300px;height:50px;border:10px solid rgb(118, 238, 71);
+}
+.type{
+  width: 300px;height:50px;border:10px solid rgb(118, 238, 71);
+}
+.genre{
+  width: 300px;height:50px;border:10px solid rgb(118, 238, 71);
+
+}
+.appartenance{
+  width: 300px;height:50px;border:10px solid rgb(118, 238, 71);
+}
+.caution{
+  width: 300px;height:50px;border:10px solid rgb(118, 238, 71);
+}
+.statut{
+  width: 300px;height:50px;border:10px solid rgb(118, 238, 71);
+}
+.etat{
+  width: 300px;height:50px;border:10px solid rgb(118, 238, 71);
+}
+
+
+
+ 

@@ -1,0 +1,222 @@
+/* HEADER */
+
+.en_tete {
+    position: static;
+    background-color: #8EDE99;
+}
+
+.buttonlog {
+    position: static;
+    color: #ffff;
+    background-color: #61CE70; 
+    border-radius: 5px;
+    border-color: #61CE70;
+
+}
+
+.cdr {
+    position: static;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logo {
+    position: relative;
+    height: 150%;
+    max-width: 120%;
+
+} 
+
+
+
+/* TABLEAU */
+.t1{
+    text-align:center; 
+    border : 2px solid black;
+    border-collapse: collapse;
+}
+
+
+/* DETAILLIVRE */
+/* Bloc 1
+.rectangle{
+    position: absolute;
+    margin-top: 300px;
+    margin-left: 300px;
+width: 300px;
+height: 300px ;
+border-color: black;
+border: 20px;
+font-size: 50px;
+} */
+
+.boxgalerieimg{
+    
+    object-fit: cover;
+}
+
+
+.star {
+    position: absolute;
+    margin-top: 100px;
+    
+    margin-left: 100px;
+    font-size: 14px;
+    
+}
+.rate_widget {
+    border:     1px solid #CCC;
+    overflow:   visible;
+    padding:    10px;
+    position:   relative;
+    width:      180px;
+    height:     32px;
+}
+.ratings_stars {
+    background: url('etoile_vide.png') no-repeat;
+    float:      left;
+    height:     28px;
+    padding:    2px;
+    width:      32px;
+}
+.ratings_vote {
+    background: url('etoile_remplie.png') no-repeat;
+}
+.ratings_over {
+    background: url('etoile_actuelle.png') no-repeat;
+}
+
+
+/* Bloc 2*/
+.titre{
+ text-align: center;
+ margin-top: 20px;
+}
+.titredoc {
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 35%;
+    table-layout: fixed;
+    width: 30%;
+}
+
+.tab1{
+    position: relative;
+    margin-top: 70px;
+    margin-left:40%;
+    text-align:center; 
+    table-layout: fixed;
+    width: 20%;
+    
+    
+}
+td { 
+    padding:1em;
+    border : 2px solid black;
+
+
+}
+
+/* Bloc 3 */
+.p1, .p2{
+    position:relative;
+    text-justify: auto;
+    margin-left: 500px;
+    margin-top: 60px;
+    font-size: 20px;
+}
+.value_1{
+    margin-left: 500px;
+    position: relative;
+    width: 25px;
+    height:50px ;
+}
+.envoie{
+    position: relative ;
+    margin-left: 46%;
+   margin-top: 30px;
+   width: 100px;
+    height: 50px;
+    background-color: #61CE70;
+}
+.img5{
+   
+    width : 20%;
+height : 20%;
+}
+
+.legende{
+    margin-top:50px;
+}
+.legend{
+    position: absolute;
+    margin-left: 200px;
+}
+
+#message{
+    position: absolute;
+    margin-top: 3%;
+    margin-left: 200px;
+    width: 70%;
+    height: 100px;
+}
+#btn{
+    position: absolute;
+    background-color: rgb(52, 202, 84);
+    margin-top: 12%;
+    margin-left: 200px;
+    border-radius:10px;
+
+}
+.adresse{
+    margin-bottom: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.mapgoogle{
+    position: relative ;
+    margin-left: 200px;
+    margin-top: 330px;
+}
+/* FOOTER */
+
+  .pied_de_page {
+            padding: 1px;
+            position: static;
+            height: 140px;
+            border-color: #696;
+            background-color: #8EDE99;
+            margin-top: 400px;
+        }
+
+        .climactions {
+            position: absolute;
+            font-weight: 100px;
+            margin-left: 125px;
+            margin-top: 25px;
+            color: black;
+        }
+
+        .image {
+
+            position: relative;
+            right: 20px;
+            margin-top: 25px;
+            margin-left: 900px;
+            /* height: 70%; */
+        }
+
+        .date_contact,
+        .email_contact,
+        .pied_de_page {
+            vertical-align: 10px;
+            color: black;
+        }
+
+        .test {
+            position: absolute;
+            right: 20px;
+        }
+
+
+
