@@ -164,7 +164,7 @@ cadre en dessous pour les avis et pour poster un commentaire RESERVER
                         <th>Quantité </th>
                     </tr>
                     <tr>
-                        <td><?php echo $rows['quantité']; ?> </td>
+                        <td><?php echo $rows['quantite']; ?> </td>
                     </tr>
 
                     <tr>
