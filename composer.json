@@ -1,0 +1,16 @@
+{
+    "name": "kercode/climactions_cdr",
+    "description": "projet climactions",
+    "autoload": {
+        "psr-4": {
+            "Kercode\\ClimactionsCdr\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Florent LE BOT",
+            "email": "florent.lebot.pro@gmail.com"
+        }
+    ],
+    "require": {}
+}
