@@ -16,31 +16,35 @@ set_error_handler('errorHandler');
 
 function eCatcher($e) {
     if($_ENV["APP_ENV"] == "dev") {
-      $whoops = new \Whoops\Run;
-      $whoops->allowQuit(false);
-      $whoops->writeToOutput(false);
-      $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-      $html = $whoops->handleException($e);
-  
-      require 'app/Views/frontend/error.php';
+        $whoops = new \Whoops\Run;
+        $whoops->allowQuit(false);
+        $whoops->writeToOutput(false);
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        $html = $whoops->handleException($e);
+        
+        require 'app/Views/frontend/error.php';
     }
-  }
+}
 
-  try {
+try {
+    
+   
+    $controllerFront = new \Climactions\Controllers\FrontController();
 
-    $controllerFront = new \Projet\Controllers\FrontController();
+      
+            $controllerFront->home();
+        
+    
 
    
     
-
-     
 } catch (Exception $e) {
     
     eCatcher($e);
     if($e->getCode === 404) {
         die('Erreur : ' .$e->getMessage());
     } else {
-                header("location: app/Views/frontend/error.php");
+                header("app/Views/frontend/error.php");
             } 
 
 } catch (Error $e) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Projet\Controllers;
+namespace Climactions\Controllers;
 
 class Controller {
 	public function viewFrontend($view): string	{

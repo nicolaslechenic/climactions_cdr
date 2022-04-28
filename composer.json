@@ -3,12 +3,12 @@
     "description": "projet climactions",
     "autoload": {
         "psr-4": {
-            "Kercode\\ClimactionsCdr\\": "src/"
+            "Climactions\\": "./app/"
         }
     },
     "authors": [
         {
-            "name": "Florent LE BOT",
+            "name": "climactions",
             "email": "florent.lebot.pro@gmail.com"
         }
     ],
