@@ -1,52 +1,49 @@
-<!DOCTYPE html>
-<html>
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Centre de ressources </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css\style.css">
-    <link rel="stylesheet" href="css\listecomplete.css">
-    <link rel="stylesheet" href="css\bootstrap.min.css">
+session_start();
+
+require_once __DIR__ . '/vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
 
 
-</head>
+function errorHandler($errno, $errstr) {
+    throw new Exception($errno, $errstr);
+}
 
-<body class=body_index>
+set_error_handler('errorHandler');
 
-    <?php include('header.php'); ?>
+function eCatcher($e) {
+    if($_ENV["APP_ENV"] == "dev") {
+      $whoops = new \Whoops\Run;
+      $whoops->allowQuit(false);
+      $whoops->writeToOutput(false);
+      $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+      $html = $whoops->handleException($e);
+  
+      require 'app/Views/frontend/error.php';
+    }
+  }
 
+  try {
 
+    $controllerFront = new \Projet\Controllers\FrontController();
 
+   
+    
 
-    <!-- on inclu l'en tete de la page -->
-    <?php include("pageaccueil1.php"); ?>
+     
+} catch (Exception $e) {
+    
+    eCatcher($e);
+    if($e->getCode === 404) {
+        die('Erreur : ' .$e->getMessage());
+    } else {
+                header("location: app/Views/frontend/error.php");
+            } 
 
-
-
-
-
-
-
-
-
-
-
-    <!-- on inclu tout les donnée provenant de la base de donnée -->
-
-
-
-
-
-
-    <!-- on inclu le pied de la page -->
-    <?php include('footer.php'); ?>
-
-</body>
-
-
-
-
-</html>
+} catch (Error $e) {
+        eCatcher($e);
+        header("location: app/Views/frontend/error.php");
+    }
