@@ -1,0 +1,19 @@
+{
+    "name": "kercode/climactions_cdr",
+    "description": "projet climactions",
+    "autoload": {
+        "psr-4": {
+            "Climactions\\": "./app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "climactions",
+            "email": "florent.lebot.pro@gmail.com"
+        }
+    ],
+    "require": {
+        "filp/whoops": "^2.14",
+        "vlucas/phpdotenv": "^5.4"
+    }
+}
