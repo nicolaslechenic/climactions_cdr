@@ -15,34 +15,11 @@
 
     <div class="login-form">
         <?php
+
+
         if (isset($_GET['login_err'])) {
             $err = htmlspecialchars($_GET['login_err']);
-
-            switch ($err) {
-                case 'password':
-        ?>
-                    <div class="alert alert-danger">
-                        <strong>Erreur</strong> mot de passe incorrect
-                    </div>
-                <?php
-                    break;
-
-                case 'login':
-                ?>
-                    <div class="alert alert-danger">
-                        <strong>Erreur</strong> login administrateur incorrect
-                    </div>
-                <?php
-                    break;
-
-                case 'already':
-                ?>
-                    <div class="alert alert-danger">
-                        <strong>Erreur</strong> compte non existant
-                    </div>
-        <?php
-                    break;
-            }
+            echo "Vos idendifiants sont incorrects";
         }
         ?>
 
@@ -56,7 +33,8 @@
                 <input type="password" name="password" class="form-control" placeholder="Mot de passe" required="required" autocomplete="off">
             </div>
             <div class="form-group">
-                <button type="submit" id="couleur" class="btn btn-primary btn-block">Connexion vers la session administrateur</button>
+                <button type="submit" id="couleur" class="btn btn-primary btn-block">Connexion vers la session
+                    administrateur</button>
 
             </div>
         </form>
