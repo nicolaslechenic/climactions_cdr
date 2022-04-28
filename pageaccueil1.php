@@ -9,13 +9,13 @@ $result = mysqli_query($DB, $q);
 <html>
 
 <head>
-	<title> Page d'acceuil </title>
+	<title> Page d'accueil </title>
 	<link rel="stylesheet" href="css\listecomplete.css">
 	<link rel="stylesheet" href="css\bootstrap.min.css">
 </head>
 
 <body>
-	<table align="center" border="1px" style="width:800px; line-height:40px;">
+	<table class="tableau1" >
 		<tr>
 			<!-- Option de filtre par genre (jeu/film/livre etc...), au coté gauche de la table -->
 
@@ -92,24 +92,7 @@ $result = mysqli_query($DB, $q);
 		?>
 	</table>
 </body>
-<style>
-	td,
-	th {
-		padding: 1em;
-	}
 
-	thead {
-		background-color: #1FD533;
-	}
-
-	tbody {
-		background-color: #71FF80;
-	}
-
-	tfoot {
-		background-color: red;
-	}
-</style>
 
 </html>
 
