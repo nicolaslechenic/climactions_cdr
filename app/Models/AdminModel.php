@@ -1,5 +1,5 @@
 <?php
-namespace Projet\Models;
+namespace Climactions\Models;
 
 class AdminModel extends Manager
 {

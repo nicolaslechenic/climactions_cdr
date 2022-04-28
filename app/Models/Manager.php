@@ -1,5 +1,5 @@
 <?php
-namespace Projet\Models;
+namespace Climactions\Models;
 use FFI\Exception;
 
 class Manager {

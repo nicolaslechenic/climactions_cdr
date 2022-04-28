@@ -1,11 +1,11 @@
 <?php
 namespace Climactions\Controllers;
 
-class FrontController
+class FrontController extends Controller
 {
 
     public function home()
     {
-        require('app/Views/frontend/home.php');
+        return $this->viewFrontend('home');
     }
 }
