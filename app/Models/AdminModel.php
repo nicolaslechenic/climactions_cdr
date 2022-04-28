@@ -1,7 +1,6 @@
 <?php
 namespace Climactions\Models;
 
-class AdminModel extends Manager
-{
+class AdminModel extends Manager {
        
 }
