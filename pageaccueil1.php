@@ -1,9 +1,6 @@
 <?php
 include('db_connect.php');
 
-$q = ("SELECT * FROM document LIMIT 30");
-
-$result = mysqli_query($DB, $q);
 ?>
 <!DOCTYPE html>
 <html>

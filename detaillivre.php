@@ -1,16 +1,5 @@
 <?php
 include('db_connect.php');
-
-$q = ("SELECT outil FROM document WHERE ID >= 6 LIMIT 1");
-
-$resulta = mysqli_query($DB, $q);
-
-$q = ("SELECT * FROM document WHERE ID >= 6 LIMIT 1");
-
-$result = mysqli_query($DB, $q);
-
-
-
 ?>
 
 
