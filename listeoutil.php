@@ -1,9 +1,6 @@
 <?php
 include('db_connect.php');
 include('header.php');
-$q = "SELECT * FROM document 
-WHERE `type`  LIKE 'expositions%' ;";
-$result = mysqli_query($DB, $q);
 ?>
 <!DOCTYPE html>
 <html>

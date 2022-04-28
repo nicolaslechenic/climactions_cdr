@@ -1,10 +1,6 @@
 <?php
 include("db_connect.php");
 
-$q = ("SELECT `type`, `genre`, `outil` from `document`");
-
-$result = mysqli_query($DB, $q);
-
 
 ?>
 
