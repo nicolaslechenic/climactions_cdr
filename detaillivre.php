@@ -78,7 +78,7 @@ cadre en dessous pour les avis et pour poster un commentaire RESERVER
         <h2 class="titre"> Details du Document </h2>
 
 
-        <img id="content" style="float: right;">
+        <img id="content">
 
         <div id="div2">
             <table class="titredoc">

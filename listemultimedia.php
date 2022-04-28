@@ -13,7 +13,7 @@ include('header.php');
 </head>
 
 <body>
-	<table align="center" border="1px" style="width:800px; line-height:40px;">
+	<table class="tableau2" >
 		<tr>
 
 			<!-- Option de filtre par genre (jeu/film/livre etc...), au coté gauche de la table, ramenant à un genre unique -->
@@ -76,24 +76,7 @@ include('header.php');
 
 	</table>
 </body>
-<style>
-	td,
-	th {
-		padding: 1em;
-	}
 
-	thead {
-		background-color: #1FD533;
-	}
-
-	tbody {
-		background-color: #4AFB5D;
-	}
-
-	tfoot {
-		background-color: red;
-	}
-</style>
 
 </html>
 
