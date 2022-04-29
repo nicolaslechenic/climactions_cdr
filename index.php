@@ -22,7 +22,7 @@ function eCatcher($e) {
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
     $html = $whoops->handleException($e);
     
-    require 'app/Views/frontend/error.php';
+    require 'app/Views/errors/error.php';
   }
 }
 
@@ -35,10 +35,10 @@ try {
   if($e->getCode === 404) {
     die('Erreur : ' .$e->getMessage());
   } else {
-    header("app/Views/frontend/error.php");
+    header("app/Views/errors/error.php");
   } 
 
 } catch (Error $e) {
   eCatcher($e);
-  header("location: app/Views/frontend/error.php");
+  header("location: app/Views/errors/error.php");
 }
