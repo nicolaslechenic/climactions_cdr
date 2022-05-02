@@ -8,6 +8,7 @@ class AdminController extends Controller {
 	}
 
 	public function pageConnexionAdmin() {
+		
 		require $this->viewAdmin('adminInscription');
 	}
 	
@@ -16,7 +17,20 @@ class AdminController extends Controller {
 		$adminManager = new \Climactions\Models\AdminModel();
 		$admin = $adminManager->creatAdmin($lastname, $firstname, $mail, $city, $password);
 		
-
 		require $this->viewAdmin('adminInscription');
+	}
+
+	public function pageAddArticle() {
+
+		require $this->viewAdmin('pageAddArticle');
+
+	}
+
+	public function addArticle($title, $img, $description)
+	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$admin = $adminManager->addArticle($title, $img, $description);
+		
+		require $this->viewAdmin('pageAddArticle');
 	}
 }

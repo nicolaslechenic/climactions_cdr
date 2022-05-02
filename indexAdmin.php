@@ -9,11 +9,11 @@ $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
 
-function errorHandler($errno, $errstr) {
-  throw new Exception($errno, $errstr);
-}
+// function errorHandler($errno, $errstr) {
+//   throw new Exception($errno, $errstr);
+// }
 
-set_error_handler('errorHandler');
+// set_error_handler('errorHandler');
 
 function eCatcher($e) {
   if($_ENV["APP_ENV"] == "dev") {
@@ -38,7 +38,7 @@ try {
         if($_GET['action'] == 'pageCreationAdmin') {
             
         $backController->pageConnexionAdmin();
-
+    
         }
 
         elseif($_GET['action'] == 'creatAdmin') {
@@ -52,6 +52,20 @@ try {
             $password   = password_hash($password, PASSWORD_DEFAULT);
 
             $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
+        }
+        elseif($_GET['action'] == 'pageAddArticle') {
+            
+          $backController->pageAddArticle();
+      
+          }
+
+        elseif($_GET['action'] == 'addArticle') {
+
+            $title             = htmlspecialchars($_POST['title']);
+            $img               = htmlspecialchars($_POST['img']);
+            $description       = htmlspecialchars($_POST['description']);
+            
+          $backController->addArticle($title, $img, $description);
         }
  }
         

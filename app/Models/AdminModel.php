@@ -12,4 +12,12 @@ class AdminModel extends Manager {
 
         return $req;
     }
+
+    public function addArticle($title, $img, $description)
+    {
+        $bdd = $this->connect();
+
+        $req = $bdd->prepare('INSERT INTO article (title, img, description) VALUE (?, ?, ?)');
+        $req->execute(array($title, $img, $description));
+    }
 }
