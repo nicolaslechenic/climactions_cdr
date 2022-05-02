@@ -31,19 +31,19 @@ class RessourcesModel extends Manager {
         return $req;
     }
 
-    // public function afficherRessources() {
-    //     $bdd = $this->connect();
-    //     $req = $bdd->prepare('SELECT * FROM document');
-    //     $req->execute(array());
-    //     return $req;
-    // }
+    public function afficherRessources() {
+        $bdd = $this->connect();
+        $req = $bdd->prepare('SELECT * FROM document');
+        $req->execute(array());
+        return $req;
+    }
 
-    // public function afficherDetails($idRessources) {
-    //     $bdd = $this->connect();
-    //     $req = $bdd->prepare('SELECT * FROM document WHERE id = ?');
-    //     $req->execute(array($idRessources));
-    //     return $req;
-    // }
+    public function afficherDetails($idRessources) {
+        $bdd = $this->connect();
+        $req = $bdd->prepare('SELECT * FROM document WHERE id = ?');
+        $req->execute(array($idRessources));
+        return $req;
+    }
 
 
     // compte le nombre d'articles 
