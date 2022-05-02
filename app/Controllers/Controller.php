@@ -3,15 +3,15 @@
 namespace Climactions\Controllers;
 
 class Controller {
-	public function viewFrontend($view): string	{
+	public function viewFrontend($view)	{
 		return 'app/Views/frontend/' . $view . '.php';
 	}
 
-	public function viewErrors($view): string {
+	public function viewErrors($view) {
 		return 'app/Views/errors/' . $view . '.php';
 	}
 
-	public function viewAdmin($view): string {
-		return 'app/Views/admin/' . $view . '.php';
+	public function viewAdmin($view) {
+		return 'app/Views/admin/layouts/' . $view . '.php';
 	}
 }

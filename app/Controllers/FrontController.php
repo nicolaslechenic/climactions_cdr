@@ -3,7 +3,7 @@ namespace Climactions\Controllers;
 
 class FrontController extends Controller {
     public function home() {
-        return $this->viewFrontend('home');
-        
+        require $this->viewFrontend('home');
+    
     }
 }
