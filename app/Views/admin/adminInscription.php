@@ -17,20 +17,20 @@ require 'app/Views/frontend/layouts/header.php';
 
         <div>
             <label for="firstname"> Prénom:</label>
-            <input type="text" name="firstname" id="firstname" placeholder="Votre prénom" require>
+            <input type="text" name="firstname" id="firstname" placeholder="Votre prénom" required>
         </div>
 
         <div>
             <label for="mail"> email:</label>
-            <input type="email" name="mail" id="mail" placeholder="Votre email" require>
+            <input type="email" name="mail" id="mail" placeholder="Votre email" required>
         </div>
         <div>
             <label for="password"> Mot de passe</label>
-            <input type="password" name="password" id="password" placeholder="Votre mot de passe" require>
+            <input type="password" name="password" id="password" placeholder="Votre mot de passe" required>
         </div>
         <div>
             <label for="city"> ville:</label>
-            <input type="text" name="city" id="city" placeholder="Votre ville" require>
+            <input type="text" name="city" id="city" placeholder="Votre ville" required>
         </div>
         <button type="submit">Soumettre</button>
     </form>

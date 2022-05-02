@@ -12,4 +12,13 @@ class AdminModel extends Manager {
 
         return $req;
     }
+
+    public function collectPassword($mail, $password)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare('SELECT mail,password,lastname,firstname,id FROM adminnew WHERE mail=?');
+        $req->execute(array($mail));
+
+        return $req;
+    }
 }

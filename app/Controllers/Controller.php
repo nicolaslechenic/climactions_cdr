@@ -13,7 +13,7 @@ class Controller {
 	}
 
 	public function viewAdmin($view) {
-		return 'app/Views/admin/layouts/' . $view . '.php';
+		return 'app/Views/admin/' . $view . '.php';
 
 	}
 }

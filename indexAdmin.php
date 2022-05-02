@@ -53,7 +53,19 @@ try {
 
             $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
         }
- }
+
+        elseif($_GET['action'] == 'connexion') {
+          $mail = htmlspecialchars($_POST['email']);
+          $password = htmlspecialchars($_POST['password']);
+          if (!empty($mail) && !empty($password)) {
+            $backController->connexion($mail, $password); // on passe deux paramètre
+        } else {
+            throw new Exception('renseigner vos identifiants');
+        }
+        }
+  }else{
+   $backController->connexionAdmin();
+  }
         
 } catch (Exception $e) {
   eCatcher($e);
