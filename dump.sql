@@ -1,3 +1,12 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : 127.0.0.1
+-- Généré le : lun. 02 mai 2022 à 11:30
+-- Version du serveur : 10.4.21-MariaDB
+-- Version de PHP : 8.0.12
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -6,10 +15,10 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `projet_cdr`
+-- Base de données : `climactions`
 --
 
 -- --------------------------------------------------------
@@ -18,13 +27,12 @@ SET time_zone = "+00:00";
 -- Structure de la table `adherent`
 --
 
-DROP TABLE IF EXISTS `adherent`;
-CREATE TABLE IF NOT EXISTS `adherent` (
-  `id` int NOT NULL,
-  `nom` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `prenom` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `num_tel` char(10) CHARACTER SET utf8 NOT NULL,
-  `mail` varchar(50) CHARACTER SET utf8 NOT NULL
+CREATE TABLE `adherent` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
+  `num_tel` char(10) NOT NULL,
+  `mail` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -33,14 +41,35 @@ CREATE TABLE IF NOT EXISTS `adherent` (
 -- Structure de la table `admin`
 --
 
-DROP TABLE IF EXISTS `admin`;
-CREATE TABLE IF NOT EXISTS `admin` (
-  `user_id` int NOT NULL,
-  `ajouter` text CHARACTER SET utf8 NOT NULL,
-  `modifier` int NOT NULL,
-  `supprimer_document` int NOT NULL,
-  `supprimer_commentaire` int NOT NULL
+CREATE TABLE `admin` (
+  `user_id` int(11) NOT NULL,
+  `ajouter` text NOT NULL,
+  `modifier` int(11) NOT NULL,
+  `supprimer_document` int(11) NOT NULL,
+  `supprimer_commentaire` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `adminnew`
+--
+
+CREATE TABLE `adminnew` (
+  `id` int(11) NOT NULL,
+  `lastname` varchar(40) NOT NULL,
+  `firstname` varchar(40) NOT NULL,
+  `city` varchar(40) NOT NULL,
+  `mail` varchar(40) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `adminnew`
+--
+
+INSERT INTO `adminnew` (`id`, `lastname`, `firstname`, `city`, `mail`, `password`) VALUES
+(2, 'Lejeune', 'baptiste', 'vannes', 'bogoss56@chef.fr', 'vannes');
 
 -- --------------------------------------------------------
 
@@ -48,10 +77,9 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Structure de la table `commentaire`
 --
 
-DROP TABLE IF EXISTS `commentaire`;
-CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id_document` int NOT NULL,
-  `contenu` text CHARACTER SET utf8 NOT NULL
+CREATE TABLE `commentaire` (
+  `id_document` int(11) NOT NULL,
+  `contenu` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -60,22 +88,20 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 -- Structure de la table `document`
 --
 
-DROP TABLE IF EXISTS `document`;
-CREATE TABLE IF NOT EXISTS `document` (
-  `id` int NOT NULL,
-  `auteur` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `photo` int NOT NULL,
-  `titre` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `genre` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `appartenance` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `caution` int NOT NULL,
-  `theme` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `type` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `etat` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `outil` varchar(100) CHARACTER SET utf8 NOT NULL,
-  `emplacement` int NOT NULL,
-  `quantite` int NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `document` (
+  `id` int(11) NOT NULL,
+  `auteur` varchar(50) NOT NULL,
+  `photo` int(11) NOT NULL,
+  `titre` varchar(50) NOT NULL,
+  `genre` varchar(50) NOT NULL,
+  `appartenance` varchar(50) NOT NULL,
+  `caution` int(11) NOT NULL,
+  `theme` varchar(50) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `etat` varchar(50) NOT NULL,
+  `outil` varchar(100) NOT NULL,
+  `emplacement` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -103,10 +129,9 @@ INSERT INTO `document` (`id`, `auteur`, `photo`, `titre`, `genre`, `appartenance
 -- Structure de la table `emprunt`
 --
 
-DROP TABLE IF EXISTS `emprunt`;
-CREATE TABLE IF NOT EXISTS `emprunt` (
-  `id_adherent` int NOT NULL,
-  `id_document` int NOT NULL,
+CREATE TABLE `emprunt` (
+  `id_adherent` int(11) NOT NULL,
+  `id_document` int(11) NOT NULL,
   `date_emprunt` date NOT NULL,
   `date_retour` date NOT NULL,
   `enpruntencours` tinyint(1) NOT NULL
@@ -118,11 +143,10 @@ CREATE TABLE IF NOT EXISTS `emprunt` (
 -- Structure de la table `login`
 --
 
-DROP TABLE IF EXISTS `login`;
-CREATE TABLE IF NOT EXISTS `login` (
-  `id_admin` int NOT NULL,
-  `login` varchar(10) CHARACTER SET utf8 NOT NULL,
-  `mdp` varchar(50) CHARACTER SET utf8 NOT NULL
+CREATE TABLE `login` (
+  `id_admin` int(11) NOT NULL,
+  `login` varchar(10) NOT NULL,
+  `mdp` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -132,6 +156,32 @@ CREATE TABLE IF NOT EXISTS `login` (
 INSERT INTO `login` (`id_admin`, `login`, `mdp`) VALUES
 (1, 'admin1', 'root1'),
 (2, 'admin2', 'root2');
+
+--
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `adminnew`
+--
+ALTER TABLE `adminnew`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `document`
+--
+ALTER TABLE `document`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `adminnew`
+--
+ALTER TABLE `adminnew`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

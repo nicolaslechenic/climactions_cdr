@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -25,9 +26,9 @@ function eCatcher($e) {
     require 'app/Views/errors/error.php';
   }
 }
-
 try {
   $controllerFront = new \Climactions\Controllers\FrontController();
+
   if(isset($_GET['action']) && !empty($_GET['action'])){
     
     if($_GET['action'] == 'home'){
@@ -52,6 +53,12 @@ try {
     elseif($_GET['action'] == 'article'){
       $controllerFront->article($_GET['id']);
     }
+
+ 
+  $controllerFront->home();
+  
+  
+
         
 }
 } catch (Exception $e) {
@@ -61,6 +68,8 @@ try {
   } else {
     header("app/Views/errors/error.php");
   } 
+
+  
 } catch (Error $e) {
   eCatcher($e);
   header("location: app/Views/errors/error.php");

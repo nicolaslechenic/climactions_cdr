@@ -1,11 +1,15 @@
 <?php
+
 namespace Climactions\Controllers;
 
+ clim-8-inscription+hasher-clim-26/1
 class FrontController extends Controller {
     public function home() {
-        return $this->viewFrontend('home');
-        
+        require $this->viewFrontend('home');
+    
+
     }
+
 
 
     // fonction afficher page des articles avec pagination 
@@ -35,3 +39,6 @@ class FrontController extends Controller {
         require "app/Views/frontend/article.php";
     }
 }
+
+}
+
