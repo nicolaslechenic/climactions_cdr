@@ -51,7 +51,7 @@ try {
 
             $password   = password_hash($password, PASSWORD_DEFAULT);
 
-            $backController->createAdmin($lastname, $firstname, $city, $mail, $city);
+            $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
         }
  }
         
