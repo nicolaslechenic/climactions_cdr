@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
@@ -25,10 +26,12 @@ function eCatcher($e) {
     require 'app/Views/errors/error.php';
   }
 }
-
 try {
   $controllerFront = new \Climactions\Controllers\FrontController();
-    $controllerFront->home();
+ 
+  $controllerFront->home();
+  
+  
         
 } catch (Exception $e) {
   eCatcher($e);
@@ -37,7 +40,7 @@ try {
   } else {
     header("app/Views/errors/error.php");
   } 
-
+  
 } catch (Error $e) {
   eCatcher($e);
   header("location: app/Views/errors/error.php");
