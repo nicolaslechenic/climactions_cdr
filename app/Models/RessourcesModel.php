@@ -94,7 +94,7 @@ class RessourcesModel extends Manager
 
         return $req->fetch();
     }
-}
+
 
     public function lastArticles()
     {

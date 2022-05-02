@@ -55,7 +55,7 @@ try {
     }
 
  
-  $controllerFront->home();
+  
   
   
 

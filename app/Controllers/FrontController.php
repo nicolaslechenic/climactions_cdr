@@ -2,14 +2,14 @@
 
 namespace Climactions\Controllers;
 
- clim-8-inscription+hasher-clim-26/1
 class FrontController extends Controller {
     public function home() {
+
+        $articleManager = new \Climactions\Models\RessourcesModel();
+        $lastArticles = $articleManager->lastArticles();
         require $this->viewFrontend('home');
     
-
     }
-
 
 
     // fonction afficher page des articles avec pagination 
@@ -40,5 +40,4 @@ class FrontController extends Controller {
     }
 }
 
-}
 
