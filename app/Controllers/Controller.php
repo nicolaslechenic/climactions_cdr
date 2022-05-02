@@ -3,6 +3,7 @@
 namespace Climactions\Controllers;
 
 class Controller {
+ clim-8-inscription+hasher-clim-26/1
 	public function viewFrontend($view)	{
 		return 'app/Views/frontend/' . $view . '.php';
 	}
@@ -13,5 +14,6 @@ class Controller {
 
 	public function viewAdmin($view) {
 		return 'app/Views/admin/layouts/' . $view . '.php';
+
 	}
 }
