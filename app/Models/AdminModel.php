@@ -13,11 +13,22 @@ class AdminModel extends Manager {
         return $req;
     }
 
+
+    public function collectPassword($mail, $password)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare('SELECT mail,password,lastname,firstname,id FROM adminnew WHERE mail=?');
+        $req->execute(array($mail));
+
+        return $req;
+  }
+
     public function addArticle($title, $img, $description)
     {
         $bdd = $this->connect();
 
         $req = $bdd->prepare('INSERT INTO article (title, img, description) VALUE (?, ?, ?)');
         $req->execute(array($title, $img, $description));
+
     }
 }
