@@ -43,13 +43,10 @@ class AdminController extends Controller {
 				require $this->viewAdmin('dashboard');
 			}else{
 				
-        echo 'Vos identifiants sont incorrect';
-		
-		}else{ 
-			
-      echo 'mail non existant';
-    }
-  }
+        		echo 'Vos identifiants sont incorrect';
+			}
+		}
+	}
 
 	public function pageAddArticle() {
 

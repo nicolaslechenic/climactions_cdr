@@ -80,7 +80,7 @@ try {
             
           $backController->addArticle($title, $img, $description);
         }
- } 
+ 
   }else{
    $backController->connexionAdmin();
  }
