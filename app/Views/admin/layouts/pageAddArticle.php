@@ -16,7 +16,7 @@ require 'app/Views/frontend/layouts/header.php';
         </div>
 
         <div>
-            <label for="img"> Prénom:</label>
+            <label for="img"> Image:</label>
             <input type="text" name="img" id="img" placeholder="url image" required>
         </div>
 
