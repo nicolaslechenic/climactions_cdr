@@ -17,9 +17,9 @@ class AdminController extends Controller {
 		$adminManager = new \Climactions\Models\AdminModel();
 		$admin = $adminManager->creatAdmin($lastname, $firstname, $mail, $city, $password);
 		
-
 		require $this->viewAdmin('adminInscription');
 	}
+
 
 	public function connexionAdmin() {
 		require $this->viewAdmin('connexionAdmin');
@@ -41,13 +41,28 @@ class AdminController extends Controller {
 			if ($isPasswordCorrect) {
 
 				require $this->viewAdmin('dashboard');
-			} 
-			
-			else {
-				echo 'Vos identifiants sont incorrect';
-			}
+			}else{
+				
+        echo 'Vos identifiants sont incorrect';
+		
 		}else{ 
-			echo 'mail non existant';
-		}
+			
+      echo 'mail non existant';
+    }
+  }
+
+	public function pageAddArticle() {
+
+		require $this->viewAdmin('pageAddArticle');
+
+	}
+
+	public function addArticle($title, $img, $description)
+	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$admin = $adminManager->addArticle($title, $img, $description);
+		
+		require $this->viewAdmin('pageAddArticle');
+
 	}
 }

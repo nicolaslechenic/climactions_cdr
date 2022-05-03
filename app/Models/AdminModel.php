@@ -13,6 +13,7 @@ class AdminModel extends Manager {
         return $req;
     }
 
+
     public function collectPassword($mail, $password)
     {
         $bdd = $this->connect();
@@ -20,5 +21,14 @@ class AdminModel extends Manager {
         $req->execute(array($mail));
 
         return $req;
+  }
+
+    public function addArticle($title, $img, $description)
+    {
+        $bdd = $this->connect();
+
+        $req = $bdd->prepare('INSERT INTO article (title, img, description) VALUE (?, ?, ?)');
+        $req->execute(array($title, $img, $description));
+
     }
 }
