@@ -104,5 +104,7 @@ class RessourcesModel extends Manager
         $articles = $req->fetchAll();
         return $articles;
     }
+
+    
 }
 

@@ -15,14 +15,15 @@ $dotenv->load();
 
 // set_error_handler('errorHandler');
 
-function eCatcher($e) {
-  if($_ENV["APP_ENV"] == "dev") {
+function eCatcher($e)
+{
+  if ($_ENV["APP_ENV"] == "dev") {
     $whoops = new \Whoops\Run;
     $whoops->allowQuit(false);
     $whoops->writeToOutput(false);
     $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
     $html = $whoops->handleException($e);
-    
+
     require 'app/Views/errors/error.php';
   }
 }
@@ -30,69 +31,53 @@ function eCatcher($e) {
 
 try {
 
-    $backController = new \Climactions\Controllers\AdminController();
-    
-    
-    if (isset($_GET['action'])) {
-        
-        if($_GET['action'] == 'pageCreationAdmin') {
-            
-        $backController->pageConnexionAdmin();
-    
-        }
-
-        elseif($_GET['action'] == 'creatAdmin') {
-
-            $lastname   = htmlspecialchars($_POST['lastname']);
-            $firstname  = htmlspecialchars($_POST['firstname']);
-            $city       = htmlspecialchars($_POST['city']);
-            $mail       = htmlspecialchars($_POST['mail']);
-            $password   = $_POST['password'];
-
-            $password   = password_hash($password, PASSWORD_DEFAULT);
-
-            $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
-        }
+  $backController = new \Climactions\Controllers\AdminController();
 
 
-        elseif($_GET['action'] == 'connexion') {
-          $mail = htmlspecialchars($_POST['email']);
-          $password = htmlspecialchars($_POST['password']);
-          if (!empty($mail) && !empty($password)) {
-            $backController->connexion($mail, $password); // on passe deux paramètre
-          } else {
-              throw new Exception('renseigner vos identifiants');
-          }
-        }
- 
+  if (isset($_GET['action'])) {
 
-        elseif($_GET['action'] == 'pageAddArticle') {
-            
-          $backController->pageAddArticle();
-      
-          }
+    if ($_GET['action'] == 'pageCreationAdmin') {
 
-        elseif($_GET['action'] == 'addArticle') {
+      $backController->pageConnexionAdmin();
+    } elseif ($_GET['action'] == 'creatAdmin') {
 
-            $title             = htmlspecialchars($_POST['title']);
-            $img               = htmlspecialchars($_POST['img']);
-            $description       = htmlspecialchars($_POST['description']);
-            
-          $backController->addArticle($title, $img, $description);
-        }
- 
-  }else{
-   $backController->connexionAdmin();
- }
-        
+      $lastname   = htmlspecialchars($_POST['lastname']);
+      $firstname  = htmlspecialchars($_POST['firstname']);
+      $city       = htmlspecialchars($_POST['city']);
+      $mail       = htmlspecialchars($_POST['mail']);
+      $password   = $_POST['password'];
+
+      $password   = password_hash($password, PASSWORD_DEFAULT);
+
+      $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
+    } elseif ($_GET['action'] == 'connexion') {
+      $mail = htmlspecialchars($_POST['email']);
+      $password = htmlspecialchars($_POST['password']);
+      if (!empty($mail) && !empty($password)) {
+        $backController->connexion($mail, $password); // on passe deux paramètre
+      } else {
+        throw new Exception('renseigner vos identifiants');
+      }
+    } elseif ($_GET['action'] == 'pageAddArticle') {
+
+      $backController->pageAddArticle();
+    } elseif ($_GET['action'] == 'addArticle') {
+  
+      $title = htmlspecialchars($_POST['title']);
+      var_dump($_POST['title']);
+      $content = htmlspecialchars($_POST['content']);
+      $backController->addArticle($title, $content);
+    }
+  } else {
+    $backController->connexionAdmin();
+  }
 } catch (Exception $e) {
   eCatcher($e);
-  if($e->getCode === 404) {
-    die('Erreur : ' .$e->getMessage());
+  if ($e->getCode === 404) {
+    die('Erreur : ' . $e->getMessage());
   } else {
     header("app/Views/errors/error.php");
-  } 
-  
+  }
 } catch (Error $e) {
   eCatcher($e);
   header("location: app/Views/errors/error.php");

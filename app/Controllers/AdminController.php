@@ -54,10 +54,10 @@ class AdminController extends Controller {
 
 	}
 
-	public function addArticle($title, $img, $description)
+	public function addArticle($title, $content)
 	{
 		$adminManager = new \Climactions\Models\AdminModel();
-		$admin = $adminManager->addArticle($title, $img, $description);
+		$admin = $adminManager->addArticle($title, $content);
 		
 		require $this->viewAdmin('pageAddArticle');
 
