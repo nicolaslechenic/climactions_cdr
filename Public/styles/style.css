@@ -1,39 +1,109 @@
+:root {
+    --primary : #009D5C;
+    --bg-primary: #E5E5E5;
+    --white: #FCFCFC;
+    --black: #1A1A1A;
+    --text-primary: #000;
+    --text-secondary: #FFF;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../fonts/roboto/roboto.woff2') format('woff2'),
+         url('../fonts/roboto/roboto.woff') format('woff'),
+         url('../fonts/roboto/roboto.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: local(''),
+         url('../fonts/robotocondensed/robotocondensed.woff2') format('woff2'),
+         url('../fonts/robotocondensed/robotocondensed.woff') format('woff'),
+         url('../fonts/robotocondensed/robotocondensed.ttf') format('truetype')
+}
+  
 *, ::before, ::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-li{
+h1, h2, h3, h4, h5 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+h5 {
+    font-size: 1.1rem;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+li {
     list-style: none;
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
 }
 
-
-
-
 /* --------PAGINATION-----------  */
-#nav-pagination{
+#nav-pagination {
     text-align: center;
     margin: 1rem 0;
 }
-.pagination{
+
+.pagination {
     display: inline-flex;
     margin-bottom: 2rem;
 }
-.pagination .page-item a{
+
+.pagination .page-item a {
     transition: all 0.1s ease-in-out;
     background-color: #F7F7F8;
     padding: 10px;
     border: solid 1px aqua;
 }
-.pagination .active a, .pagination .page-item a:hover{
+
+.pagination .active a, .pagination .page-item a:hover {
     background-color: blue;
     color: white;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
