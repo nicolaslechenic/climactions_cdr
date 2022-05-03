@@ -30,6 +30,7 @@ function eCatcher($e)
 try {
   $controllerFront = new \Climactions\Controllers\FrontController();
 
+
   if (isset($_GET['action']) && !empty($_GET['action'])) {
 
 
@@ -57,6 +58,7 @@ try {
     die('Erreur : ' . $e->getMessage());
   } else {
     header("app/Views/errors/error.php");
+
   }
 } catch (Error $e) {
   eCatcher($e);

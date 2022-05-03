@@ -53,6 +53,20 @@ try {
 
             $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
         }
+        elseif($_GET['action'] == 'pageAddArticle') {
+            
+          $backController->pageAddArticle();
+      
+          }
+
+        elseif($_GET['action'] == 'addArticle') {
+
+            $title             = htmlspecialchars($_POST['title']);
+            $img               = htmlspecialchars($_POST['img']);
+            $description       = htmlspecialchars($_POST['description']);
+            
+          $backController->addArticle($title, $img, $description);
+        }
  }
         
 } catch (Exception $e) {
