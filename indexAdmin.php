@@ -53,6 +53,10 @@ try {
 
             $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
         }
+
+        elseif($_GET['action'] == 'sendmail'){
+          $backController->sendMail();
+        }
  }
         
 } catch (Exception $e) {

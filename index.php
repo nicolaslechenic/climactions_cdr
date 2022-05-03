@@ -49,17 +49,36 @@ try {
     }
 
 
+    
     // afficher un article 
     elseif($_GET['action'] == 'article'){
       $controllerFront->article($_GET['id']);
     }
+    
 
+    // afficher page contact 
+    elseif($_GET['action'] == 'contact'){
+      $controllerFront->contact();
+  }
+    // envoi mail en BDD 
+    elseif($_GET['action'] == 'contactPost'){
+      $lastname = htmlspecialchars($_POST['lastname']);
+      $firstname = htmlspecialchars($_POST['firstname']);
+      $mail = htmlspecialchars($_POST['mail']);
+      $objet = htmlspecialchars($_POST['objet']);
+      $message = htmlspecialchars($_POST['message']);
+
+            if (!empty($lastname) && (!empty($firstname) && (!empty($mail) && (!empty($objet) && (!empty($message)))))) {
+      $controllerFront->contactPost($lastname, $firstname, $mail, $objet, $message);
+    } else {
+      throw new Exception('Tous les champs ne sont pas remplis!!');
+    }
+  }
  
   
-  
-  
-
         
+} else{
+  $controllerFront->home();
 }
 } catch (Exception $e) {
   eCatcher($e);

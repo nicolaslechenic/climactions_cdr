@@ -20,4 +20,9 @@ class AdminController extends Controller {
 
 		require $this->viewAdmin('adminInscription');
 	}
+
+	public function sendMail()
+	{
+		require $this->viewAdmin('sendmail');
+	}
 }
