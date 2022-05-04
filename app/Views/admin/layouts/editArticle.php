@@ -2,12 +2,11 @@
 require 'app/Views/frontend/layouts/header.php';
 ?>
 
-
 <section id="container_formulaire_article">
 
-    <h1>Création des articles</h1>
+    <h1>Modifier l'article</h1>
 
-    <form id="form_admin" action="indexAdmin.php?action=addArticle" method="post">
+    <form id="form_admin" action="indexAdmin.php?action=updateArticle" method="post">
 
         <div>
             <label for="title">Titre :</label>
@@ -25,14 +24,14 @@ require 'app/Views/frontend/layouts/header.php';
 
 <section>
 
-<h2>Mes articles</h2>
+<!-- <h2>Mes articles</h2>
 
 <?php foreach($allArticles as $article) : ?>
     <h3><?= $article['title'] ?></h3>
     <p><?= $article['content'] ?></p>
-    <a title="Modifier" href="indexAdmin.php?action=updateArticle&id=<?= $article['id'] ?>">Modifier</a>
+    <a title="Modifier" href="indexAdmin.php?action=deleteMail&id=<?= $article['id'] ?>">Modifier</a>
     <a title="Supprimer" href="indexAdmin.php?action=deleteArticle&id=<?= $article['id'] ?>">Supprimer</a> 
-<?php endforeach ?>
+<?php endforeach ?> -->
 
 
 </section>

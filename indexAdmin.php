@@ -51,22 +51,36 @@ try {
 
       $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
     } elseif ($_GET['action'] == 'connexion') {
+
       $mail = htmlspecialchars($_POST['email']);
       $password = htmlspecialchars($_POST['password']);
       if (!empty($mail) && !empty($password)) {
         $backController->connexion($mail, $password); // on passe deux paramètre
+
       } else {
+
         throw new Exception('renseigner vos identifiants');
       }
     } elseif ($_GET['action'] == 'pageAddArticle') {
 
       $backController->pageAddArticle();
+
+    } elseif ($_GET['action'] == 'deleteArticle') {
+
+      $id = $_GET['id'];
+      $backController->deleteArticle($id);
     } elseif ($_GET['action'] == 'addArticle') {
-  
+
       $title = htmlspecialchars($_POST['title']);
-      var_dump($_POST['title']);
       $content = htmlspecialchars($_POST['content']);
       $backController->addArticle($title, $content);
+      
+    } elseif ($_GET['action'] == 'updateArticle') {
+
+      $title = htmlspecialchars($_POST['title']);
+      $content = htmlspecialchars($_POST['content']);
+      $backController->updateArticle($id, $title, $content);
+      
     }
   } else {
     $backController->connexionAdmin();
