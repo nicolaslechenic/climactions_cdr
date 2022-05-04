@@ -62,6 +62,12 @@ class AdminController extends Controller
 		$allArticles = $articles->getArticles();
 		require $this->viewAdmin('pageAddArticle');
 	}
+	public function viewUpdateArticle($idArticle)
+	{
+		$article = new AdminModel();
+		$oneArticle = $article->getArticle($idArticle);
+		require $this->viewAdmin('updateArticle');
+	}
 
 	public function addArticle($title, $content)
 	{
@@ -74,15 +80,16 @@ class AdminController extends Controller
 	public function deleteArticle($id) {
 		$article = new AdminModel();
 		$deleteArticle = $article->deleteArticle($id);
+
 		header('Location: indexAdmin.php?action=pageAddArticle');
 
 
 	}
-	public function updateArticle($id, $title, $content)
+	public function updateArticle($idArticle, $title, $content)
 	{
 		$article = new AdminModel();
-		$updateArticle = $article->updateArticle($id, $title, $content);
-
+		$updateArticle = $article->updateArticle($idArticle, $title, $content);
+		
 		header('Location: indexAdmin.php?action=pageAddArticle');
 	}
 }

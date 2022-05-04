@@ -36,6 +36,13 @@ class AdminModel extends Manager
        $article = $req->fetchAll();
        return $article;
     }
+    public function getArticle($idArticle)
+    {
+       $bdd = $this->connect();
+       $req = $bdd->prepare("SELECT * FROM article WHERE id = ?");
+       $req->execute(array($idArticle));
+       return $req->fetch();
+    }
 
     //   créer un article
 
@@ -48,15 +55,18 @@ class AdminModel extends Manager
     }
     // mettre à jour un article
 
-    public function updateArticle($id, $title, $content)
+    public function updateArticle($idArticle, $title, $content)
     {
         $bdd = $this->connect();
         $req = $bdd->prepare('UPDATE article SET title = :title , content = :content WHERE id = :id');
         $req->execute([
-            'id' => $id,
+            'id' => $idArticle,
             'title' => $title,
-            'content' => $content
+            'content' => $content   
         ]);
+        return $req;
+        // header('Location: indexAdmin.php?action=pageAddArticle');
+       
     }
 
     // supprimer un article
@@ -66,6 +76,5 @@ class AdminModel extends Manager
         $bdd = $this->connect();
         $req = $bdd->prepare('DELETE FROM article WHERE id = ?');
         $req->execute(array($id));
-        
     }
 }

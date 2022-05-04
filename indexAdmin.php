@@ -1,13 +1,11 @@
 <?php
 
-
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
-
 
 // function errorHandler($errno, $errstr) {
 //   throw new Exception($errno, $errstr);
@@ -28,11 +26,9 @@ function eCatcher($e)
   }
 }
 
-
 try {
 
   $backController = new \Climactions\Controllers\AdminController();
-
 
   if (isset($_GET['action'])) {
 
@@ -64,6 +60,9 @@ try {
     } elseif ($_GET['action'] == 'pageAddArticle') {
 
       $backController->pageAddArticle();
+    } elseif ($_GET['action'] == 'viewUpdateArticle') {
+      $idArticle = $_GET['id'];
+      $backController->viewUpdateArticle($idArticle);
 
     } elseif ($_GET['action'] == 'deleteArticle') {
 
@@ -76,10 +75,10 @@ try {
       $backController->addArticle($title, $content);
       
     } elseif ($_GET['action'] == 'updateArticle') {
-
+      $idArticle = $_GET['id'];    
       $title = htmlspecialchars($_POST['title']);
       $content = htmlspecialchars($_POST['content']);
-      $backController->updateArticle($id, $title, $content);
+      $backController->updateArticle($idArticle, $title, $content);
       
     }
   } else {
