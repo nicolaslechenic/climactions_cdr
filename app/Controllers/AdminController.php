@@ -21,6 +21,11 @@ class AdminController extends Controller {
 	}
 
 
+	public function sendMail()
+	{
+		require $this->viewAdmin('sendmail');
+
+
 	public function connexionAdmin() {
 		require $this->viewAdmin('connexionAdmin');
 	}
@@ -60,6 +65,7 @@ class AdminController extends Controller {
 		$admin = $adminManager->addArticle($title, $img, $description);
 		
 		require $this->viewAdmin('pageAddArticle');
+
 
 	}
 }

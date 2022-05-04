@@ -55,6 +55,11 @@ try {
         }
 
 
+        elseif($_GET['action'] == 'sendmail'){
+          $backController->sendMail();
+        }
+
+
         elseif($_GET['action'] == 'connexion') {
           $mail = htmlspecialchars($_POST['email']);
           $password = htmlspecialchars($_POST['password']);
@@ -83,6 +88,7 @@ try {
  
   }else{
    $backController->connexionAdmin();
+
  }
         
 } catch (Exception $e) {

@@ -38,6 +38,28 @@ class FrontController extends Controller {
 
         require "app/Views/frontend/article.php";
     }
+
+
+    // afficher page contact.php 
+    public function contact()
+    {
+        require $this->viewFrontend('contact');
+    }
+
+
+    // fonction envoyer contact en bdd 
+    public function contactPost($lastname, $firstname, $mail, $objet, $message)
+    {
+        $contactManager = new \Climactions\Models\ContactModel();
+        
+
+        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            $Mail = $contactManager->postMail($lastname, $firstname, $mail, $objet, $message);
+            echo "Mail envoyé";
+        } else {
+            echo "échec";
+        }
+    }
 }
 
 
