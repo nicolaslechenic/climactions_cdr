@@ -52,19 +52,40 @@ class AdminController extends Controller {
 		}
 	}
 
-	public function pageAddArticle() {
+	public function pageAddArticle()
+	{
+		$articles = new \Climactions\Models\AdminModel();
+		$allArticles = $articles->getArticles();
+		require $this->viewAdmin('pageAddArticle');
+	}
+	public function viewUpdateArticle($idArticle)
+	{
+		$article = new \Climactions\Models\AdminModel();
+		$oneArticle = $article->getArticle($idArticle);
+		require $this->viewAdmin('updateArticle');
+	}
 
+	public function addArticle($title, $content)
+	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$admin = $adminManager->addArticle($title, $content);
 		require $this->viewAdmin('pageAddArticle');
 
 	}
 
-	public function addArticle($title, $img, $description)
+	public function deleteArticle($id) {
+		$article = new \Climactions\Models\AdminModel();
+		$deleteArticle = $article->deleteArticle($id);
+
+		header('Location: indexAdmin.php?action=pageAddArticle');
+
+
+	}
+	public function updateArticle($idArticle, $title, $content)
 	{
-		$adminManager = new \Climactions\Models\AdminModel();
-		$admin = $adminManager->addArticle($title, $img, $description);
+		$article = new \Climactions\Models\AdminModel();
+		$updateArticle = $article->updateArticle($idArticle, $title, $content);
 		
-		require $this->viewAdmin('pageAddArticle');
-
-
+		header('Location: indexAdmin.php?action=pageAddArticle');
 	}
 }
