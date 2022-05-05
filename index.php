@@ -33,9 +33,14 @@ try {
 
   if (isset($_GET['action']) && !empty($_GET['action'])) {
 
+    // afficher page home
+    if($_GET['action'] == 'home'){
+      $controllerFront->home();
+    }
+
 
     // afficher page des articles 
-    if ($_GET['action'] == 'pageArticle') {
+    elseif ($_GET['action'] == 'pageArticle') {
       if (isset($_GET['page']) && !empty($_GET['page'])) {
 
         $currentPage = (int) strip_tags($_GET['page']);
@@ -52,7 +57,6 @@ try {
     }
 
     
-
     // afficher page contact 
     elseif($_GET['action'] == 'contact'){
       $controllerFront->contact();
@@ -66,7 +70,7 @@ try {
       $objet = htmlspecialchars($_POST['objet']);
       $message = htmlspecialchars($_POST['message']);
 
-            if (!empty($lastname) && (!empty($firstname) && (!empty($mail) && (!empty($objet) && (!empty($message)))))) {
+      if (!empty($lastname) && (!empty($firstname) && (!empty($mail) && (!empty($objet) && (!empty($message)))))) {
       $controllerFront->contactPost($lastname, $firstname, $mail, $objet, $message);
     } else {
       throw new Exception('Tous les champs ne sont pas remplis!!');
@@ -79,9 +83,6 @@ try {
   $controllerFront->home();
 }
 
-  } else {
-    $controllerFront->home();
-  }
 
 } catch (Exception $e) {
   eCatcher($e);

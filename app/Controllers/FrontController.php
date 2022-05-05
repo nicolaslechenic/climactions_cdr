@@ -7,7 +7,7 @@ class FrontController extends Controller {
 
         $articleManager = new \Climactions\Models\RessourcesModel();
         $lastArticles = $articleManager->lastArticles();
-        require $this->viewFrontend('home');
+        require "app/Views/frontend/home.php";
     
     }
 

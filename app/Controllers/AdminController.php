@@ -3,10 +3,7 @@
 namespace Climactions\Controllers;
 
 class AdminController extends Controller {
-	public function home() {
-		require $this->viewAdmin('home');
-	}
-
+	
 	public function pageConnexionAdmin() {
 		
 		require $this->viewAdmin('adminInscription');
@@ -24,6 +21,8 @@ class AdminController extends Controller {
 	public function sendMail()
 	{
 		require $this->viewAdmin('sendmail');
+
+	}
 
 
 	public function connexionAdmin() {
@@ -48,7 +47,7 @@ class AdminController extends Controller {
 				require $this->viewAdmin('dashboard');
 			}else{
 				
-        		echo 'Vos identifiants sont incorrect';
+        		echo 'Vos identifiants sont incorrects';
 			}
 		}
 	}
