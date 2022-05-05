@@ -83,6 +83,22 @@ class RessourcesModel extends Manager
         return $articles;
     }
 
+    // search an/several article 
+    public function searchArticle($query)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT * FROM document 
+        WHERE outil LIKE :query 
+        OR appartenance LIKE :query
+        OR theme LIKE :query 
+        ORDER BY id 
+        DESC LIMIT 6");
+        $req->execute([':query' => '%'.$query.'%']);
+    
+        $search = $req->fetchAll();
+        return $search;
+    }
+
 
     // afficher un article en fonction de l'id 
     public function afficherDetailArticle()

@@ -3,15 +3,17 @@
 
 session_start();
 
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+//Create an instance; passing `true` enables exceptions
 
 // function errorHandler($errno, $errstr) {
-//   throw new Exception($errno, $errstr);
-// }
+  //   throw new Exception($errno, $errstr);
+  // }
 
 // set_error_handler('errorHandler');
 
@@ -29,7 +31,7 @@ function eCatcher($e) {
 
 
 try {
-
+  
     $backController = new \Climactions\Controllers\AdminController();
     
     
