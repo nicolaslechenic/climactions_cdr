@@ -13,7 +13,7 @@ class FrontController extends Controller {
 
 
     // fonction afficher page des articles avec pagination 
-    public function pageArticle($currentPage)
+    public function pageArticle($query, $currentPage)
     {
         $articleManager = new \Climactions\Models\RessourcesModel();
         $nbarticles = $articleManager->countArticles();
@@ -26,6 +26,9 @@ class FrontController extends Controller {
         
         $premierArticle = ($currentPage * $parPage) - $parPage;
         $articles = $articleManager->perPageArticle($premierArticle, $parPage);
+
+        // searchbar 
+        $search = $articleManager->searchArticle($query);
     
         require "app/Views/frontend/pageArticle.php";
     }

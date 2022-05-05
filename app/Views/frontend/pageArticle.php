@@ -13,6 +13,36 @@
 
 <h1>article exemple pagination</h1>
 
+<section id="bar-search">
+<?php
+    include_once "layouts/searchbar.php";
+    ?>
+    <?php 
+        if (isset($search) && !empty($search) && isset($_GET['search'])) :
+    ?>
+
+<section>
+    <h1>Votre recherche</h1>
+    <div class="article-container">
+       
+        <?php foreach ($search as $article){
+        ?>
+        <article>
+            <div>
+                <h2><?= $article['outil']; ?></h2>
+                <p><?= $article['appartenance']; ?></p>
+                <p><?= $article['theme']; ?></p>
+            </div>
+            <a href="index.php?action=article&id=<?= $article['id']; ?>">Voir l'Article</a>
+        </article>
+        <?php }; ?>
+    </div>
+</section>
+
+
+<?php
+else :
+?>
 <section>
     <h1>Les Articles</h1>
     <div class="article-container">
@@ -30,6 +60,9 @@
         <?php }; ?>
     </div>
 </section>
+</section>
+
+
 
 <nav id="nav-pagination">
     <ul class="pagination">
@@ -49,6 +82,9 @@
         </li>
     </ul>
 </nav>
+<?php
+endif
+?>
 
 <footer>
 
