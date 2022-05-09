@@ -3,10 +3,7 @@
 namespace Climactions\Controllers;
 
 class AdminController extends Controller {
-	public function home() {
-		require $this->viewAdmin('home');
-	}
-
+	
 	public function pageConnexionAdmin() {
 		
 		require $this->viewAdmin('adminInscription');
@@ -18,6 +15,13 @@ class AdminController extends Controller {
 		$admin = $adminManager->creatAdmin($lastname, $firstname, $mail, $city, $password);
 		
 		require $this->viewAdmin('adminInscription');
+	}
+
+
+	public function sendMail()
+	{
+		require $this->viewAdmin('sendmail');
+
 	}
 
 
@@ -43,23 +47,45 @@ class AdminController extends Controller {
 				require $this->viewAdmin('dashboard');
 			}else{
 				
-        		echo 'Vos identifiants sont incorrect';
+        		echo 'Vos identifiants sont incorrects';
 			}
 		}
 	}
 
-	public function pageAddArticle() {
+	public function pageAddArticle()
+	{
+		$articles = new \Climactions\Models\AdminModel();
+		$allArticles = $articles->getArticles();
+		require $this->viewAdmin('pageAddArticle');
+	}
+	public function viewUpdateArticle($idArticle)
+	{
+		$article = new \Climactions\Models\AdminModel();
+		$oneArticle = $article->getArticle($idArticle);
+		require $this->viewAdmin('updateArticle');
+	}
 
+	public function addArticle($title, $content)
+	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$admin = $adminManager->addArticle($title, $content);
 		require $this->viewAdmin('pageAddArticle');
 
 	}
 
-	public function addArticle($title, $img, $description)
-	{
-		$adminManager = new \Climactions\Models\AdminModel();
-		$admin = $adminManager->addArticle($title, $img, $description);
-		
-		require $this->viewAdmin('pageAddArticle');
+	public function deleteArticle($id) {
+		$article = new \Climactions\Models\AdminModel();
+		$deleteArticle = $article->deleteArticle($id);
 
+		header('Location: indexAdmin.php?action=pageAddArticle');
+
+
+	}
+	public function updateArticle($idArticle, $title, $content)
+	{
+		$article = new \Climactions\Models\AdminModel();
+		$updateArticle = $article->updateArticle($idArticle, $title, $content);
+		
+		header('Location: indexAdmin.php?action=pageAddArticle');
 	}
 }

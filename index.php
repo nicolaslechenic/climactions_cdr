@@ -33,25 +33,58 @@ try {
 
   if (isset($_GET['action']) && !empty($_GET['action'])) {
 
+    // afficher page home
+    if($_GET['action'] == 'home'){
+      $controllerFront->home();
+    }
+
 
     // afficher page des articles 
-    if ($_GET['action'] == 'pageArticle') {
+    elseif ($_GET['action'] == 'pageArticle') {
+      $query = $_POST['query'] ?? "";
       if (isset($_GET['page']) && !empty($_GET['page'])) {
 
         $currentPage = (int) strip_tags($_GET['page']);
       } else {
         $currentPage = 1;
       }
-      $controllerFront->pageArticle($currentPage);
+      $controllerFront->pageArticle($query, $currentPage);
     }
+
 
     // afficher un article 
     elseif ($_GET['action'] == 'article') {
       $controllerFront->article($_GET['id']);
     }
-  } else {
-    $controllerFront->home();
+
+    
+    // afficher page contact 
+    elseif($_GET['action'] == 'contact'){
+      $controllerFront->contact();
   }
+    
+    // envoi mail en BDD 
+    elseif($_GET['action'] == 'contactPost'){
+      $lastname = htmlspecialchars($_POST['lastname']);
+      $firstname = htmlspecialchars($_POST['firstname']);
+      $mail = htmlspecialchars($_POST['mail']);
+      $objet = htmlspecialchars($_POST['objet']);
+      $message = htmlspecialchars($_POST['message']);
+
+      if (!empty($lastname) && (!empty($firstname) && (!empty($mail) && (!empty($objet) && (!empty($message)))))) {
+      $controllerFront->contactPost($lastname, $firstname, $mail, $objet, $message);
+    } else {
+      throw new Exception('Tous les champs ne sont pas remplis!!');
+    }
+  }
+ 
+  
+        
+} else{
+  $controllerFront->home();
+}
+
+
 } catch (Exception $e) {
   eCatcher($e);
   if ($e->getCode === 404) {

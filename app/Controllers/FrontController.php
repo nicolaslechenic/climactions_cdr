@@ -7,13 +7,13 @@ class FrontController extends Controller {
 
         $articleManager = new \Climactions\Models\RessourcesModel();
         $lastArticles = $articleManager->lastArticles();
-        require $this->viewFrontend('home');
+        require "app/Views/frontend/home.php";
     
     }
 
 
     // fonction afficher page des articles avec pagination 
-    public function pageArticle($currentPage)
+    public function pageArticle($query, $currentPage)
     {
         $articleManager = new \Climactions\Models\RessourcesModel();
         $nbarticles = $articleManager->countArticles();
@@ -26,6 +26,9 @@ class FrontController extends Controller {
         
         $premierArticle = ($currentPage * $parPage) - $parPage;
         $articles = $articleManager->perPageArticle($premierArticle, $parPage);
+
+        // searchbar 
+        $search = $articleManager->searchArticle($query);
     
         require "app/Views/frontend/pageArticle.php";
     }
@@ -37,6 +40,28 @@ class FrontController extends Controller {
         $article = $articleManager->afficherDetailArticle();
 
         require "app/Views/frontend/article.php";
+    }
+
+
+    // afficher page contact.php 
+    public function contact()
+    {
+        require $this->viewFrontend('contact');
+    }
+
+
+    // fonction envoyer contact en bdd 
+    public function contactPost($lastname, $firstname, $mail, $objet, $message)
+    {
+        $contactManager = new \Climactions\Models\ContactModel();
+        
+
+        if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+            $Mail = $contactManager->postMail($lastname, $firstname, $mail, $objet, $message);
+            echo "Mail envoyé";
+        } else {
+            echo "échec";
+        }
     }
 }
 

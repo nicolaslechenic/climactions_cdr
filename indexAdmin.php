@@ -3,15 +3,17 @@
 
 session_start();
 
+
 require_once __DIR__ . '/vendor/autoload.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
+//Create an instance; passing `true` enables exceptions
 
 // function errorHandler($errno, $errstr) {
-//   throw new Exception($errno, $errstr);
-// }
+  //   throw new Exception($errno, $errstr);
+  // }
 
 // set_error_handler('errorHandler');
 
@@ -29,7 +31,7 @@ function eCatcher($e) {
 
 
 try {
-
+  
     $backController = new \Climactions\Controllers\AdminController();
     
     
@@ -55,6 +57,11 @@ try {
         }
 
 
+        elseif($_GET['action'] == 'sendmail'){
+          $backController->sendMail();
+        }
+
+
         elseif($_GET['action'] == 'connexion') {
           $mail = htmlspecialchars($_POST['email']);
           $password = htmlspecialchars($_POST['password']);
@@ -64,25 +71,40 @@ try {
               throw new Exception('renseigner vos identifiants');
           }
         }
- 
 
-        elseif($_GET['action'] == 'pageAddArticle') {
-            
+        elseif ($_GET['action'] == 'pageAddArticle') {
+
           $backController->pageAddArticle();
-      
+          } 
+
+        elseif ($_GET['action'] == 'viewUpdateArticle') {
+          $idArticle = $_GET['id'];
+          $backController->viewUpdateArticle($idArticle);
+          } 
+
+        elseif ($_GET['action'] == 'deleteArticle') {
+          
+          $id = $_GET['id'];
+          $backController->deleteArticle($id);
+          } 
+        
+        elseif ($_GET['action'] == 'addArticle') {
+          
+          $title = htmlspecialchars($_POST['title']);
+          $content = htmlspecialchars($_POST['content']);
+          $backController->addArticle($title, $content);
+          
+          } elseif ($_GET['action'] == 'updateArticle') {
+          $idArticle = $_GET['id'];    
+          $title = htmlspecialchars($_POST['title']);
+          $content = htmlspecialchars($_POST['content']);
+          $backController->updateArticle($idArticle, $title, $content);
+          
           }
-
-        elseif($_GET['action'] == 'addArticle') {
-
-            $title             = htmlspecialchars($_POST['title']);
-            $img               = htmlspecialchars($_POST['img']);
-            $description       = htmlspecialchars($_POST['description']);
-            
-          $backController->addArticle($title, $img, $description);
-        }
  
   }else{
    $backController->connexionAdmin();
+
  }
         
 } catch (Exception $e) {
