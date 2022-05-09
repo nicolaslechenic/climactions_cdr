@@ -41,38 +41,6 @@ function eCatcher($e) {
 
 
 try {
-  
-  //Server settings
-  // $mail = new PHPMailer(true);
- 
- 
-  // $mail -> SMTPDebug  =  SMTP :: DEBUG_SERVER ; 
-  //   $mail -> SMTPDebug  =  2 ;    
-  //   $mail -> isSendmail();  // dire à la classe d'utiliser SMTP
- 
-  //   $mail->Debugoutput = 'html';
-  //   $mail->Host = "smtp.gmail.com";
-  //   $mail->Port = 465;     //  587;
-  //   $mail->SMTPSecure = 'tls';   
-  //   $mail->SMTPAuth = true;
-  //   $mail->Username = "josselincrenn@gmail.com";
-  //   $mail->Password = "Bigben::35600";
-  //   $mail->setFrom =('josselincrenn@gmail.com');    //, 'Your Name');
- 
-  //   $mail->addAddress('josselincrenn@gmail.com', 'alarme ****');
- 
-  //       //  echo "Stop en 34";   exit;     
- 
-  //   $mail->Subject = "Sujet : Test PHPMailer";
-  //   $mail->Body = "Corps du Message d'essai "; echo "<br>"; echo "<br>"; 
- 
-  //   if (!$mail->send()) {
-  //           echo "Mailer Error: ".$mail->ErrorInfo; echo "<br>"; echo "<br>";
-  //   } else {
-  //           echo "Message sent!";echo "<br>";echo "<br>";
-  //   }
- 
-  
 
     $backController = new \Climactions\Controllers\AdminController();
     
