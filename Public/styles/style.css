@@ -292,7 +292,6 @@ a {
 .cont-btn {
   width: 85%;
   height: auto;
-  border: 1px solid blueviolet;
   display: flex;
   justify-content: center;
   margin: 0 auto;
