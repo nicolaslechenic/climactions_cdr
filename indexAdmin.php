@@ -31,7 +31,7 @@ function eCatcher($e) {
 
 
 try {
-  
+
     $backController = new \Climactions\Controllers\AdminController();
     
     
