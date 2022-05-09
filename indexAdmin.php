@@ -1,18 +1,8 @@
 <?php
 
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\Exception;
-// use PHPMailer\PHPMailer\SMTP;
-
-
 
 session_start();
 
-// require 'vendor/phpmailer/phpmailer/src/Exception.php';
-// require 'vendor/phpmailer/phpmailer/src/PHPMailer.php';
-// require 'vendor/phpmailer/phpmailer/src/SMTP.php';
-//Import PHPMailer classes into the global namespace
-//These must be at the top of your script, not inside a function
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -81,22 +71,36 @@ try {
               throw new Exception('renseigner vos identifiants');
           }
         }
- 
 
-        elseif($_GET['action'] == 'pageAddArticle') {
-            
+        elseif ($_GET['action'] == 'pageAddArticle') {
+
           $backController->pageAddArticle();
-      
+          } 
+
+        elseif ($_GET['action'] == 'viewUpdateArticle') {
+          $idArticle = $_GET['id'];
+          $backController->viewUpdateArticle($idArticle);
+          } 
+
+        elseif ($_GET['action'] == 'deleteArticle') {
+          
+          $id = $_GET['id'];
+          $backController->deleteArticle($id);
+          } 
+        
+        elseif ($_GET['action'] == 'addArticle') {
+          
+          $title = htmlspecialchars($_POST['title']);
+          $content = htmlspecialchars($_POST['content']);
+          $backController->addArticle($title, $content);
+          
+          } elseif ($_GET['action'] == 'updateArticle') {
+          $idArticle = $_GET['id'];    
+          $title = htmlspecialchars($_POST['title']);
+          $content = htmlspecialchars($_POST['content']);
+          $backController->updateArticle($idArticle, $title, $content);
+          
           }
-
-        elseif($_GET['action'] == 'addArticle') {
-
-            $title             = htmlspecialchars($_POST['title']);
-            $img               = htmlspecialchars($_POST['img']);
-            $description       = htmlspecialchars($_POST['description']);
-            
-          $backController->addArticle($title, $img, $description);
-        }
  
   }else{
    $backController->connexionAdmin();

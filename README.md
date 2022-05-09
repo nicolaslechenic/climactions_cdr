@@ -11,7 +11,6 @@ Son but : mobiliser, le plus largement possible, les acteurs sociaux, économiqu
 
 # Conditions préalables pour lancer l'application :
 Installer Composer:
-->npm composer install
 ->composer init
 ->composer (pour vérifier si composer est bien installé)
 
