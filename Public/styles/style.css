@@ -64,6 +64,7 @@ h2 {
   font-size: 1.7rem;
   color: var(--primary);
   text-transform: uppercase;
+  font-weight: 600;
 }
 
 h3 {
@@ -144,7 +145,7 @@ a {
   display: none;
 }
 
-/* -------------------------------------- header -------------------------------  */
+/* --------------- header --------------------  */
 #bandeau {
   width: 100%;
   background-color: var(--bg-primary);
@@ -153,13 +154,11 @@ a {
 #bandeau #navigation-bandeau {
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
 }
 
 #bandeau #navigation-bandeau img {
   width: 85px;
   height: 85px;
-  /* border: 1px solid black; */
 }
 
 #bandeau #navigation-bandeau #menu {
@@ -205,11 +204,12 @@ a {
   cursor: pointer;
 }
 
-/* --------------------------------------- body ---------------------------------  */
+/* ------------------ body ----------------  */
 #contenu h1 {
   background-color: var(--primary);
   box-sizing: border-box;
-  padding: 10px 20px;
+  padding: 25px 20px;
+  font-weight: 800;
 }
 
 #contenu #articles h2,
@@ -266,7 +266,7 @@ a {
   background-color: #03b86c;
 }
 
-/* -------------------- slider --------------------  */
+/* -------------- slider --------------  */
 #contenu #agenda .container .slider .evenement {
   width: 85%;
   margin: 0 auto;
@@ -308,7 +308,7 @@ a {
   cursor: pointer;
 }
 
-/* ---------------------------- footer ----------------------------  */
+/* ----------- footer --------------  */
 #pied {
   width: 100%;
   background-color: var(--primary);
@@ -333,11 +333,6 @@ a {
   margin-top: 25px;
 }
 
-/* #pied #menu-pied{
-    text-align: center;
-    /* margin-bottom: 40px; 
-} */
-
 #pied #menu-pied li {
   padding: 5px 0;
 }
@@ -353,21 +348,17 @@ a {
 }
 
 #pied #reseaux {
-  /* border: 1px solid black; */
   display: flex;
   justify-content: space-around;
-  /* align-items: center; */
   width: 70%;
   margin: 30px auto 0;
 }
 
 #pied #reseaux a {
   text-align: center;
-  /* display: block; */
 }
 
 #pied #reseaux a img {
-  /* border: 1px solid black; */
   width: 50px;
   height: auto;
   transition: 0.3s;
@@ -433,7 +424,6 @@ a {
   #contenu #articles #article h3 {
     width: 75%;
     margin: 10px auto;
-    /* border: 1px solid red; */
     height: 2.2em;
     overflow: hidden;
     user-select: none;
@@ -446,7 +436,6 @@ a {
   }
 
   #contenu #articles #article .bouton-article {
-    /* border: 1px solid red; */
     display: block;
     margin-top: 20px;
   }
@@ -467,11 +456,18 @@ a {
 
 @media screen and (min-width: 1024px) {
   /* --------------- header -----------------  */
+  #bandeau #navigation-bandeau img {
+    width: 125px;
+    height: 125px;
+  }
 
   #bandeau #navigation-bandeau {
     display: flex;
     justify-content: space-between;
-    /* align-items: center; */
+  }
+
+  #menu li a {
+    font-size: 1.4em;
   }
 
   #bandeau #navigation-bandeau #menu {
@@ -482,7 +478,6 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* border: 1px solid blue; */
     width: 55%;
   }
 
@@ -496,7 +491,6 @@ a {
 
   #bandeau #navigation-bandeau #menu li a:hover {
     color: var(--hover);
-    /* text-decoration: underline; */
   }
 
   #bandeau #navigation-bandeau #menu li:last-child a {
@@ -540,10 +534,7 @@ a {
 
   #contenu #articles #article {
     width: 28%;
-    /* margin: 30px auto; */
     text-align: center;
-    /* max-height: 100vh; */
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -553,7 +544,6 @@ a {
   #contenu #articles #article h3 {
     width: 70%;
     margin: 10px auto;
-    /* border: 1px solid red; */
     height: 1em;
     overflow: hidden;
     user-select: none;
@@ -567,7 +557,6 @@ a {
   }
 
   #contenu #articles #article .bouton-article {
-    /* border: 1px solid red; */
     display: block;
     margin-top: 40px;
   }
