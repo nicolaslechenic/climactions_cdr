@@ -51,9 +51,9 @@ else :
         ?>
         <article>
             <div>
-                <h2><?= $article['outil']; ?></h2>
-                <p><?= $article['appartenance']; ?></p>
-                <p><?= $article['theme']; ?></p>
+                <h2><?= $article['title']; ?></h2>
+                <p><?= $article['content']; ?></p>
+                <!-- <p><?= $article['theme']; ?></p> -->
             </div>
             <a href="index.php?action=article&id=<?= $article['id']; ?>">Voir l'Article</a>
         </article>
