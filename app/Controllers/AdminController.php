@@ -80,14 +80,14 @@ $mail = new PHPMailer(true);
 		require $this->viewAdmin('connexionAdmin');
 	}
 
-	public function connexion($mail,$password){
+	public function connexion($email,$password){
 		$adminManager = new \Climactions\Models\AdminModel();
-		$connexAdm = $adminManager->collectPassword($mail,$password);
+		$connexAdm = $adminManager->collectPassword($email,$password);
 		$result = $connexAdm->fetch();
 		if(!empty($result)){
 			$isPasswordCorrect = password_verify($password,$result['password']);
 
-			$_SESSION['mail'] = $result['mail']; // transformation des variables recupérées en session
+			$_SESSION['email'] = $result['email']; // transformation des variables recupérées en session
 			$_SESSION['password'] = $result['password'];
 			$_SESSION['id'] = $result['id'];
 			$_SESSION['firstname'] = $result['firstname'];
