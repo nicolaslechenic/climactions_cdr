@@ -49,13 +49,12 @@
 
         <div class="button-group filters-button-group">
             <button class="button is-checked" data-filter="*">Toutes les catégories</button>
-            <!-- TO DO : faire une boucle sur les boutons pour afficher les catégories -->
-            <?php foreach ($articles as $article) {
-                    ?>
-            <button class="button" data-filter="<?= "." .  $article['description'] ?>"><?= $article['description'] ?></button>
-            <?php }; ?>
-            <!-- <button class="button" data-filter=".movie">Films</button>
-            <button class="button" data-filter=".book">Livres</button> -->
+            
+            <!-- TO DO : faire une boucle sur les boutons pour afficher les catégories --> 
+
+            <button class="button" data-filter=".game">Jeux</button>
+            <button class="button" data-filter=".movie">Films</button>
+            <button class="button" data-filter=".book">Livres</button>
         </div>
         <section class="grid">
             <?php foreach ($articles as $article) {
