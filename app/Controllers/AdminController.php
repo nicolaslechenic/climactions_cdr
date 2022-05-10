@@ -17,10 +17,10 @@ class AdminController extends Controller {
 		require $this->viewAdmin('adminInscription');
 	}
 	
-	public function createAdmin($lastname, $firstname, $mail, $city, $password) {
+	public function createAdmin($lastname, $firstname, $email, $password) {
 		
 		$adminManager = new \Climactions\Models\AdminModel();
-		$admin = $adminManager->creatAdmin($lastname, $firstname, $mail, $city, $password);
+		$admin = $adminManager->creatAdmin($lastname, $firstname, $email, $password);
 		
 		require $this->viewAdmin('adminInscription');
 	}

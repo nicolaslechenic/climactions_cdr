@@ -47,13 +47,12 @@ try {
 
             $lastname   = htmlspecialchars($_POST['lastname']);
             $firstname  = htmlspecialchars($_POST['firstname']);
-            $city       = htmlspecialchars($_POST['city']);
-            $mail       = htmlspecialchars($_POST['mail']);
-            $password   = $_POST['password'];
+            $mail       = htmlspecialchars($_POST['email']);
+            $pass   = htmlspecialchars($_POST['password']);
 
-            $password   = password_hash($password, PASSWORD_DEFAULT);
+            $password   = password_hash($pass, PASSWORD_DEFAULT);
 
-            $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
+            $backController->createAdmin($lastname, $firstname, $email, $password);
         }
 
 

@@ -5,12 +5,12 @@ namespace Climactions\Models;
 class AdminModel extends Manager
 {
 
-    public function creatAdmin($lastname, $firstname, $city, $mail,  $password)
+    public function creatAdmin($lastname, $firstname, $email,  $password)
     {
         $bdd = $this->connect();
 
         $req = $bdd->prepare('INSERT INTO adminnew (lastname, firstname, city, mail,  password) VALUE (?, ?, ?, ?, ?)');
-        $req->execute(array($lastname, $firstname, $city, $mail,  $password));
+        $req->execute(array($lastname, $firstname, $email,  $password));
 
         return $req;
     }

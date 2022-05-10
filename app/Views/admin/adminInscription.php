@@ -1,6 +1,6 @@
 <?php
 
-require 'app/Views/frontend/layouts/header.php';
+require 'app/Views/frontend/layouts/nav.php';
 ?>
 
 
@@ -21,8 +21,8 @@ require 'app/Views/frontend/layouts/header.php';
         </div>
 
         <div>
-            <label for="mail"> email:</label>
-            <input type="email" name="mail" id="mail" placeholder="Votre email" required>
+            <label for="email"> email:</label>
+            <input type="email" name="email" id="email" placeholder="Votre email" required>
         </div>
         <div>
             <label for="password"> Mot de passe</label>
