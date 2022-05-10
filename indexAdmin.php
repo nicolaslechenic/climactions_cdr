@@ -97,8 +97,11 @@ try {
           $idArticle = $_GET['id'];    
           $title = htmlspecialchars($_POST['title']);
           $content = htmlspecialchars($_POST['content']);
-          $backController->updateArticle($idArticle, $title, $content);
-          
+          $backController->updateArticle($idArticle, $title, $content);      
+          }
+        
+          elseif($_GET['action'] == 'dashboard'){
+            $backController->dashboard();
           }
  
   }else{
