@@ -26,56 +26,6 @@ class AdminController extends Controller {
 	}
 
 
-	public function sendMail()
-	{
-
-$mail = new PHPMailer(true);
-		try{
-			// configuration 
-			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-		  
-			// on configure le SMTP 
-			$mail->isSMTP();
-			$mail->Host = 'localhost';
-			$mail->Port = 1025; //port mailhog 
-		  
-			// charset 
-			$mail->CharSet = 'utf-8';
-		  
-			// destinataires 
-			$mail->addAddress("basket@site.fr");
-			$mail->addCC("copie@site.fr");
-			$mail->addBCC("copiecachee@site.fr");
-		  
-			// expéditeur 
-			$mail->setFrom('no-reply@site.fr');
-		  
-			// contenu 
-			$mail->isHTML();
-			$mail->Subject = "Sujet du message";
-			$mail->Body = "<p>New test: Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-			Cras ultricies ligula sed magna dictum porta. <p>Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis </p>quis ac lectus.
-			Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta. ";
-			
-			$mail->AltBody = "Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem.
-			Cras ultricies ligula sed magna dictum porta. Donec sollicitudin molestie malesuada. Cras ultricies ligula sed magna dictum porta. Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.
-			Curabitur aliquet quam id dui posuere blandit. Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Proin eget tortor risus. Cras ultricies ligula sed magna dictum porta.";
-			// on envoie 
-			$mail->send();
-			echo "Message envoyé";
-		  
-		} 
-		catch (Exception)
-		{
-			echo "Message non envoyé. Erreur: {$mail->ErrorInfo}";
-		}
-
-
-		require $this->viewAdmin('sendmail');
-
-	}
-
-
 	public function connexionAdmin() {
 		require $this->viewAdmin('connexionAdmin');
 	}
@@ -101,6 +51,64 @@ $mail = new PHPMailer(true);
         		echo 'Vos identifiants sont incorrects';
 			}
 		}
+	}
+
+
+	// go to page forgot_password 
+	public function forgot_password()
+	{
+		require $this->viewAdmin('forgot_password');
+	}
+
+	// change password 
+	public function changePassword()
+	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$adminController = new \Climactions\Controllers\AdminController();
+		if(isset($_POST['email']))
+		{
+			$mail = new PHPMailer(true);
+		try{
+			// configuration pour voir les bugs
+			// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+		  
+			// on configure le SMTP 
+			$mail->isSMTP();
+			$mail->Host = 'localhost';
+			$mail->Port = 1025; //port mailhog 
+		  
+			// charset 
+			$mail->CharSet = 'utf-8';
+		  
+			// destinataires 
+			$mail->addAddress($_POST['email']);
+			
+		  
+			// expéditeur 
+			$mail->setFrom('no-reply@site.fr');
+		  
+			// contenu 
+			$mail->isHTML();
+			$mail->Subject = "Nouveau mot de passe";
+			$password = uniqid();
+			$mail->Body = "Bonjour ".$_POST['email']. "Votre nouveau mot de passe: ".$password;
+			$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+			$changePassword = $adminManager->getNewPassword($hashedPassword);
+			
+	
+			// on envoie 
+			$mail->send();
+			echo "Message envoyé";
+			
+		  
+		} 
+		catch (Exception)
+		{
+			echo "Message non envoyé. Erreur: {$mail->ErrorInfo}";
+		}
+		}
+
+		header('Location: indexAdmin.php');
 	}
 
 	public function pageAddArticle()

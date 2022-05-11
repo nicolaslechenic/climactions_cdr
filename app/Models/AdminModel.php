@@ -25,6 +25,15 @@ class AdminModel extends Manager
         return $req;
     }
 
+    // change password 
+    public function getNewPassword($hashedPassword)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("UPDATE admin SET password = ? WHERE email = ?");
+        $req->execute([$hashedPassword, $_POST['email']]);
+        
+    }
+
 
     // ------------------------------------------------------------------------------------------------------------------
 

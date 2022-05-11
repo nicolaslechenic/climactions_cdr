@@ -1,8 +1,6 @@
 <?php
 
-
 session_start();
-
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -28,7 +26,6 @@ function eCatcher($e) {
     require 'app/Views/errors/error.php';
   }
 }
-
 
 try {
 
@@ -56,11 +53,6 @@ try {
         }
 
 
-        elseif($_GET['action'] == 'sendmail'){
-          $backController->sendMail();
-        }
-
-
         elseif($_GET['action'] == 'connexion') {
           $email = htmlspecialchars($_POST['email']);
           $password = htmlspecialchars($_POST['password']);
@@ -69,6 +61,15 @@ try {
           } else {
               throw new Exception('renseigner vos identifiants');
           }
+        }
+
+        // go to page forgot_password
+        elseif($_GET['action'] == 'forgot_password'){
+          $backController->forgot_password();
+        }
+
+        elseif($_GET['action'] == 'emailPost'){
+          $backController->changePassword();
         }
 
         elseif ($_GET['action'] == 'pageAddArticle') {
