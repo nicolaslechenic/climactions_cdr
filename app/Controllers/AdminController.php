@@ -26,6 +26,34 @@ class AdminController extends Controller {
 	}
 
 
+	public function accountAdmin()
+	{
+		require $this->viewAdmin('account');
+	}
+	public function homeAdmin()
+	{
+		require $this->viewAdmin('home');
+	}
+	public function emailAdmin()
+	{
+		require $this->viewAdmin('email');
+	}
+
+	public function resourceAdmin()
+	{
+		require $this->viewAdmin('resource');
+	}
+	public function opinionAdmin()
+	{
+		require $this->viewAdmin('opinions');
+	}
+	public function addressBookAdmin()
+	{
+		require $this->viewAdmin('addressBook');
+	}
+
+
+
 	public function connexionAdmin() {
 		require $this->viewAdmin('connexionAdmin');
 	}
@@ -45,7 +73,7 @@ class AdminController extends Controller {
 
 			if ($isPasswordCorrect) {
 
-				require $this->viewAdmin('dashboard');
+				require $this->viewAdmin('home');
 			}else{
 				
         		echo 'Vos identifiants sont incorrects';
@@ -147,4 +175,6 @@ class AdminController extends Controller {
 		
 		header('Location: indexAdmin.php?action=pageAddArticle');
 	}
+
+	
 }
