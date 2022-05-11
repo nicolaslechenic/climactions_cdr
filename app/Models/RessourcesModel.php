@@ -59,7 +59,11 @@ class RessourcesModel extends Manager
     public function countArticles()
     {
         $bdd = $this->connect();
+
+        $req = $bdd->prepare("SELECT COUNT(id) AS nb_articles FROM article");
+
         $req = $bdd->prepare("SELECT COUNT(id) AS nb_articles FROM ressources");
+
         $req->execute();
         $result = $req->fetch();
         $nbArticles = $result['nb_articles'];
@@ -73,7 +77,11 @@ class RessourcesModel extends Manager
     {
         $bdd = $this->connect();
         $req = $bdd->prepare("SELECT * 
+
+        FROM article
+
         FROM ressources
+
         ORDER BY id
         DESC LIMIT :premierarticle, :parpage");
         $req->bindValue(':premierarticle', $premierArticle, \PDO::PARAM_INT);
@@ -87,9 +95,16 @@ class RessourcesModel extends Manager
     public function searchArticle($query)
     {
         $bdd = $this->connect();
+
+        $req = $bdd->prepare("SELECT * FROM article 
+        WHERE title LIKE :query 
+        OR content LIKE :query
+        -- OR theme LIKE :query 
+
         $req = $bdd->prepare("SELECT * FROM ressources 
         WHERE name LIKE :query 
         OR content LIKE :query
+
         ORDER BY id 
         DESC LIMIT 6");
         $req->execute([':query' => '%'.$query.'%']);
