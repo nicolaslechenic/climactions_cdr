@@ -99,7 +99,7 @@ class RessourcesModel extends Manager
         $req = $bdd->prepare("SELECT * FROM article 
         WHERE title LIKE :query 
         OR content LIKE :query
-        -- OR theme LIKE :query 
+        OR theme LIKE :query ");
 
         $req = $bdd->prepare("SELECT * FROM ressources 
         WHERE name LIKE :query 
