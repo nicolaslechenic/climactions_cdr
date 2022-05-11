@@ -31,7 +31,7 @@ function eCatcher($e) {
 
 
 try {
-  
+
     $backController = new \Climactions\Controllers\AdminController();
     
     
@@ -47,13 +47,12 @@ try {
 
             $lastname   = htmlspecialchars($_POST['lastname']);
             $firstname  = htmlspecialchars($_POST['firstname']);
-            $city       = htmlspecialchars($_POST['city']);
-            $mail       = htmlspecialchars($_POST['mail']);
-            $password   = $_POST['password'];
+            $email       = htmlspecialchars($_POST['email']);
+            $pass   = htmlspecialchars($_POST['password']);
 
-            $password   = password_hash($password, PASSWORD_DEFAULT);
+            $password   = password_hash($pass, PASSWORD_DEFAULT);
 
-            $backController->createAdmin($lastname, $firstname, $city, $mail, $password);
+            $backController->createAdmin($lastname, $firstname, $email, $password);
         }
 
 
@@ -63,10 +62,10 @@ try {
 
 
         elseif($_GET['action'] == 'connexion') {
-          $mail = htmlspecialchars($_POST['email']);
+          $email = htmlspecialchars($_POST['email']);
           $password = htmlspecialchars($_POST['password']);
-          if (!empty($mail) && !empty($password)) {
-            $backController->connexion($mail, $password); // on passe deux paramètre
+          if (!empty($email) && !empty($password)) {
+            $backController->connexion($email, $password); // on passe deux paramètre
           } else {
               throw new Exception('renseigner vos identifiants');
           }
