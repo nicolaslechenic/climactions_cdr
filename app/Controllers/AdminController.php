@@ -24,10 +24,31 @@ class AdminController extends Controller {
 		
 		require $this->viewAdmin('adminInscription');
 	}
-	
-	public function dashboard()
+
+	public function accountAdmin()
 	{
-		require $this->viewAdmin('dashboard');
+		require $this->viewAdmin('account');
+	}
+	public function homeAdmin()
+	{
+		require $this->viewAdmin('home');
+	}
+	public function emailAdmin()
+	{
+		require $this->viewAdmin('email');
+	}
+
+	public function resourceAdmin()
+	{
+		require $this->viewAdmin('resource');
+	}
+	public function opinionAdmin()
+	{
+		require $this->viewAdmin('opinions');
+	}
+	public function addressBookAdmin()
+	{
+		require $this->viewAdmin('addressBook');
 	}
 
 // 	public function sendMail()
@@ -143,4 +164,6 @@ class AdminController extends Controller {
 		
 		header('Location: indexAdmin.php?action=pageAddArticle');
 	}
+
+	
 }

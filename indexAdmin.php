@@ -100,9 +100,25 @@ try {
           $backController->updateArticle($idArticle, $title, $content);      
           }
         
-          elseif($_GET['action'] == 'dashboard'){
-            $backController->dashboard();
+          elseif($_GET['action'] == 'homeAdmin'){
+            $backController->homeAdmin();
           }
+          elseif($_GET['action'] == 'emailAdmin'){
+            $backController->emailAdmin();
+          }
+          elseif($_GET['action'] == 'accountAdmin'){
+            $backController->accountAdmin();
+          }
+          elseif($_GET['action'] == 'resourceAdmin'){
+            $backController->resourceAdmin();
+          }
+          elseif($_GET['action'] == 'addressBookAdmin'){
+            $backController->addressBookAdmin();
+          }
+          elseif($_GET['action'] == 'opinionAdmin'){
+            $backController->opinionAdmin();
+          }
+          
  
   }else{
    $backController->connexionAdmin();
