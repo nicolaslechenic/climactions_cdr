@@ -5,12 +5,16 @@
 
             <div class="nav-logo">
                 <h1>Admin</h1>
+                <a href="#" class="account">
+                    <i class="fa-solid fa-user"></i>
+                    <span class="nav-links">Mon compte</span>
+                </a>
             </div>
 
             <div class="bloc-links ">
                 <a href="#" class="bloc-link active">
                     <i class="fa-solid fa-envelope"></i>
-                    <span class="nav-links">Contact</span>
+                    <span class="nav-links">Email</span>
                 </a>
                 <a href="#" class="bloc-link">
                     <i class="fa-solid fa-thumbs-up"></i>
