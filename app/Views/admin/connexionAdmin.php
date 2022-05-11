@@ -7,7 +7,7 @@
     <title>Connexion</title>
 </head>
 <body>
-   <form id="form_admin" action="indexAdmin.php?action=connexion" method="post">
+   <form id="form_admin" action="indexAdmin.php?action=homeAdmin" method="post">
 
         <div>
             <label for="email"> email:</label>

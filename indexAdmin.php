@@ -63,6 +63,9 @@ try {
           }
         }
 
+
+        
+        
         // go to page forgot_password
         elseif($_GET['action'] == 'forgot_password'){
           $backController->forgot_password();
@@ -72,21 +75,22 @@ try {
           $backController->changePassword();
         }
 
+        
         elseif ($_GET['action'] == 'pageAddArticle') {
-
+          
           $backController->pageAddArticle();
-          } 
-
+        } 
+        
         elseif ($_GET['action'] == 'viewUpdateArticle') {
           $idArticle = $_GET['id'];
           $backController->viewUpdateArticle($idArticle);
-          } 
-
+        } 
+        
         elseif ($_GET['action'] == 'deleteArticle') {
           
           $id = $_GET['id'];
           $backController->deleteArticle($id);
-          } 
+        } 
         
         elseif ($_GET['action'] == 'addArticle') {
           
@@ -94,33 +98,35 @@ try {
           $content = htmlspecialchars($_POST['content']);
           $backController->addArticle($title, $content);
           
-          } elseif ($_GET['action'] == 'updateArticle') {
+        } elseif ($_GET['action'] == 'updateArticle') {
           $idArticle = $_GET['id'];    
           $title = htmlspecialchars($_POST['title']);
           $content = htmlspecialchars($_POST['content']);
-          $backController->updateArticle($idArticle, $title, $content);      
-          }
-        
-          elseif($_GET['action'] == 'homeAdmin'){
-            $backController->homeAdmin();
-          }
-          elseif($_GET['action'] == 'emailAdmin'){
-            $backController->emailAdmin();
-          }
-          elseif($_GET['action'] == 'accountAdmin'){
-            $backController->accountAdmin();
-          }
-          elseif($_GET['action'] == 'resourceAdmin'){
-            $backController->resourceAdmin();
-          }
-          elseif($_GET['action'] == 'addressBookAdmin'){
-            $backController->addressBookAdmin();
-          }
-          elseif($_GET['action'] == 'opinionAdmin'){
-            $backController->opinionAdmin();
-          }
+          $backController->updateArticle($idArticle, $title, $content);
           
- 
+        }
+        
+        // go to page home admin 
+        elseif($_GET['action'] == 'homeAdmin'){
+          $backController->homeAdmin();
+        }
+
+        elseif($_GET['action'] == 'emailAdmin'){
+          $backController->emailAdmin();
+        }
+        elseif($_GET['action'] == 'accountAdmin'){
+          $backController->accountAdmin();
+        }
+        elseif($_GET['action'] == 'resourceAdmin'){
+          $backController->resourceAdmin();
+        }
+        elseif($_GET['action'] == 'addressBookAdmin'){
+          $backController->addressBookAdmin();
+        }
+        elseif($_GET['action'] == 'opinionAdmin'){
+          $backController->opinionAdmin();
+        }
+        
   }else{
    $backController->connexionAdmin();
 
