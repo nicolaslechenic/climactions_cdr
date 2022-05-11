@@ -97,9 +97,28 @@ try {
           $idArticle = $_GET['id'];    
           $title = htmlspecialchars($_POST['title']);
           $content = htmlspecialchars($_POST['content']);
-          $backController->updateArticle($idArticle, $title, $content);
-          
+          $backController->updateArticle($idArticle, $title, $content);      
           }
+        
+          elseif($_GET['action'] == 'homeAdmin'){
+            $backController->homeAdmin();
+          }
+          elseif($_GET['action'] == 'emailAdmin'){
+            $backController->emailAdmin();
+          }
+          elseif($_GET['action'] == 'accountAdmin'){
+            $backController->accountAdmin();
+          }
+          elseif($_GET['action'] == 'resourceAdmin'){
+            $backController->resourceAdmin();
+          }
+          elseif($_GET['action'] == 'addressBookAdmin'){
+            $backController->addressBookAdmin();
+          }
+          elseif($_GET['action'] == 'opinionAdmin'){
+            $backController->opinionAdmin();
+          }
+          
  
   }else{
    $backController->connexionAdmin();
