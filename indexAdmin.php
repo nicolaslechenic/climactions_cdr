@@ -75,7 +75,11 @@ try {
         elseif ($_GET['action'] == 'pageAddArticle') {
 
           $backController->pageAddArticle();
-          } 
+          }
+          
+        elseif ($_GET['action'] == 'addArticle') {
+          $backController->addArticle();
+        }
 
         elseif ($_GET['action'] == 'viewUpdateArticle') {
           $idArticle = $_GET['id'];

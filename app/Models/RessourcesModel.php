@@ -120,5 +120,124 @@ class RessourcesModel extends Manager
         $articles = $req->fetchAll();
         return $articles;
     }
+
+    public function selectType()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT type FROM type");
+        $req->execute(array());
+        $types = $req->fetchAll();
+        return $types;
+    }
+
+    public function selectTheme()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT name FROM theme");
+        $req->execute(array());
+        $themes = $req->fetchAll();
+        return $themes;
+    }
+    public function selectCondition()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT condition FROM condition");
+        $req->execute(array());
+        $conditions = $req->fetchAll();
+        return $conditions;
+    }
+    public function selectLocation()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT location FROM location");
+        $req->execute(array());
+        $locations = $req->fetchAll();
+        return $locations;
+    }
+    public function selectEditor()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT name FROM editor");
+        $req->execute(array());
+        $editors = $req->fetchAll();
+        return $editors;
+    }
+    public function selectAuthor()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT name FROM author");
+        $req->execute(array());
+        $authors = $req->fetchAll();
+        return $authors;
+    }
+
+    public function selectProductor()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT name FROM productor");
+        $req->execute(array());
+        $productors = $req->fetchAll();
+        return $productors;
+    }
+
+    public function selectRealisator()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT name FROM realisator");
+        $req->execute(array());
+        $realisators = $req->fetchAll();
+        return $realisators;
+    }
+
+    public function selectCreator()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT name FROM creator");
+        $req->execute(array());
+        $creators = $req->fetchAll();
+        return $creators;
+    }
+
+    public function selectPublic()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT name FROM public");
+        $req->execute(array());
+        $publics = $req->fetchAll();
+        return $publics;
+    }
+
+    public function insertGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format,$creator,$public)
+    {
+        $bdd = $this->connect();
+        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) VALUES (:name,:image,?,?,?,?,?,?,?,?,?,?)");
+        $req2= $bdd->prepare("INSERT INTO games (format,creator_id,public_id,ressources_id) VALUES (?,?,?,?)");
+        $data1 = [
+            ":name" => $name,
+            ":image" => $image,
+            ":content" => $content,
+            ":quantite" => $quantite,
+            ":ademe" => $ademe,
+            ":caution" => $caution,
+            ":catalogue" => $catalogue,
+            ":type_id" => $type,
+            ":condition_id" => $condition,
+            ":theme_id" => $theme,
+            ":location_id" => $location,
+            ":is_validated" => $is_validated
+        ];
+
+        $data2 = [
+            ":format" => $format,
+            ":creator_id" => $creator,
+            ":public_id" => $public,
+            ":ressources_id" => $req1->lastInsertId()
+        ];
+  
+        $req1->execute($data1);
+        $req2->execute($data2);
+    }
+
+
 }
 

@@ -116,12 +116,27 @@ $mail = new PHPMailer(true);
 		require $this->viewAdmin('updateArticle');
 	}
 
-	public function addArticle($title, $content)
-	{
-		$adminManager = new \Climactions\Models\AdminModel();
-		$admin = $adminManager->addArticle($title, $content);
-		require $this->viewAdmin('pageAddArticle');
+	// public function addArticle($title, $content)
+	// {
+	// 	$adminManager = new \Climactions\Models\AdminModel();
+	// 	$admin = $adminManager->addArticle($title, $content);
+	// 	require $this->viewAdmin('pageAddArticle');
 
+	// }
+
+	public function addArticle() {
+		$article = new \Climactions\Models\RessourcesModel();
+		$type = $article->selectType();
+		$condition = $article->selectCondition();
+		$theme = $article->selectTheme();
+		$location = $article->selectLocation();
+		$public = $article->selectPublic();
+		$editor = $article->selectEditor();
+		$auhtor = $article->selectAuthor();
+		$productor = $article->selectProductor();
+		$realisator = $article->selectRealisator();
+		$creator = $article->selectCreator();
+		require $this->viewAdmin('addArticle');
 	}
 
 	public function deleteArticle($id) {
