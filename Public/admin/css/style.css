@@ -42,11 +42,10 @@ a {
   grid-template-columns: 250px 1fr;
 }
 
-h1{
-  text-align: center;
+h1 {
+  padding: 50px;
   font-weight: 200;
 }
-
 
 /* le menu */
 
@@ -54,11 +53,13 @@ h1{
   position: fixed;
   width: 250px;
   height: 100%;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+    rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+    rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   background-color: var(--bg-primary);
 }
 
-.nav-logo { 
+.nav-logo {
   margin-bottom: 40px;
   cursor: pointer;
   padding: 30px;
@@ -69,13 +70,13 @@ h1{
   font-size: 45px;
   font-weight: 500;
 }
-.nav-logo .account{
+.nav-logo .account {
   width: 100%;
   font-size: 18px;
   margin-left: 10px;
   color: var(--black);
 }
-.nav-logo .account:hover{
+.nav-logo .account:hover {
   text-decoration: underline;
 }
 
@@ -110,15 +111,15 @@ h1{
   display: flex;
   align-items: center;
   max-width: 450px;
-  background-color: #f4f4f4;
+  background-color: var(--bg-primary);
   border-radius: 6px;
   padding: 15px;
 }
 
 .input-control i {
   width: 20px;
+  margin-right: 20px;
   position: relative;
-  
 }
 
 .input-control input {
@@ -127,13 +128,13 @@ h1{
   padding-left: 10px;
   outline: 0;
   border: 0;
-  box-shadow: 1px 1px 1px #ccc;
+  box-shadow: 1px 1px 1px var(--primary);
   color: #000;
   background-color: white;
 }
 
 .input-control input::placeholder {
-  color: #838f9f;
+  color: #0f0f0f;
   font-size: 16px;
 }
 
@@ -164,7 +165,7 @@ h1{
 }
 
 .table-item:nth-child(odd) {
-  background: #ccc;
+  background: var(--bg-primary);
 }
 
 .table p {
@@ -179,26 +180,34 @@ button {
   font-size: 16px;
   width: 140px;
   height: auto;
-  background-color: #35b970;
+  background-color: var(--primary);
   border: none;
   margin: 2px;
   cursor: pointer;
   color: white;
   padding: 5px;
 }
-span.btn {
-  display: block;
-  background-color: #35b970;
+span.btn,
+form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  background-color: var(--primary);
   width: 140px;
+  height: 30px;
   text-align: center;
   font-size: 16px;
-  height: auto;
-  padding: 5px;
-  margin: 0 2px 0;
+  margin: 10px auto;
 }
-.main-content{
-    background-color: var(--bg-articles);
-    height: 100vh;
+span.btn:hover,
+form button:hover{
+  transform: scale(1.05);
+}
+
+.main-content {
+  background-color: var(--bg-articles);
+  height: 100vh;
 }
 
 /* la barre de recherche */
@@ -207,7 +216,6 @@ span.btn {
   display: list-item;
   list-style-type: none;
 }
-
 
 /* @media screen and (max-width: 1000px) {
   .global-container {
@@ -220,12 +228,14 @@ span.btn {
     position: relative;
     width: 100%;
     border-right: 2px solid #e3e8f0;
-  
   }
   .global-container {
     grid-template-columns: 1fr;
   }
-  
+  h1{ 
+    text-align: center;
+  }
+
   .main-content {
     grid-column: 1;
     width: 100%;
@@ -254,7 +264,7 @@ span.btn {
     align-items: left;
     flex-wrap: wrap;
   }
-  .nav-logo .account{
+  .nav-logo .account {
     text-align: center;
   }
 }
