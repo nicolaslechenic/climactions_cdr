@@ -126,6 +126,15 @@ try {
         elseif($_GET['action'] == 'opinionAdmin'){
           $backController->opinionAdmin();
         }
+        elseif($_GET['action'] == 'createResource'){
+          $backController->createResource();
+        }
+        // elseif($_GET['action'] == 'updateResource'){
+        //   $backController->updateResource();
+        // }
+        // elseif($_GET['action'] == 'deleteResource'){
+        //   $backController->deleteResource();
+        // }
         
   }else{
    $backController->connexionAdmin();

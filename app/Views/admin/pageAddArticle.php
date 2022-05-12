@@ -22,7 +22,6 @@ require 'app/Views/frontend/layouts/header.php';
         <button type="submit">Créer un article</button>
     </form>
 </section>
-
 <section>
 
 <h2>Mes articles</h2>

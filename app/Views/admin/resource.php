@@ -13,7 +13,7 @@
 
 <h2 class="main-title">Création et mise à jour d'un article</h2>
 
-<span class="btn"><a href="#">Créer un article</a></span>
+<span class="btn"><a href="indexAdmin.php?action=createResource">Créer un article</a></span>
 
 <div class="table">
     <h3 class="table-title">Titre</h3>
@@ -25,17 +25,14 @@
 <!-- TO DO : Faire une boucle pour afficher les ressources -->
 
 <div class="table-results">
-    
+
     <ul class="table-item">
         <li>titre de mon article</li>
         <li class="article-title">contenu de mon article</li>
         <li class="article-created-at">date de création</li>
         <li>
             <span class="btn"><a href="#">Modifier</a></span>
-            
-            <form action="#" method="post">
-                <button type="submit">Supprimer</button>
-            </form>       
+            <span class="btn"><a href="#">Supprimer</a></span>
         </li>
     </ul>
 
@@ -45,10 +42,7 @@
         <li class="article-created-at">date de création</li>
         <li>
             <span class="btn"><a href="#">Modifier</a></span>
-            
-            <form action="#" method="post">
-                <button type="submit">Supprimer</button>
-            </form>       
+            <span class="btn"><a href="#">Supprimer</a></span>
         </li>
     </ul>
 

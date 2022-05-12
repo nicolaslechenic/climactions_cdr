@@ -51,6 +51,18 @@ class AdminController extends Controller {
 	{
 		require $this->viewAdmin('addressBook');
 	}
+	public function createResource()
+	{
+		require $this->viewAdmin('formResource');
+	}
+	public function updateResource()
+	{
+		require $this->viewAdmin('update');
+	}
+	public function deleteResource()
+	{
+		require $this->viewAdmin('delete');
+	}
 
 
 
