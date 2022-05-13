@@ -2,7 +2,7 @@
 
 <section>
 
-    <h1>Création d'un nouvel article</h1>
+    <h1>Création d'un article</h1>
 
     <form id="form-create-article" action="indexAdmin.php?action=create" method="post">
 
