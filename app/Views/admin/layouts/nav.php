@@ -4,6 +4,7 @@
         <nav id="side-nav">
 
             <div class="nav-logo">
+                <img src="" alt="">
                 <h1>Admin</h1>
                 <a href="indexAdmin.php?action=accountAdmin" class="account">
                     <i class="fa-solid fa-user"></i>
