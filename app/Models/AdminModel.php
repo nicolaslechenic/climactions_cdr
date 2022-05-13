@@ -37,7 +37,7 @@ class AdminModel extends Manager
 
     // ------------------------------------------------------------------------------------------------------------------
 
-    // afficher un article
+    // afficher les articles
 
     public function getArticles()
     {
@@ -46,6 +46,8 @@ class AdminModel extends Manager
         $article = $req->fetchAll();
         return $article;
     }
+    // afficher un article
+    
     public function getArticle($idArticle)
     {
         $bdd = $this->connect();
