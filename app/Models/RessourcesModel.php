@@ -329,5 +329,49 @@ class RessourcesModel extends Manager
         $req2->execute($data2);
     }
 
+    public function selectBook(){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT ressources.`name`,ressources.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
+        `condition`.`condition`,location.location,editor.`name`,author.`name`,public.`name` FROM ressources,theme,location,`condition`,livre,editor,author,public WHERE 
+        ressources.id = livre.ressource_id AND ressources.condition_id = `condition`.id AND ressources.location_id = location.id AND ressources.theme_id = theme.id AND livre.editor_id = editor.id AND 
+        livre.author_id = author.id AND livre.public_id = public.id");
+        $req->execute(array());
+        $livre = $req->fetchAll();
+        return $livre;
+    }
+
+    public function selectMovie(){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
+        `condition`.`condition`,location.location,director.`name`,producer.`name`,public.`name` FROM ressources,theme,location,`condition`,film,producer,director,public WHERE 
+        ressources.id = film.ressources_id AND condition_id = `condition`.id AND ressources.location_id = location.id AND ressources.theme_id = theme.id AND film.producer_id = producer.id AND 
+        film.director_id = director.id AND film.public_id = public.id; ");
+        $req->execute(array());
+        $movie = $req->fetchAll();
+        return $movie;
+    }
+
+    public function selectGames(){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
+        `condition`.`condition`,location.location,creator.`name`,public.`name` FROM ressources,theme,location,`condition`,games,public,creator WHERE 
+        ressources.id = games.ressources_id AND ressources.condition_id = `condition`.id AND ressources.location_id = location.id AND ressources.theme_id = theme.id AND games.creator_id = creator.id AND games.public_id = public.id; ");
+        $req->execute(array());
+        $game = $req->fetchAll();
+        return $game;
+    }
+
+    public function selectFlyer(){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
+        `condition`.`condition`,location.location,flyers.`format` FROM ressources,theme,location,`condition`,flyers WHERE 
+        ressources.id = flyers.ressources_id AND condition_id = `condition`.id AND ressources.location_id = location.id AND ressources.theme_id = theme.id;");
+        $req->execute(array());
+        $movie = $req->fetchAll();
+        return $movie;
+    }
+
+    
+
 }
 
