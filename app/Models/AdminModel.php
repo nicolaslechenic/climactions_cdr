@@ -25,13 +25,33 @@ class AdminModel extends Manager
         return $req;
     }
 
-    // change password 
+    // change password sent by email
     public function getNewPassword($hashedPassword)
     {
         $bdd = $this->connect();
         $req = $bdd->prepare("UPDATE admin SET password = ? WHERE email = ?");
         $req->execute([$hashedPassword, $_POST['email']]);
         
+    }
+
+    // retrieve password 
+    public function newPasswordAdmin($id)
+    {
+        $bdd =  $this->connect();
+        $req = $bdd->prepare("SELECT id, password FROM admin WHERE id =?");
+        $req->execute(array($id));
+
+        return $req;
+    }
+
+    // create new personalized password 
+    public function createNewPassword($id, $newPass)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("UPDATE admin SET password = ? WHERE id = ?");
+        $req->execute(array($newPass, $id));
+
+        return $req;
     }
 
 

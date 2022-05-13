@@ -71,9 +71,28 @@ try {
           $backController->forgot_password();
         }
 
+        // send mail to receive new password 
         elseif($_GET['action'] == 'emailPost'){
           $backController->changePassword();
         }
+
+        // go to page create new password 
+        elseif($_GET['action'] == 'pageNewPassword'){
+          $backController->pageNewPassword();
+        }
+
+        // confirm new password 
+        elseif($_GET['action'] == 'newPasswordPost'){
+          if(isset($_SESSION['id']) && isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['passwordConfirm'])){
+
+            $id = $_GET['id'];
+            $oldPassword = htmlspecialchars($_POST['oldPassword']);
+            $newPassword = htmlspecialchars($_POST['newPassword']);
+            $passwordConfirm = htmlspecialchars($_POST['passwordConfirm']);
+            
+            $erreur = $backController->createNewPassword($id, $oldPassword, $newPassword);
+
+        }}
 
         
         elseif ($_GET['action'] == 'pageAddArticle') {
@@ -117,6 +136,7 @@ try {
         elseif($_GET['action'] == 'accountAdmin'){
           $backController->accountAdmin();
         }
+
         elseif($_GET['action'] == 'resourceAdmin'){
           $backController->resourceAdmin();
         }
@@ -126,7 +146,7 @@ try {
         elseif($_GET['action'] == 'opinionAdmin'){
           $backController->opinionAdmin();
         }
-        
+
   }else{
    $backController->connexionAdmin();
 
