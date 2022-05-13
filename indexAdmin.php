@@ -107,10 +107,10 @@ try {
         }
         
         // go to page home admin 
+        // les pages de l'administration
         elseif($_GET['action'] == 'homeAdmin'){
           $backController->homeAdmin();
         }
-
         elseif($_GET['action'] == 'emailAdmin'){
           $backController->emailAdmin();
         }
@@ -126,15 +126,24 @@ try {
         elseif($_GET['action'] == 'opinionAdmin'){
           $backController->opinionAdmin();
         }
+        // les méthodes de la page Resource.php (CRUD)
         elseif($_GET['action'] == 'createResource'){
           $backController->createResource();
         }
-        // elseif($_GET['action'] == 'updateResource'){
-        //   $backController->updateResource();
-        // }
-        // elseif($_GET['action'] == 'deleteResource'){
-        //   $backController->deleteResource();
-        // }
+        elseif($_GET['action'] == 'updateResource'){
+          $backController->updateResource();
+        }
+        elseif($_GET['action'] == 'deleteResource'){
+          $backController->deleteResource();
+        }
+        // les méthodes de la page email.php
+        elseif($_GET['action'] == 'readEmail'){
+          $backController->readEmail();
+        }
+        elseif($_GET['action'] == 'deleteEmail'){
+          $backController->deleteEmail();
+        }
+       
         
   }else{
    $backController->connexionAdmin();

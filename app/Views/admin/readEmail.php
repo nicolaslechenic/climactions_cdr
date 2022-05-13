@@ -15,25 +15,14 @@
 
     <ul class="table-item">
         <li>Ali Gator</li>
-        <!-- TO DO : faire une méthode getExcerpt pour le contenu -->
+        <!-- TO DO : faire une méthode getExcerpt -->
         <li>contenu de l'email</li>
         <li>date de création</li>
         <li>
-            <span class="btn"><a href="indexAdmin.php?action=readEmail">Lire</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=emailAdmin">Revenir</a></span>
             <span class="btn"><a href="#">Supprimer</a></span>
         </li>
     </ul>
-
-    <ul class="table-item">
-        <li>Élise Émoi</li>
-        <li>contenu de l'email</li>
-        <li>date de création</li>
-        <li>
-            <span class="btn"><a href="#">Lire</a></span>
-            <span class="btn"><a href="#">Supprimer</a></span>
-        </li>
-    </ul>
-
 </div>
 
 <?php $content = ob_get_clean(); ?>
