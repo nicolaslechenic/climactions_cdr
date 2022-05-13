@@ -9,11 +9,11 @@
         <!-- le type -->
         <div class="item-form">
             <label for="type">Type</label>
-            <select name="type" id="type">
+            <select class="select-block" name="type" id="type">
                 <option value="game">Jeu</option>
                 <option value="movie">Film</option>
                 <option value="book">Livre</option>
-                <option value="book">Flyer</option>
+                <option value="flyer">Flyer</option>
             </select>
         </div>
 
@@ -127,8 +127,8 @@
 
         <!-- format flyer -->
         <div class="item-form">
-            <label for="catalogue">Format flyer</label>
-            <input class="increase" type="checkbox" name="catalogue" id="catalogue" required>
+            <label for="format-flyer">Format flyer</label>
+            <input class="increase" type="checkbox" name="format-flyer" id="format-flyer" required>
         </div>
 
         <!-- public -->
@@ -140,7 +140,7 @@
                 <option value="">3</option>
             </select>
         </div>
-        
+
         <button class="btn" type="submit">Créer l'article</button>
     </form>
 </section>
