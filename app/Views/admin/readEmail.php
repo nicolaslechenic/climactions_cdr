@@ -13,6 +13,7 @@
 
 <div class="table-results">
 
+
     <ul class="table-item">
         <li>Ali Gator</li>
         <!-- TO DO : faire une méthode getExcerpt -->
