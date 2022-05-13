@@ -2,7 +2,8 @@
 
 namespace Climactions\Controllers;
 
-	use PHPMailer\PHPMailer\PHPMailer;
+use GuzzleHttp\Psr7\Header;
+use PHPMailer\PHPMailer\PHPMailer;
 	use PHPMailer\PHPMailer\SMTP;
 
 require_once "vendor/phpmailer/phpmailer/src/Exception.php";
@@ -137,6 +138,30 @@ $mail = new PHPMailer(true);
 		$realisator = $article->selectRealisator();
 		$creator = $article->selectCreator();
 		require $this->viewAdmin('addArticle');
+	}
+
+	public function addGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format,$creator,$public){
+		$ressources = new \Climactions\Models\RessourcesModel();
+		$game = $ressources->insertGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format,$creator,$public);
+		header('Location: app/Views/admin/resource.php');
+	}
+
+	public function addBook($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$editor,$author,$public){
+		$ressources = new \Climactions\Models\RessourcesModel();
+		$book = $ressources->insertGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$editor,$author,$public);
+		header('Location: app/Views/admin/resource.php');
+	}
+
+	public function addMovie($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$productor,$realisator,$public){
+		$ressources = new \Climactions\Models\RessourcesModel();
+		$movie = $ressources->insertGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$productor,$realisator,$public);
+		header('Location: app/Views/admin/resource.php');
+	}
+
+	public function addFlyers($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format){
+		$ressources = new \Climactions\Models\RessourcesModel();
+		$flyers = $ressources->insertFlyers($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format);
+		header('Location: app/Views/admin/resource.php');
 	}
 
 	public function deleteArticle($id) {
