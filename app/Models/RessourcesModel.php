@@ -237,6 +237,7 @@ class RessourcesModel extends Manager
         $req1->execute($data1);
         $req2->execute($data2);
     }
+
     public function insertBook($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$editor,$author,$public)
     {
         $bdd = $this->connect();
