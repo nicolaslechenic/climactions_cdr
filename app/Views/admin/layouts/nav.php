@@ -5,12 +5,9 @@
 
             <div class="nav-logo">
 
-                <h1>Admin</h1>
-                <a href="indexAdmin.php?action=accountAdmin&id=<?= $_SESSION['id'] ?>" class="account">
-
                 <img src="" alt="">
                 <p class="admin">Admin</p>
-                <a href="indexAdmin.php?action=accountAdmin" class="account">
+                <a href="indexAdmin.php?action=accountAdmin&id=<?= $_SESSION['id'] ?>" class="account">
 
                     <i class="fa-solid fa-user"></i>
                     <span class="nav-links">Mon compte</span>
@@ -38,7 +35,7 @@
                     <i class="fa-solid fa-address-book"></i>
                     <span class="nav-links">Carnet d'adresses</span>
                 </a>
-                <a href="#" class="bloc-link">
+                <a href="indexAdmin.php?action=deconnexion" class="bloc-link">
                     <i class="fa-solid fa-power-off"></i>
                     <span class="nav-links">Se déconnecter</span>
                 </a>  

@@ -108,6 +108,14 @@ class AdminController extends Controller {
 		}
 	}
 
+	// logout admin 
+	public function deconnexion()
+	{
+		unset($_SESSION['id']);
+        session_destroy();
+        header('Location: indexAdmin.php');
+	}
+
 
 	// go to page forgot_password 
 	public function forgot_password()

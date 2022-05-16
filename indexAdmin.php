@@ -64,7 +64,10 @@ try {
           }
         }
 
-
+        // logout admin 
+          elseif($_GET['action'] == 'deconnexion'){
+          $backController->deconnexion();
+      }
         
         
         // go to page forgot_password
