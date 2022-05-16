@@ -95,7 +95,7 @@ class AdminController extends Controller {
 			$_SESSION['id'] = $result['id'];
 			$_SESSION['firstname'] = $result['firstname'];
 			$_SESSION['lastname'] = $result['lastname'];
-
+			
 			if ($isPasswordCorrect) {
 
 				require $this->viewAdmin('home');
@@ -103,6 +103,8 @@ class AdminController extends Controller {
 				
         		echo 'Vos identifiants sont incorrects';
 			}
+		} else{
+			echo "il ya une erreur";
 		}
 	}
 
@@ -162,6 +164,54 @@ class AdminController extends Controller {
 		}
 
 		header('Location: indexAdmin.php');
+	}
+
+	// page create new password 
+	public function pageNewPassword()
+	{
+		require $this->viewAdmin('pageNewPassword');
+	}
+
+	// confirm new passsword 
+	public function createNewPassword($id, $oldPassword, $newPassword)
+	{
+
+		extract($_POST);
+		$validation = true;
+		$erreur = [];
+
+		if(empty($oldPassword) || empty($newPassword) || empty($passwordConfirm)){
+			$validation = false;
+			$erreur[] = "Tous les champs sont requis!";
+		}
+
+		if ($newPassword){
+			$adminManager = new \Climactions\Models\AdminModel();
+			$getPassword = $adminManager->newPasswordAdmin($id);
+
+			$verifPassword = $getPassword->fetch();
+			$isPasswordCorrect = password_verify($oldPassword, $verifPassword['password']);
+
+			if(!$isPasswordCorrect){
+				$validation = false;
+				$erreur[] = "le mot de passe actuel est erroné";
+			}
+
+			if ($newPassword != $passwordConfirm){
+				$validation = false;
+				$erreur[] = 'Vos mots de passe ne sont pas identiques';
+			}
+			
+			if($isPasswordCorrect && $newPassword === $passwordConfirm){
+				$newPass = password_hash($newPassword, PASSWORD_DEFAULT);
+				$changePassword = $adminManager->createNewPassword($id, $newPass);
+
+				require $this->viewAdmin('account');
+			} else{
+				require $this->viewAdmin('pageNewPassword');
+				return $erreur;
+			}
+		}
 	}
 
 	public function pageAddArticle()

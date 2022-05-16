@@ -40,6 +40,7 @@ try {
     
         }
 
+        // create an admin 
         elseif($_GET['action'] == 'creatAdmin') {
 
             $lastname   = htmlspecialchars($_POST['lastname']);
@@ -53,10 +54,10 @@ try {
         }
 
 
-        elseif($_GET['action'] == 'connexion') {
+        elseif($_GET['action'] == 'homeAdmin') {
           $email = htmlspecialchars($_POST['email']);
           $password = htmlspecialchars($_POST['password']);
-          if (!empty($email) && !empty($password)) {
+          if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)) {
             $backController->connexion($email, $password); // on passe deux paramètre
           } else {
               throw new Exception('renseigner vos identifiants');
@@ -71,9 +72,28 @@ try {
           $backController->forgot_password();
         }
 
+        // send mail to receive new password 
         elseif($_GET['action'] == 'emailPost'){
           $backController->changePassword();
         }
+
+        // go to page create new password 
+        elseif($_GET['action'] == 'pageNewPassword'){
+          $backController->pageNewPassword();
+        }
+
+        // confirm new password 
+        elseif($_GET['action'] == 'newPasswordPost'){
+          if(isset($_SESSION['id']) && isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['passwordConfirm'])){
+
+            $id = $_GET['id'];
+            $oldPassword = htmlspecialchars($_POST['oldPassword']);
+            $newPassword = htmlspecialchars($_POST['newPassword']);
+            $passwordConfirm = htmlspecialchars($_POST['passwordConfirm']);
+            
+            $erreur = $backController->createNewPassword($id, $oldPassword, $newPassword);
+
+        }}
 
         
         elseif ($_GET['action'] == 'pageAddArticle') {
@@ -117,6 +137,7 @@ try {
         elseif($_GET['action'] == 'accountAdmin'){
           $backController->accountAdmin();
         }
+
         elseif($_GET['action'] == 'resourceAdmin'){
           $backController->resourceAdmin();
         }
@@ -126,6 +147,7 @@ try {
         elseif($_GET['action'] == 'opinionAdmin'){
           $backController->opinionAdmin();
         }
+
         // les méthodes de la page Resource.php (CRUD)
         elseif($_GET['action'] == 'createResource'){
           $backController->createResource();
@@ -145,6 +167,7 @@ try {
         }
        
         
+
   }else{
    $backController->connexionAdmin();
 

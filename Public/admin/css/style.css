@@ -290,6 +290,50 @@ span.btn {
 }
 
 
+
+/* page account admin  */
+#pageAccount a{
+  color: black;
+}
+
+
+
+/* page new password  */
+#section-NewPassword form{
+  width: 500px;
+	border: 2px solid #ccc;
+	padding: 30px;
+	background: #fff;
+	border-radius: 15px;
+}
+#section-NewPassword input{
+  display: block;
+	border: 2px solid #ccc;
+	width: 95%;
+	padding: 10px;
+	margin: 10px auto;
+	border-radius: 5px;
+}
+#section-NewPassword label{
+  color: #888;
+	font-size: 18px;
+	padding: 10px;
+}
+#section-NewPassword a{
+  color: black;
+}
+.msg-error{
+    background-color: #E01A1A;
+    color: white;
+    border-radius: 5px;
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+}
+
+
+
+
+
 /* @media screen and (max-width: 1000px) {
   .global-container {
     grid-template-columns: 1fr;
