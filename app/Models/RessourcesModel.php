@@ -207,39 +207,6 @@ class RessourcesModel extends Manager
         return $publics;
     }
 
-    public function insertGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format,$creator,$public)
-    {
-        $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
-        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2 = $bdd->prepare("INSERT INTO games (format,creator_id,public_id,ressources_id) 
-        VALUES (:format,:creator_id,:public_id,:ressources_id)");
-        $data1 = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":type_id" => $type,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated
-        ];
-
-        $data2 = [
-            ":format" => $format,
-            ":creator_id" => $creator,
-            ":public_id" => $public,
-            ":ressources_id" => $req1->lastInsertId()
-        ];
-  
-        $req1->execute($data1);
-        $req2->execute($data2);
-    }
-
     public function insertBook($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$editor,$author,$public)
     {
         $bdd = $this->connect();
@@ -273,73 +240,9 @@ class RessourcesModel extends Manager
         $req2->execute($data2);
     }
 
-    public function insertMovie($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$productor,$realisator,$public)
-    {
-        $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
-        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2 = $bdd->prepare("INSERT INTO film (productor_id,realisator_id,public_id,ressources_id) 
-        VALUES (:productor_id,:realisator_id,_public_id,:ressources_id)");
-        $data1 = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":type_id" => $type,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated
-        ];
-
-        $data2 = [
-            ":productor_id" => $productor,
-            ":realisator_id" => $realisator,
-            ":public_id" => $public,
-            ":ressources_id" => $req1->lastInsertId()
-        ];
-  
-        $req1->execute($data1);
-        $req2->execute($data2);
-    }
-
-    public function insertFlyers($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format)
-    {
-        $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
-        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2 = $bdd->prepare("INSERT INTO flyers (format,ressources_id) 
-        VALUES (:format,:ressources_id)");
-        $data1 = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":type_id" => $type,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated
-        ];
-
-        $data2 = [
-            ":format" => $format,
-            ":ressources_id" => $req1->lastInsertId()
-        ];
-  
-        $req1->execute($data1);
-        $req2->execute($data2);
-    }
-
     public function selectBook(){
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,ressources.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
+        $req = $bdd->prepare("SELECT ressources.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
         `condition`.`condition`,location.location,editor.`name`,author.`name`,public.`name` 
         FROM ressources,theme,location,`condition`,livre,editor,author,public 
         WHERE ressources.id = livre.ressource_id 
@@ -356,7 +259,7 @@ class RessourcesModel extends Manager
 
     public function selectOneBook($idRessources){
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,ressources.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
+        $req = $bdd->prepare("SELECT ressources.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
         `condition`.`condition`,location.location,editor.`name`,author.`name`,public.`name` 
         FROM ressources,theme,location,`condition`,livre,editor,author,public 
         WHERE ressources.id = ?
@@ -370,6 +273,69 @@ class RessourcesModel extends Manager
         $req->execute(array($idRessources));
         $livre = $req->fetch();
         return $livre;
+    }
+
+    public function updateBook($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$editor,$author,$public){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("UPDATE ressources,livre
+        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,author_id = :author_id, editor_id = :editor_id ,public_id = :public_id 
+        WHERE ressources.id = :ressources_id
+        AND ressources.id = livre.ressource_id");
+
+        $data = [
+            ":name" => $name,
+            ":image" => $image,
+            ":content" => $content,
+            ":quantite" => $quantite,
+            ":ademe" => $ademe,
+            ":caution" => $caution,
+            ":catalogue" => $catalogue,
+            ":condition_id" => $condition,
+            ":theme_id" => $theme,
+            ":location_id" => $location,
+            ":is_validated" => $is_validated,
+            ":editor" => $editor,
+            ":author" => $author,
+            ":public_id" => $public,
+            ":ressources_id" => $idRessources
+        ];
+
+        $req->execute($data);
+    }
+
+    
+
+    public function insertMovie($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$producer,$director,$public)
+    {
+        $bdd = $this->connect();
+        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
+        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
+        $req2 = $bdd->prepare("INSERT INTO film (producer_id,director_id,public_id,ressources_id) 
+        VALUES (:producer_id,:producer_id,_public_id,:ressources_id)");
+        $data1 = [
+            ":name" => $name,
+            ":image" => $image,
+            ":content" => $content,
+            ":quantite" => $quantite,
+            ":ademe" => $ademe,
+            ":caution" => $caution,
+            ":catalogue" => $catalogue,
+            ":type_id" => $type,
+            ":condition_id" => $condition,
+            ":theme_id" => $theme,
+            ":location_id" => $location,
+            ":is_validated" => $is_validated
+        ];
+
+        $data2 = [
+            ":producer_id" => $producer,
+            ":director_id" => $director,
+            ":public_id" => $public,
+            ":ressources_id" => $req1->lastInsertId()
+        ];
+  
+        $req1->execute($data1);
+        $req2->execute($data2);
     }
 
     public function selectMovie(){
@@ -407,6 +373,67 @@ class RessourcesModel extends Manager
         return $movie;
     }
 
+    public function updateMovie($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$producer_id,$director_id,$public){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("UPDATE ressources,film
+        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,producer_id = :producer_id, director_id = :director_id ,public_id = :public_id 
+        WHERE ressources.id = :ressources_id
+        AND ressources.id = film.ressource_id");
+
+        $data = [
+            ":name" => $name,
+            ":image" => $image,
+            ":content" => $content,
+            ":quantite" => $quantite,
+            ":ademe" => $ademe,
+            ":caution" => $caution,
+            ":catalogue" => $catalogue,
+            ":condition_id" => $condition,
+            ":theme_id" => $theme,
+            ":location_id" => $location,
+            ":is_validated" => $is_validated,
+            ":producer_id" => $producer_id,
+            ":director_id" => $director_id,
+            ":public_id" => $public,
+            ":ressources_id" => $idRessources
+        ];
+
+        $req->execute($data);
+    }
+
+    public function insertGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format,$creator,$public)
+    {
+        $bdd = $this->connect();
+        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
+        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
+        $req2 = $bdd->prepare("INSERT INTO games (format,creator_id,public_id,ressources_id) 
+        VALUES (:format,:creator_id,:public_id,:ressources_id)");
+        $data1 = [
+            ":name" => $name,
+            ":image" => $image,
+            ":content" => $content,
+            ":quantite" => $quantite,
+            ":ademe" => $ademe,
+            ":caution" => $caution,
+            ":catalogue" => $catalogue,
+            ":type_id" => $type,
+            ":condition_id" => $condition,
+            ":theme_id" => $theme,
+            ":location_id" => $location,
+            ":is_validated" => $is_validated
+        ];
+
+        $data2 = [
+            ":format" => $format,
+            ":creator_id" => $creator,
+            ":public_id" => $public,
+            ":ressources_id" => $req1->lastInsertId()
+        ];
+  
+        $req1->execute($data1);
+        $req2->execute($data2);
+    }
+
     public function selectGames(){
         $bdd = $this->connect();
         $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
@@ -440,6 +467,64 @@ class RessourcesModel extends Manager
         return $game;
     }
 
+    public function updateGame($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$creator_id,$public){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("UPDATE ressources,film
+        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,creator_id = :creator_id ,public_id = :public_id 
+        WHERE ressources.id = :ressources_id
+        AND ressources.id = games.ressource_id");
+
+        $data = [
+            ":name" => $name,
+            ":image" => $image,
+            ":content" => $content,
+            ":quantite" => $quantite,
+            ":ademe" => $ademe,
+            ":caution" => $caution,
+            ":catalogue" => $catalogue,
+            ":condition_id" => $condition,
+            ":theme_id" => $theme,
+            ":location_id" => $location,
+            ":is_validated" => $is_validated,
+            ":creator_id" => $creator_id,
+            ":public_id" => $public,
+            ":ressources_id" => $idRessources
+        ];
+
+        $req->execute($data);
+    }
+
+    public function insertFlyers($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format)
+    {
+        $bdd = $this->connect();
+        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
+        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
+        $req2 = $bdd->prepare("INSERT INTO flyers (format,ressources_id) 
+        VALUES (:format,:ressources_id)");
+        $data1 = [
+            ":name" => $name,
+            ":image" => $image,
+            ":content" => $content,
+            ":quantite" => $quantite,
+            ":ademe" => $ademe,
+            ":caution" => $caution,
+            ":catalogue" => $catalogue,
+            ":type_id" => $type,
+            ":condition_id" => $condition,
+            ":theme_id" => $theme,
+            ":location_id" => $location,
+            ":is_validated" => $is_validated
+        ];
+
+        $data2 = [
+            ":format" => $format,
+            ":ressources_id" => $req1->lastInsertId()
+        ];
+  
+        $req1->execute($data1);
+        $req2->execute($data2);
+    }
+
     public function selectFlyer(){
         $bdd = $this->connect();
         $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
@@ -469,14 +554,37 @@ class RessourcesModel extends Manager
         return $movie;
     }
 
+    public function updateFlyer($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$format,$public){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("UPDATE ressources,film
+        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,format = :format ,public_id = :public_id 
+        WHERE ressources.id = :ressources_id
+        AND ressources.id = flyers.ressource_id");
+
+        $data = [
+            ":name" => $name,
+            ":image" => $image,
+            ":content" => $content,
+            ":quantite" => $quantite,
+            ":ademe" => $ademe,
+            ":caution" => $caution,
+            ":catalogue" => $catalogue,
+            ":condition_id" => $condition,
+            ":theme_id" => $theme,
+            ":location_id" => $location,
+            ":is_validated" => $is_validated,
+            ":format" => $format,
+            ":public_id" => $public,
+            ":ressources_id" => $idRessources
+        ];
+
+        $req->execute($data);
+    }
 
     public function deleteRessource($idRessources){
         $bdd = $this->connect();
         $req = $bdd->prepare("DELETE FROM ressources WHERE ressources.id = ?");
         $delete = $req->execute(array($idRessources));
     }
-
-    
-
 }
 
