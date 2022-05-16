@@ -3,6 +3,7 @@
 session_start();
 
 require_once __DIR__ . '/vendor/autoload.php';
+require_once 'app/Views/admin/layouts/secure.php';
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
@@ -66,12 +67,14 @@ try {
 
         // logout admin 
           elseif($_GET['action'] == 'deconnexion'){
+            isConnect();
           $backController->deconnexion();
       }
         
         
         // go to page forgot_password
         elseif($_GET['action'] == 'forgot_password'){
+          isConnect();
           $backController->forgot_password();
         }
 
@@ -82,11 +85,13 @@ try {
 
         // go to page create new password 
         elseif($_GET['action'] == 'pageNewPassword'){
+          isConnect();
           $backController->pageNewPassword();
         }
 
         // confirm new password 
         elseif($_GET['action'] == 'newPasswordPost'){
+          isConnect();
           if(isset($_SESSION['id']) && isset($_POST['oldPassword']) && isset($_POST['newPassword']) && isset($_POST['passwordConfirm'])){
 
             $id = $_GET['id'];
