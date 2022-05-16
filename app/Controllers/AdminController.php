@@ -25,6 +25,7 @@ class AdminController extends Controller {
 		require $this->viewAdmin('adminInscription');
 	}
 
+	// affichage des pages de l'administration
 
 	public function accountAdmin()
 	{
@@ -38,7 +39,6 @@ class AdminController extends Controller {
 	{
 		require $this->viewAdmin('email');
 	}
-
 	public function resourceAdmin()
 	{
 		require $this->viewAdmin('resource');
@@ -52,7 +52,32 @@ class AdminController extends Controller {
 		require $this->viewAdmin('addressBook');
 	}
 
+	// les méthodes de la page Resource.php (CRUD)
 
+	public function createResource()
+	{
+		require $this->viewAdmin('formResource');
+	}
+	public function updateResource()
+	{
+		require $this->viewAdmin('updateResource');
+	}
+	public function deleteResource()
+	{
+		require $this->viewAdmin('delete');
+	}
+
+	// les méthodes de la page Email.php
+
+	public function readEmail()
+	{
+		require $this->viewAdmin('readEmail');
+	}
+	public function deleteEmail()
+	{
+		require $this->viewAdmin('delete');
+	}
+	
 
 	public function connexionAdmin() {
 		require $this->viewAdmin('connexionAdmin');

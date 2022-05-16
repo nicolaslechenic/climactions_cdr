@@ -4,8 +4,14 @@
         <nav id="side-nav">
 
             <div class="nav-logo">
+
                 <h1>Admin</h1>
                 <a href="indexAdmin.php?action=accountAdmin&id=<?= $_SESSION['id'] ?>" class="account">
+
+                <img src="" alt="">
+                <p class="admin">Admin</p>
+                <a href="indexAdmin.php?action=accountAdmin" class="account">
+
                     <i class="fa-solid fa-user"></i>
                     <span class="nav-links">Mon compte</span>
                 </a>

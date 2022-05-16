@@ -42,8 +42,9 @@ a {
   grid-template-columns: 250px 1fr;
 }
 
+
 h1 {
-  padding: 50px;
+  padding: 30px;
   font-weight: 200;
 }
 
@@ -58,11 +59,14 @@ h1 {
     rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   background-color: var(--bg-primary);
 }
+.admin{
+  font-size: 3rem;
+}
 
 .nav-logo {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   cursor: pointer;
-  padding: 30px;
+  padding: 20px;
 }
 
 .nav-logo h1 {
@@ -73,7 +77,7 @@ h1 {
 .nav-logo .account {
   width: 100%;
   font-size: 18px;
-  margin-left: 10px;
+  margin: 20px 10px;
   color: var(--black);
 }
 .nav-logo .account:hover {
@@ -147,6 +151,11 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
+.table-read-email{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  
+}
 
 .table-title {
   font-size: 16px;
@@ -164,6 +173,23 @@ h1 {
   padding: 15px 10px;
 }
 
+#read-email{
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding: 15px 10px;
+  background: var(--bg-primary);
+  padding: 20px;
+}
+#read-email .username{
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+}
+#read-email li:nth-child(3){
+  margin-top: 10px;
+}
+
+
 .table-item:nth-child(odd) {
   background: var(--bg-primary);
 }
@@ -176,19 +202,7 @@ h1 {
   display: list-item;
 }
 
-button {
-  font-size: 16px;
-  width: 140px;
-  height: auto;
-  background-color: var(--primary);
-  border: none;
-  margin: 2px;
-  cursor: pointer;
-  color: white;
-  padding: 5px;
-}
-span.btn,
-form button {
+span.btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -200,14 +214,60 @@ form button {
   font-size: 16px;
   margin: 10px auto;
 }
-span.btn:hover,
-form button:hover{
+.btn {
+  width: 300px;
+  background-color: var(--primary);
+  width: 140px;
+  height: 30px;
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  border: none;
+}
+.btn:hover {
   transform: scale(1.05);
 }
 
 .main-content {
   background-color: var(--bg-articles);
-  height: 100vh;
+  
+}
+
+/* forumulaire création d'un article */
+
+/* #form-create-article{
+  
+} */
+
+#form-create-article select,
+#form-create-article input[type="text"],
+#form-create-article input[type="number"]{
+  width: 400px;
+  height: 35px;
+  border: none;
+  background: var(--white);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
+  rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
+  rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  font-size: 1.2em;
+  color: #555555;
+  cursor: pointer;
+}
+.increase {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+#form-create-article select option:hover {
+  color: var(--primary);
+}
+#form-create-article textarea {
+  width: 400px;
+  height: 200px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+  font-size: 18px;
+
 }
 
 /* la barre de recherche */
@@ -216,6 +276,19 @@ form button:hover{
   display: list-item;
   list-style-type: none;
 }
+#form-create-article label {
+  display: block;
+  width: 150px;
+  float: left;
+}
+#form-create-article .item-form {
+  margin: 20px;
+}
+
+#form-create-article .btn{
+  margin: 30px 15px ;
+}
+
 
 
 /* page account admin  */
@@ -276,13 +349,14 @@ form button:hover{
   .global-container {
     grid-template-columns: 1fr;
   }
-  h1{ 
+  h1 {
     text-align: center;
   }
 
   .main-content {
     grid-column: 1;
-    width: 100%;
+    padding: 0;
+    
   }
 
   .table {
@@ -301,6 +375,7 @@ form button:hover{
     text-align: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
   }
+  
   .nav-logo,
   .bloc-links {
     display: flex;
@@ -311,4 +386,24 @@ form button:hover{
   .nav-logo .account {
     text-align: center;
   }
+
+
+  /* le formulaire de création d'un article */
+
+  #form-create-article input[type="text"],
+  #form-create-article input[type="number"],
+  #form-create-article textarea,
+  #form-create-article select{
+    width: 95%;
+    margin: 5px;
+  }
+  #form-create-article label{
+    width: 130px;
+    margin: 10px 0;
+  }
+  #form-create-article input[type="checkbox"]{
+    margin-top: 6px;
+
+  }
+  
 }
