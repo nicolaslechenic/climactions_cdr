@@ -70,7 +70,7 @@ class AdminController extends Controller {
 			$_SESSION['id'] = $result['id'];
 			$_SESSION['firstname'] = $result['firstname'];
 			$_SESSION['lastname'] = $result['lastname'];
-
+			
 			if ($isPasswordCorrect) {
 
 				require $this->viewAdmin('home');
@@ -78,6 +78,8 @@ class AdminController extends Controller {
 				
         		echo 'Vos identifiants sont incorrects';
 			}
+		} else{
+			echo "il ya une erreur";
 		}
 	}
 
