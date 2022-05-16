@@ -467,10 +467,10 @@ class RessourcesModel extends Manager
         return $game;
     }
 
-    public function updateGame($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$creator_id,$public){
+    public function updateGame($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$creator_id,$format,$public){
         $bdd = $this->connect();
         $req = $bdd->prepare("UPDATE ressources,film
-        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,creator_id = :creator_id ,public_id = :public_id 
+        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,creator_id = :creator_id format = :format ,public_id = :public_id 
         WHERE ressources.id = :ressources_id
         AND ressources.id = games.ressource_id");
 
@@ -487,6 +487,7 @@ class RessourcesModel extends Manager
             ":location_id" => $location,
             ":is_validated" => $is_validated,
             ":creator_id" => $creator_id,
+            ":format" => $format,
             ":public_id" => $public,
             ":ressources_id" => $idRessources
         ];
