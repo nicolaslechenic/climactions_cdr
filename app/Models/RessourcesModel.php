@@ -210,8 +210,10 @@ class RessourcesModel extends Manager
     public function insertGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format,$creator,$public)
     {
         $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2 = $bdd->prepare("INSERT INTO games (format,creator_id,public_id,ressources_id) VALUES (:format,:creator_id,:public_id,:ressources_id)");
+        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
+        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
+        $req2 = $bdd->prepare("INSERT INTO games (format,creator_id,public_id,ressources_id) 
+        VALUES (:format,:creator_id,:public_id,:ressources_id)");
         $data1 = [
             ":name" => $name,
             ":image" => $image,
@@ -241,8 +243,10 @@ class RessourcesModel extends Manager
     public function insertBook($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$editor,$author,$public)
     {
         $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2= $bdd->prepare("INSERT INTO livre (editor_id,author_id,public_id,ressource_id) VALUES (:editor_id,:author_id,:public_id,:ressource_id)");
+        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
+        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
+        $req2= $bdd->prepare("INSERT INTO livre (editor_id,author_id,public_id,ressource_id) 
+        VALUES (:editor_id,:author_id,:public_id,:ressource_id)");
         $data1 = [
             ":name" => $name,
             ":image" => $image,
@@ -272,8 +276,10 @@ class RessourcesModel extends Manager
     public function insertMovie($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$productor,$realisator,$public)
     {
         $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2 = $bdd->prepare("INSERT INTO film (productor_id,realisator_id,public_id,ressources_id) VALUES (:productor_id,:realisator_id,_public_id,:ressources_id)");
+        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
+        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
+        $req2 = $bdd->prepare("INSERT INTO film (productor_id,realisator_id,public_id,ressources_id) 
+        VALUES (:productor_id,:realisator_id,_public_id,:ressources_id)");
         $data1 = [
             ":name" => $name,
             ":image" => $image,
@@ -303,8 +309,10 @@ class RessourcesModel extends Manager
     public function insertFlyers($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format)
     {
         $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2 = $bdd->prepare("INSERT INTO flyers (format,ressources_id) VALUES (:format,:ressources_id)");
+        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
+        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
+        $req2 = $bdd->prepare("INSERT INTO flyers (format,ressources_id) 
+        VALUES (:format,:ressources_id)");
         $data1 = [
             ":name" => $name,
             ":image" => $image,
@@ -332,9 +340,15 @@ class RessourcesModel extends Manager
     public function selectBook(){
         $bdd = $this->connect();
         $req = $bdd->prepare("SELECT ressources.`name`,ressources.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,editor.`name`,author.`name`,public.`name` FROM ressources,theme,location,`condition`,livre,editor,author,public WHERE 
-        ressources.id = livre.ressource_id AND ressources.condition_id = `condition`.id AND ressources.location_id = location.id AND ressources.theme_id = theme.id AND livre.editor_id = editor.id AND 
-        livre.author_id = author.id AND livre.public_id = public.id");
+        `condition`.`condition`,location.location,editor.`name`,author.`name`,public.`name` 
+        FROM ressources,theme,location,`condition`,livre,editor,author,public 
+        WHERE ressources.id = livre.ressource_id 
+        AND ressources.condition_id = `condition`.id 
+        AND ressources.location_id = location.id 
+        AND ressources.theme_id = theme.id 
+        AND livre.editor_id = editor.id 
+        AND livre.author_id = author.id 
+        AND livre.public_id = public.id");
         $req->execute(array());
         $livre = $req->fetchAll();
         return $livre;
@@ -343,9 +357,16 @@ class RessourcesModel extends Manager
     public function selectMovie(){
         $bdd = $this->connect();
         $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,director.`name`,producer.`name`,public.`name` FROM ressources,theme,location,`condition`,film,producer,director,public WHERE 
-        ressources.id = film.ressources_id AND condition_id = `condition`.id AND ressources.location_id = location.id AND ressources.theme_id = theme.id AND film.producer_id = producer.id AND 
-        film.director_id = director.id AND film.public_id = public.id; ");
+        `condition`.`condition`,location.location,director.`name`,producer.`name`,public.`name` 
+        FROM ressources,theme,location,`condition`,film,producer,director,public 
+        WHERE 
+        ressources.id = film.ressources_id 
+        AND condition_id = `condition`.id 
+        AND ressources.location_id = location.id 
+        AND ressources.theme_id = theme.id 
+        AND film.producer_id = producer.id 
+        AND film.director_id = director.id 
+        AND film.public_id = public.id; ");
         $req->execute(array());
         $movie = $req->fetchAll();
         return $movie;
@@ -354,8 +375,14 @@ class RessourcesModel extends Manager
     public function selectGames(){
         $bdd = $this->connect();
         $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,creator.`name`,public.`name` FROM ressources,theme,location,`condition`,games,public,creator WHERE 
-        ressources.id = games.ressources_id AND ressources.condition_id = `condition`.id AND ressources.location_id = location.id AND ressources.theme_id = theme.id AND games.creator_id = creator.id AND games.public_id = public.id; ");
+        `condition`.`condition`,location.location,creator.`name`,public.`name` 
+        FROM ressources,theme,location,`condition`,games,public,creator WHERE 
+        ressources.id = games.ressources_id 
+        AND ressources.condition_id = `condition`.id 
+        AND ressources.location_id = location.id 
+        AND ressources.theme_id = theme.id 
+        AND games.creator_id = creator.id 
+        AND games.public_id = public.id; ");
         $req->execute(array());
         $game = $req->fetchAll();
         return $game;
@@ -364,8 +391,12 @@ class RessourcesModel extends Manager
     public function selectFlyer(){
         $bdd = $this->connect();
         $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,flyers.`format` FROM ressources,theme,location,`condition`,flyers WHERE 
-        ressources.id = flyers.ressources_id AND condition_id = `condition`.id AND ressources.location_id = location.id AND ressources.theme_id = theme.id;");
+        `condition`.`condition`,location.location,flyers.`format` 
+        FROM ressources,theme,location,`condition`,flyers WHERE 
+        ressources.id = flyers.ressources_id 
+        AND condition_id = `condition`.id 
+        AND ressources.location_id = location.id 
+        AND ressources.theme_id = theme.id;");
         $req->execute(array());
         $movie = $req->fetchAll();
         return $movie;
