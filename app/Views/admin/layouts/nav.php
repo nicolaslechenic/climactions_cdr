@@ -5,7 +5,7 @@
 
             <div class="nav-logo">
                 <img src="" alt="">
-                <h1>Admin</h1>
+                <p class="admin">Admin</p>
                 <a href="indexAdmin.php?action=accountAdmin" class="account">
                     <i class="fa-solid fa-user"></i>
                     <span class="nav-links">Mon compte</span>
