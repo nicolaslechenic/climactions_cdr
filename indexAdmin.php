@@ -17,7 +17,7 @@ $dotenv->load();
 // set_error_handler('errorHandler');
 
 function eCatcher($e) {
-  if($_ENV["APP_ENV"] == "dev") {
+  if($_ENV["APP_ENV"] == "d") {
     $whoops = new \Whoops\Run;
     $whoops->allowQuit(false);
     $whoops->writeToOutput(false);
@@ -55,7 +55,7 @@ try {
         }
 
 
-        elseif($_GET['action'] == 'homeAdmin') {
+        elseif($_GET['action'] == 'home') {
           $email = htmlspecialchars($_POST['email']);
           $password = htmlspecialchars($_POST['password']);
           if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)) {
@@ -74,7 +74,7 @@ try {
         
         // go to page forgot_password
         elseif($_GET['action'] == 'forgot_password'){
-          isConnect();
+         
           $backController->forgot_password();
         }
 
@@ -85,8 +85,14 @@ try {
 
         // go to page create new password 
         elseif($_GET['action'] == 'pageNewPassword'){
-          isConnect();
-          $backController->pageNewPassword();
+          if(isConnect()){
+            require "app/Views/errors/pageNotFound.php";
+          }
+          else{
+
+            $backController->pageNewPassword();
+          }
+          
         }
 
         // confirm new password 
@@ -105,28 +111,30 @@ try {
 
         
         elseif ($_GET['action'] == 'pageAddArticle') {
-          
+          isConnect();
           $backController->pageAddArticle();
         } 
         
         elseif ($_GET['action'] == 'viewUpdateArticle') {
+          isConnect();
           $idArticle = $_GET['id'];
           $backController->viewUpdateArticle($idArticle);
         } 
         
         elseif ($_GET['action'] == 'deleteArticle') {
-          
+          isConnect();
           $id = $_GET['id'];
           $backController->deleteArticle($id);
         } 
         
         elseif ($_GET['action'] == 'addArticle') {
-          
+          isConnect();
           $title = htmlspecialchars($_POST['title']);
           $content = htmlspecialchars($_POST['content']);
           $backController->addArticle($title, $content);
           
         } elseif ($_GET['action'] == 'updateArticle') {
+          isConnect();
           $idArticle = $_GET['id'];    
           $title = htmlspecialchars($_POST['title']);
           $content = htmlspecialchars($_POST['content']);
@@ -137,41 +145,57 @@ try {
         // go to page home admin 
         // les pages de l'administration
         elseif($_GET['action'] == 'homeAdmin'){
+          isConnect();
           $backController->homeAdmin();
         }
         elseif($_GET['action'] == 'emailAdmin'){
+          isConnect();
           $backController->emailAdmin();
         }
         elseif($_GET['action'] == 'accountAdmin'){
+          isConnect();
           $backController->accountAdmin();
         }
 
         elseif($_GET['action'] == 'resourceAdmin'){
+          isConnect();
           $backController->resourceAdmin();
         }
         elseif($_GET['action'] == 'addressBookAdmin'){
+          isConnect();
           $backController->addressBookAdmin();
         }
         elseif($_GET['action'] == 'opinionAdmin'){
+          isConnect();
           $backController->opinionAdmin();
         }
 
         // les méthodes de la page Resource.php (CRUD)
         elseif($_GET['action'] == 'createResource'){
+          isConnect();
           $backController->createResource();
         }
         elseif($_GET['action'] == 'updateResource'){
+          isConnect();
           $backController->updateResource();
         }
         elseif($_GET['action'] == 'deleteResource'){
+          isConnect();
           $backController->deleteResource();
         }
         // les méthodes de la page email.php
         elseif($_GET['action'] == 'readEmail'){
+          isConnect();
           $backController->readEmail();
         }
         elseif($_GET['action'] == 'deleteEmail'){
+          isConnect();
           $backController->deleteEmail();
+        }
+
+        else{
+          require "app/Views/errors/pageNotFound.php";
+          // throw new Exception("La page demandée n'existe pas", 404);
         }
        
         
@@ -183,10 +207,10 @@ try {
         
 } catch (Exception $e) {
   eCatcher($e);
-  if($e->getCode === 404) {
+  if($e->getCode() === 404) {
     die('Erreur : ' .$e->getMessage());
   } else {
-    header("app/Views/errors/error.php");
+    require "app/Views/errors/notAdmin.php";
   } 
   
 } catch (Error $e) {
