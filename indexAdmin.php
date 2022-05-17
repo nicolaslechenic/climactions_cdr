@@ -17,7 +17,7 @@ $dotenv->load();
 // set_error_handler('errorHandler');
 
 function eCatcher($e) {
-  if($_ENV["APP_ENV"] == "d") {
+  if($_ENV["APP_ENV"] == "") {
     $whoops = new \Whoops\Run;
     $whoops->allowQuit(false);
     $whoops->writeToOutput(false);
@@ -36,14 +36,14 @@ try {
     if (isset($_GET['action'])) {
         
         if($_GET['action'] == 'pageCreationAdmin') {
-            
+        isConnect();
         $backController->pageConnexionAdmin();
     
         }
 
         // create an admin 
         elseif($_GET['action'] == 'creatAdmin') {
-
+            isConnect();
             $lastname   = htmlspecialchars($_POST['lastname']);
             $firstname  = htmlspecialchars($_POST['firstname']);
             $email       = htmlspecialchars($_POST['email']);
@@ -56,6 +56,7 @@ try {
 
 
         elseif($_GET['action'] == 'home') {
+          // isConnect();
           $email = htmlspecialchars($_POST['email']);
           $password = htmlspecialchars($_POST['password']);
           if (!empty($email) && filter_var($email, FILTER_VALIDATE_EMAIL) && !empty($password)) {
@@ -85,15 +86,10 @@ try {
 
         // go to page create new password 
         elseif($_GET['action'] == 'pageNewPassword'){
-          if(isConnect()){
-            require "app/Views/errors/pageNotFound.php";
-          }
-          else{
-
-            $backController->pageNewPassword();
+          isConnect();
+          $backController->pageNewPassword();
           }
           
-        }
 
         // confirm new password 
         elseif($_GET['action'] == 'newPasswordPost'){
@@ -215,5 +211,5 @@ try {
   
 } catch (Error $e) {
   eCatcher($e);
-  header("location: app/Views/errors/error.php");
+  require "app/Views/errors/notAdmin.php";
 }
