@@ -124,7 +124,7 @@ class RessourcesModel extends Manager
     public function selectType()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT type FROM type");
+        $req = $bdd->prepare("SELECT id,type FROM type");
         $req->execute(array());
         $types = $req->fetchAll();
         return $types;
@@ -133,7 +133,7 @@ class RessourcesModel extends Manager
     public function selectTheme()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT name FROM theme");
+        $req = $bdd->prepare("SELECT id,name FROM theme");
         $req->execute(array());
         $themes = $req->fetchAll();
         return $themes;
@@ -141,7 +141,7 @@ class RessourcesModel extends Manager
     public function selectCondition()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT condition FROM condition");
+        $req = $bdd->prepare("SELECT id,condition FROM condition");
         $req->execute(array());
         $conditions = $req->fetchAll();
         return $conditions;
@@ -149,7 +149,7 @@ class RessourcesModel extends Manager
     public function selectLocation()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT location FROM location");
+        $req = $bdd->prepare("SELECT id,location FROM location");
         $req->execute(array());
         $locations = $req->fetchAll();
         return $locations;
@@ -157,7 +157,7 @@ class RessourcesModel extends Manager
     public function selectEditor()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT name FROM editor");
+        $req = $bdd->prepare("SELECT id,name FROM editor");
         $req->execute(array());
         $editors = $req->fetchAll();
         return $editors;
@@ -165,7 +165,7 @@ class RessourcesModel extends Manager
     public function selectAuthor()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT name FROM author");
+        $req = $bdd->prepare("SELECT id,name FROM author");
         $req->execute(array());
         $authors = $req->fetchAll();
         return $authors;
@@ -174,7 +174,7 @@ class RessourcesModel extends Manager
     public function selectProductor()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT name FROM productor");
+        $req = $bdd->prepare("SELECT id,name FROM productor");
         $req->execute(array());
         $productors = $req->fetchAll();
         return $productors;
@@ -183,7 +183,7 @@ class RessourcesModel extends Manager
     public function selectRealisator()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT name FROM realisator");
+        $req = $bdd->prepare("SELECT id,name FROM realisator");
         $req->execute(array());
         $realisators = $req->fetchAll();
         return $realisators;
@@ -192,7 +192,7 @@ class RessourcesModel extends Manager
     public function selectCreator()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT name FROM creator");
+        $req = $bdd->prepare("SELECT id,name FROM creator");
         $req->execute(array());
         $creators = $req->fetchAll();
         return $creators;
@@ -201,7 +201,7 @@ class RessourcesModel extends Manager
     public function selectPublic()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT name FROM public");
+        $req = $bdd->prepare("SELECT id,name FROM public");
         $req->execute(array());
         $publics = $req->fetchAll();
         return $publics;
