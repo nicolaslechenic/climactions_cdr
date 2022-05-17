@@ -7,11 +7,11 @@
     <title>Connexion</title>
 </head>
 <body>
-   <form id="form_admin" action="indexAdmin.php?action=homeAdmin" method="post">
+   <form id="form_admin" action="indexAdmin.php?action=home" method="post">
 
         <div>
             <label for="email"> email:</label>
-            <input type="text" name="email" id="email" placeholder="Votre email" required>
+            <input type="email" name="email" id="email" placeholder="Votre email" required>
         </div>
 
         <div>
