@@ -379,6 +379,57 @@ a {
   margin: 25px 0;
 }
 
+
+/* --------------PAGE CONTACT--------------  */
+.bloc-contact-user{
+  text-align: center;
+  margin: 1.5rem auto;
+}
+.main-bloc-form form{
+  padding: 0 1.5rem 2rem;
+}
+.bloc-form label{
+  display: block;
+  text-align: start;
+  margin-bottom: 5px;
+}
+.bloc-form input{
+  height: 30px;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+.main-bloc-form form p{
+  font-size: 0.8rem;
+  text-align: initial;
+}
+.send-contact{
+  padding: 0.8rem 2rem;
+  background-color: #6E6E6E;
+  color: white;
+  border: none;
+  font-weight: 600;
+  border-radius: 50px;
+  margin: 3rem auto 1.5rem;
+  text-align: center;
+  width: 67%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+.send-contact:hover{
+  transform: scale(1.05);
+}
+.activeBtn{
+  background-color: var(--mainColor);
+}
+
+textarea{
+  height: 100px;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
 /* ------------------------- media desktop ------------------------------  */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   body {
