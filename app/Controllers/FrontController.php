@@ -16,22 +16,21 @@ class FrontController extends Controller {
     public function pageArticle($query, $currentPage)
     {
         $articleManager = new \Climactions\Models\RessourcesModel();
-        $nbarticles = $articleManager->countArticles();
         $types = $articleManager->selectType();
-        $ressources = $articleManager->selectResources();
-
+        $nbarticles = $articleManager->countArticles();
         // nb article par page 
         $parPage = 8;
-
+        
+        
         // calcul nb pages total 
         $pages = ceil($nbarticles / $parPage);
-        
         $premierArticle = ($currentPage * $parPage) - $parPage;
         $articles = $articleManager->perPageArticle($premierArticle, $parPage);
+        $ressources = $articleManager->selectResources();
 
         // searchbar 
         $search = $articleManager->searchArticle($query);
-    
+        
         require "app/Views/frontend/pageArticle.php";
     }
 

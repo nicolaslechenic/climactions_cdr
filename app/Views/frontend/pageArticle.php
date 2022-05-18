@@ -48,7 +48,7 @@
         <h1>Les Articles</h1>
 
         <div class="button-group filters-button-group">
-            <button class="button is-checked" data-filter="*">Toutes les catégories</button>
+            <button class="button is-checked" data-filter="">Toutes les catégories</button>
             
             <!-- TO DO : faire une boucle sur les boutons pour afficher les catégories --> 
             <?php foreach ($types as $type) { ?>
@@ -70,7 +70,7 @@
             </div>
             <?php } ?>
         </section>
-
+            
         <nav id="nav-pagination">
             <ul class="pagination">
                 <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
@@ -96,7 +96,7 @@
         <footer>
 
         </footer>
-        <script src="./Public/scripts/main.js"></script>
+        <script src="Public/scripts/main.js"></script>
 </body>
 
 </html>

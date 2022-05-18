@@ -63,7 +63,6 @@ class RessourcesModel extends Manager
         $req->execute();
         $result = $req->fetch();
         $nbArticles = $result['nb_articles'];
-        
         return $nbArticles;
     }
 
