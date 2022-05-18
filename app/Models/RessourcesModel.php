@@ -115,11 +115,12 @@ class RessourcesModel extends Manager
     public function lastArticles()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT `id`, `name`, `content` FROM `ressources` ORDER BY `id` DESC LIMIT 3");
+        $req = $bdd->prepare("SELECT `id`, `name`, `image` FROM `ressources` ORDER BY `id` DESC LIMIT 3");
         $req->execute(array());
         $articles = $req->fetchAll();
         return $articles;
     }
+
     public function selectType()
     {
         $bdd = $this->connect();
@@ -137,6 +138,7 @@ class RessourcesModel extends Manager
         $themes = $req->fetchAll();
         return $themes;
     }
+
     public function selectCondition()
     {
         $bdd = $this->connect();
@@ -145,6 +147,7 @@ class RessourcesModel extends Manager
         $conditions = $req->fetchAll();
         return $conditions;
     }
+
     public function selectLocation()
     {
         $bdd = $this->connect();
@@ -153,6 +156,7 @@ class RessourcesModel extends Manager
         $locations = $req->fetchAll();
         return $locations;
     }
+
     public function selectEditor()
     {
         $bdd = $this->connect();
@@ -161,6 +165,7 @@ class RessourcesModel extends Manager
         $editors = $req->fetchAll();
         return $editors;
     }
+    
     public function selectAuthor()
     {
         $bdd = $this->connect();
