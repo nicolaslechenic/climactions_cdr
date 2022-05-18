@@ -97,6 +97,12 @@ a {
   transition: 0.3s;
 }
 
+/* container  */
+.container-contact{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .bouton-article {
   color: var(--text-secondary);
   background-color: var(--primary);
@@ -387,6 +393,11 @@ a {
 }
 .main-bloc-form form{
   padding: 0 1.5rem 2rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.main-bloc-form form h1{
+  margin-bottom: 2rem;
 }
 .bloc-form label{
   display: block;
@@ -397,21 +408,22 @@ a {
   height: 30px;
   margin-bottom: 1rem;
   width: 100%;
+  padding-left: 5px;
 }
 .main-bloc-form form p{
-  font-size: 0.8rem;
+  font-size: 1rem;
   text-align: initial;
 }
 .send-contact{
   padding: 0.8rem 2rem;
-  background-color: #6E6E6E;
+  background-color: var(--hover);
   color: white;
   border: none;
   font-weight: 600;
   border-radius: 50px;
   margin: 3rem auto 1.5rem;
   text-align: center;
-  width: 67%;
+  width: 50%;
   cursor: pointer;
   font-size: 1rem;
   display: block;
@@ -421,19 +433,57 @@ a {
   transform: scale(1.05);
 }
 .activeBtn{
-  background-color: var(--mainColor);
+  background-color: var(--primary);
 }
 
 textarea{
   height: 100px;
   width: 100%;
   margin-bottom: 2rem;
+  padding-left: 5px;
+}
+.msg-error{
+  background-color: #E01A1A;
+  color: white;
+  border-radius: 5px;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+.msg-success{
+  background-color: var(--primary);
+  color: white;
+  border-radius: 5px;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+/* PAGE SENDEMAIL  */
+#section-confirm-mail{
+  height: 300px;
+}
+#section-confirm-mail h1{
+  margin: 2rem;
+}
+#section-confirm-mail a{
+  text-align: center;
+  display: block;
+  margin: 4rem auto 0;
+  padding: 10px;
+  border-radius: 5px;
+  width: 67%;
+  transition: all 0.3s ease-in-out;
+}
+#section-confirm-mail a:hover{
+  color: var(--white);
+  background-color: var(--primary);
 }
 
 /* ------------------------- media desktop ------------------------------  */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   body {
-    background-color: black;
+    /* background-color: black; */
   }
 
   /* --------------------------------------- body ---------------------------------  */
@@ -499,6 +549,12 @@ textarea{
   #pied #adresse {
     order: 3;
   }
+
+
+  /* PAGE SENDEMAIL  */
+  #section-confirm-mail a{
+    width: 35%;
+  }
 }
 
 @media screen and (min-width: 1024px) {
@@ -514,7 +570,7 @@ textarea{
   }
 
   #menu li a {
-    font-size: 1.4em;
+    font-size: 1.2rem;
   }
 
   #bandeau #navigation-bandeau #menu {
@@ -624,7 +680,14 @@ textarea{
   #pied #adresse {
     order: 3;
   }
+
+  
+  /* PAGE SENDEMAIL  */
+  #section-confirm-mail a{
+    width: 35%;
+  }
 }
+
 
 /* pageArticle.php tous les articles */
 

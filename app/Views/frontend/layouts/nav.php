@@ -1,5 +1,3 @@
-<?php
-require_once './app/Views/frontend/layouts/header.php'; ?>
 
 <header id="bandeau">
   <nav id="navigation-bandeau" class="container">
@@ -11,6 +9,7 @@ require_once './app/Views/frontend/layouts/header.php'; ?>
       <li><a href="#">Accueil</a></li>
       <li><a href="#">Ressources</a></li>
       <li><a href="#">évènements</a></li>
+      <li><a href="index.php?action=contact">Contact</a></li>
       <li><a href="#">Retourner sur le site</a></li>
     </ul>
 
