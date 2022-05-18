@@ -51,25 +51,24 @@
             <button class="button is-checked" data-filter="*">Toutes les catégories</button>
             
             <!-- TO DO : faire une boucle sur les boutons pour afficher les catégories --> 
-
-            <button class="button" data-filter=".game">Jeux</button>
-            <button class="button" data-filter=".movie">Films</button>
-            <button class="button" data-filter=".book">Livres</button>
+            <?php foreach ($types as $type) { ?>
+                <button class="button" data-filter=".<?= $type['type']?>"><?= $type['type']?></button>
+                <!-- <button class="button" data-filter=".movie">Films</button>
+                <button class="button" data-filter=".book">Livres</button> -->
+           <?php }?>
         </div>
         <section class="grid">
-            <?php foreach ($articles as $article) {
-                    ?>
-
+            <?php foreach ($ressources as $ressource) {?>
             <div >
-                <article class="article-container element-item all <?= $article['description'] ?> " data-category="">
-                    <h2 class="title"><?= $article['title'] ?></h2>
-                    <p class="content"><?= $article['content']; ?></p>
+                <article class="article-container element-item all <?= $ressource['type']?>">
+                    <h2 class="title"><?= $ressource['name'] ?></h2>
+                    <img src="<?= $ressource['image']?>">
+                    <p class="content"><?= $ressource['content'] ?></p>
                     <p class="read-more"><a class="read-more"
-                            href="index.php?action=article&id=<?= $article['id']; ?>">Voir l'Article</a></p>
+                            href="index.php?action=article&id=<?= $ressource['id']?>">Voir l'Article</a></p>
                 </article>
             </div>
-
-            <?php }; ?>
+            <?php } ?>
         </section>
 
         <nav id="nav-pagination">
@@ -92,9 +91,7 @@
                 </li>
             </ul>
         </nav>
-        <?php
-        endif
-        ?>
+        <?php endif ?>
 
         <footer>
 

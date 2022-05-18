@@ -651,7 +651,7 @@ a {
     position: relative;
     float: left;
     width: 400px;
-    height: 400px;
+    height: auto;
     margin: 5px;
     padding: 10px;
     background: #888;
@@ -671,6 +671,12 @@ a {
     letter-spacing: 0;
     font-size: 30px;
     font-weight: normal;
+  }
+
+  .element-item img{
+    width: 100%;
+    height: auto;
+    object-fit:cover;
   }
   
   .element-item .content {

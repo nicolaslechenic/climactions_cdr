@@ -17,6 +17,8 @@ class FrontController extends Controller {
     {
         $articleManager = new \Climactions\Models\RessourcesModel();
         $nbarticles = $articleManager->countArticles();
+        $types = $articleManager->selectType();
+        $ressources = $articleManager->selectResources();
 
         // nb article par page 
         $parPage = 8;

@@ -124,7 +124,7 @@ class RessourcesModel extends Manager
     public function selectType()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,type FROM type");
+        $req = $bdd->prepare("SELECT id,type FROM types");
         $req->execute(array());
         $types = $req->fetchAll();
         return $types;
@@ -209,6 +209,17 @@ class RessourcesModel extends Manager
         $req->execute(array());
         $publics = $req->fetchAll();
         return $publics;
+    }
+
+    public function selectResources(){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type` FROM ressources INNER JOIN `types` 
+        ON ressources.type_id = `types`.id
+        ORDER BY ressources.id DESC" );
+        $req->execute(array());
+        $articles = $req->fetchAll();
+        // var_dump($articles);die;
+        return $articles;
     }
 
     public function insertBook($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$editor,$author,$public)
