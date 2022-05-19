@@ -33,7 +33,9 @@
                 </a>
                 <a href="indexAdmin.php?action=addressBookAdmin" class="bloc-link">
                     <i class="fa-solid fa-address-book"></i>
-                    <span class="nav-links">Carnet d'adresses</span>
+                    <span class="nav-links">Carnet d'adresses
+                        
+                    </span>
                 </a>
                 <a href="indexAdmin.php?action=deconnexion" class="bloc-link">
                     <i class="fa-solid fa-power-off"></i>

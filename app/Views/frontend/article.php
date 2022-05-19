@@ -43,6 +43,8 @@ require_once './app/Views/frontend/layouts/header.php'; ?>
                 <p class="format">Format :</p>
                 <!-- pour les flyers -->
                 <p class="format">Format :</p>
+                <!-- la caution -->
+                <p class="format">Caution :</p>
             </section>
 
         </div>
