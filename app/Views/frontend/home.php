@@ -1,6 +1,7 @@
 <?php 
 
 $title = "Clim' Actions";
+$description = "La page d'accueil";
 ob_start(); ?>
 
 

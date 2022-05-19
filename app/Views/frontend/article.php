@@ -1,5 +1,8 @@
 <?php 
-require_once './app/Views/frontend/layouts/header.php'; ?>
+$title = "Clim' Actions";
+$description = "La page affichage d'un article";
+require_once './app/Views/frontend/layouts/header.php'; 
+ob_start(); ?>
 
 <main class="container container-article">
 
