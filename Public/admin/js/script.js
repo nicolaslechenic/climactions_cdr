@@ -9,85 +9,75 @@
 // -----------------------------------------------------------------------------
 // la classe active
 // -----------------------------------------------------------------------------
-
+console.log("hello");
 $(".block-link")
-.filter(function () {
+  .filter(function () {
     return location.href == this.href;
-})
-.addClass("active");
+  })
+  .addClass("active");
 
 // -----------------------------------------------------------------------------
 // les catégories dans le formulaire de création d'article
 // -----------------------------------------------------------------------------
 
-jQuery(document).ready(function($){
+jQuery(document).ready(function ($) {
+  $(".name-producer").hide();
+  $(".name-director").hide();
+  $(".format-flyer").hide();
+  $(".name-editor").hide();
+  $(".name-author").hide();
+  $(".name-creator").hide();
+  $(".format-game").hide();
+  $(".name-public").hide();
+});
+
+$("#select-block").change(function () {
+  if ($("#select-block").val() == "game") {
     $(".name-producer").hide();
     $(".name-director").hide();
     $(".format-flyer").hide();
     $(".name-editor").hide();
-    $(".name-author").hide();  
+    $(".name-author").hide();
+
+    $(".name-creator").show();
+    $(".format-game").show();
+    $(".name-public").show();
+  }
+
+  if ($("#select-block").val() == "movie") {
+    $(".name-editor").hide();
+    $(".name-author").hide();
+    $(".format-flyer").hide();
     $(".name-creator").hide();
-    $(".format-game").hide();  
-    $(".name-public").hide();  
-});
+    $(".format-game").hide();
 
+    $(".name-producer").show();
+    $(".name-director").show();
+    $(".name-public").show();
+  }
 
-$("#select-block").change(function() {
+  if ($("#select-block").val() == "book") {
+    $(".name-producer").hide();
+    $(".name-director").hide();
+    $(".format-flyer").hide();
+    $(".name-creator").hide();
+    $(".format-game").hide();
 
-    if ( $("#select-block").val() == "game" ){
-        
-        $(".name-producer").hide();
-        $(".name-director").hide();
-        $(".format-flyer").hide();
-        $(".name-editor").hide();
-        $(".name-author").hide();
-        
-        $(".name-creator").show();
-        $(".format-game").show();
-        $(".name-public").show();
-        
-    }
-    
-    if ( $("#select-block").val() == "movie" ){ 
-        
-        $(".name-editor").hide();
-        $(".name-author").hide();
-        $(".format-flyer").hide();
-        $(".name-creator").hide();
-        $(".format-game").hide();
-        
-        $(".name-producer").show();
-        $(".name-director").show();
-        $(".name-public").show();
-    }
-   
-    if ( $("#select-block").val() == "book" ){
-        
-        $(".name-producer").hide();
-        $(".name-director").hide();
-        $(".format-flyer").hide();
-        $(".name-creator").hide();
-        $(".format-game").hide();
+    $(".name-editor").show();
+    $(".name-author").show();
+    $(".name-public").show();
+  }
 
-        $(".name-editor").show();
-        $(".name-author").show();
-        $(".name-public").show();
+  if ($("#select-block").val() == "flyer") {
+    $(".name-producer").hide();
+    $(".name-director").hide();
+    $(".format-flyer").hide();
+    $(".name-creator").hide();
+    $(".format-game").hide();
+    $(".name-editor").hide();
+    $(".name-author").hide();
+    $(".name-public").hide();
 
-    }
-
-    if ( $("#select-block").val() == "flyer" ){
-        
-        $(".name-producer").hide();
-        $(".name-director").hide();
-        $(".format-flyer").hide();
-        $(".name-creator").hide();
-        $(".format-game").hide();
-        $(".name-editor").hide();
-        $(".name-author").hide();
-        $(".name-public").hide();
-
-        $(".format-flyer").show();
-
-    }
-
+    $(".format-flyer").show();
+  }
 });

@@ -234,12 +234,14 @@ span.btn {
   background-color: var(--bg-articles);
   
 }
+#cke_content{
+  margin: 0 2.5rem 0 1.6rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  
+}
 
 /* forumulaire création d'un article */
 
-/* #form-create-article{
-  
-} */
 
 #form-create-article select,
 #form-create-article input[type="text"],
@@ -248,9 +250,7 @@ span.btn {
   height: 35px;
   border: none;
   background: var(--white);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
-  rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
-  rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   font-size: 1.2em;
   color: #555555;
   cursor: pointer;
@@ -264,15 +264,6 @@ span.btn {
 #form-create-article select option:hover {
   color: var(--primary);
 }
-#form-create-article textarea {
-  width: 400px;
-  height: 200px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-  font-size: 18px;
-
-}
-
-/* la barre de recherche */
 
 .table-results {
   display: list-item;
@@ -291,6 +282,9 @@ span.btn {
   margin: 30px 15px ;
 }
 
+.form-input-content p{
+  margin: 0 0 1rem 1.2rem;
+}
 
 
 /* page account admin  */
