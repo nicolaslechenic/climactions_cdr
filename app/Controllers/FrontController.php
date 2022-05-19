@@ -46,7 +46,6 @@ class FrontController extends Controller {
         extract($_POST);
 		$validation = true;
 		$erreur = [];
-        $confirm = [];
         
 
         if(empty($lastname) || empty($firstname) || empty($email) || empty($confirmEmail) || empty($phone) || empty($object) || empty($message)){
