@@ -25,10 +25,12 @@
         </div>
 
         <!-- le contenu -->
-        <div class="item-form content">
-            <label for="content">Contenu</label>
-            <textarea required="required" name="content" id="content" cols="30" rows="8"></textarea>
+        <div class="form-input-content">
+            <p>Contenu</p>
+            <textarea aria-label="content" required="required" name="editor1" id="editor1" cols="30"
+                rows="8"></textarea>
         </div>
+
 
         <!-- la quantité -->
         <div class="item-form quantite">

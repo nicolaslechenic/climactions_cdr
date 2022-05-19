@@ -1,26 +1,60 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/styles/style.css">
-    <title>Page d'Un Article</title>
-</head>
-<body>
-<main>
+<?php 
+require_once './app/Views/frontend/layouts/header.php'; ?>
 
-<section class="article">
+<main class="container container-article">
+
     <article>
-        <h1>Titre : <?= $article['outil']; ?></h1>
-        <div>
-            <p><strong>Créé le : </strong><?= $article['appartenance']; ?></p>
-            <p><strong>Contenu : </strong><?= $article['theme']; ?></p>
+
+        <h1 class="title">Titre de l'article</h1>
+
+        <div class="article">
+
+            <figure class="img-size">
+                <img src="./Public/img/deplacement-une-affaire-de-choix.jpeg" alt="">
+            </figure>
+
+            <!-- faire des conditions -->
+            <section class="info">
+                <h2 class="title">Informations : </h2>
+                <!-- pour les livres -->
+                <p class="author">Auteur : </p>
+                <p class="editor">Éditeur : </p>
+                <p class="public">Public :</p>
+                <!-- pour les films -->
+                <p class="director">Réalisateur :</p>
+                <p class="producer">Producteur :</p>
+                <p class="public">Public :</p>
+                <!-- pour les jeux -->
+                <p class="creator">Créateur :</p>
+                <p class="format">Format :</p>
+                <!-- pour les flyers -->
+                <p class="format">Format :</p>
+                <!-- la caution -->
+                <p class="format">Caution :</p>
+
+            </section>
+
+
+            <div class="content">
+                <div class="line"></div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem facilis,
+                    dignissimos ratione
+                    a
+                    nemo explicabo corporis molestias aut delectus optio tempore est alias adipisci possimus,
+                    eligendi
+                    id ad
+                    numquam perspiciatis.</p>
+                <p class="created-at"><strong>Créé le : </strong>18/02/2022</p>
+
+            </div>
+
         </div>
+
     </article>
-</section>
+    <a href="#" class="btn">Revenir sur tous les articles</a>
+
 
 </main>
 
-</body>
-</html>
+<?php 
+require_once './app/Views/frontend/layouts/footer.php'; ?>

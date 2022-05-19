@@ -25,7 +25,6 @@ body {
   font-size: 20px;
 }
 
-
 a {
   color: white;
   text-decoration: none;
@@ -39,7 +38,6 @@ a {
   display: grid;
   grid-template-columns: 250px 1fr;
 }
-
 
 h1 {
   padding: 30px;
@@ -57,7 +55,7 @@ h1 {
     rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   background-color: var(--bg-primary);
 }
-.admin{
+.admin {
   font-size: 3rem;
 }
 
@@ -94,7 +92,7 @@ h1 {
   width: 20px;
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
@@ -153,10 +151,9 @@ h1 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
-.table-read-email{
+.table-read-email {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  
 }
 
 .table-title {
@@ -175,7 +172,7 @@ h1 {
   padding: 15px 10px;
 }
 
-#read-email{
+#read-email {
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
@@ -183,14 +180,13 @@ h1 {
   background: var(--bg-primary);
   padding: 20px;
 }
-#read-email .username{
+#read-email .username {
   margin: 0 0 10px 0;
   font-size: 1.5rem;
 }
-#read-email li:nth-child(3){
+#read-email li:nth-child(3) {
   margin-top: 10px;
 }
-
 
 .table-item:nth-child(odd) {
   background: var(--bg-primary);
@@ -232,25 +228,22 @@ span.btn {
 
 .main-content {
   background-color: var(--bg-articles);
-  
+}
+#cke_content {
+  margin: 0 2.5rem 0 1.6rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 /* forumulaire création d'un article */
 
-/* #form-create-article{
-  
-} */
-
 #form-create-article select,
 #form-create-article input[type="text"],
-#form-create-article input[type="number"]{
+#form-create-article input[type="number"] {
   width: 400px;
   height: 35px;
   border: none;
   background: var(--white);
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px,
-  rgba(0, 0, 0, 0.1) 0px 2px 4px 0px,
-  rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   font-size: 1.2em;
   color: #555555;
   cursor: pointer;
@@ -264,15 +257,6 @@ span.btn {
 #form-create-article select option:hover {
   color: var(--primary);
 }
-#form-create-article textarea {
-  width: 400px;
-  height: 200px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-  font-size: 18px;
-
-}
-
-/* la barre de recherche */
 
 .table-results {
   display: list-item;
@@ -287,54 +271,50 @@ span.btn {
   margin: 20px;
 }
 
-#form-create-article .btn{
-  margin: 30px 15px ;
+#form-create-article .btn {
+  margin: 30px 15px;
 }
 
-
+.form-input-content p {
+  margin: 0 0 1rem 1.2rem;
+}
 
 /* page account admin  */
-#pageAccount a{
+#pageAccount a {
   color: black;
 }
-
-
 
 /* page new password  */
-#section-NewPassword form{
+#section-NewPassword form {
   width: 500px;
-	border: 2px solid #ccc;
-	padding: 30px;
-	background: #fff;
-	border-radius: 15px;
+  border: 2px solid #ccc;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
 }
-#section-NewPassword input{
+#section-NewPassword input {
   display: block;
-	border: 2px solid #ccc;
-	width: 95%;
-	padding: 10px;
-	margin: 10px auto;
-	border-radius: 5px;
+  border: 2px solid #ccc;
+  width: 95%;
+  padding: 10px;
+  margin: 10px auto;
+  border-radius: 5px;
 }
-#section-NewPassword label{
+#section-NewPassword label {
   color: #888;
-	font-size: 18px;
-	padding: 10px;
+  font-size: 18px;
+  padding: 10px;
 }
-#section-NewPassword a{
+#section-NewPassword a {
   color: black;
 }
-.msg-error{
-    background-color: #E01A1A;
-    color: white;
-    border-radius: 5px;
-    margin: 1rem 0;
-    padding: 0.5rem 1rem;
+.msg-error {
+  background-color: #e01a1a;
+  color: white;
+  border-radius: 5px;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
 }
-
-
-
-
 
 /* @media screen and (max-width: 1000px) {
   .global-container {
@@ -358,7 +338,6 @@ span.btn {
   .main-content {
     grid-column: 1;
     padding: 0;
-    
   }
 
   .table {
@@ -377,7 +356,7 @@ span.btn {
     text-align: center;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
   }
-  
+
   .nav-logo,
   .bloc-links {
     display: flex;
@@ -389,23 +368,20 @@ span.btn {
     text-align: center;
   }
 
-
   /* le formulaire de création d'un article */
 
   #form-create-article input[type="text"],
   #form-create-article input[type="number"],
   #form-create-article textarea,
-  #form-create-article select{
+  #form-create-article select {
     width: 95%;
     margin: 5px;
   }
-  #form-create-article label{
+  #form-create-article label {
     width: 130px;
     margin: 10px 0;
   }
-  #form-create-article input[type="checkbox"]{
+  #form-create-article input[type="checkbox"] {
     margin-top: 6px;
-
   }
-  
 }
