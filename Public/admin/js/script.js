@@ -10,7 +10,7 @@
 // la classe active
 // -----------------------------------------------------------------------------
 
-$(".block-link")
+$(".bloc-link")
 .filter(function () {
     return location.href == this.href;
 })

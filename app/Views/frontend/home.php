@@ -15,11 +15,9 @@ ob_start(); ?>
 <!-- affichage des 3 derniers articles (titre et genre) -->
 <?php foreach ($lastArticles as $article) { ?> 
     <article id="article">
-    <h3 title="<?= $article['outil'] ?>"><?= $article['outil'] ?></h3>
-    <!-- <p> <//?= $article['genre']; ?></p> -->
-    <a href="#">    <img src="./Public/img/deplacement-une-affaire-de-choix.jpeg" alt="Déplacement une affaire de choix">
-</a>
-    <a href="#" class="bouton-article">En voir plus</a>
+    <h3 title="<?= $article['name'] ?>"><?= $article['name'] ?></h3>
+    <img src="<?= $article['image'] ?>" alt="Déplacement une affaire de choix">
+    <a href="index.php?action=article&id=<?= $article['id'] ?>" class="bouton-article">En voir plus</a>
     </article>
 <?php } ?>
 

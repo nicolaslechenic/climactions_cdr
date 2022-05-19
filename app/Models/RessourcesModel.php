@@ -63,25 +63,23 @@ class RessourcesModel extends Manager
         $req->execute();
         $result = $req->fetch();
         $nbArticles = $result['nb_articles'];
-        
         return $nbArticles;
     }
 
 
     // afficher les articles par page 
-    public function perPageArticle($premierArticle, $parPage)
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT * 
-        FROM ressources
-        ORDER BY id
-        DESC LIMIT :premierarticle, :parpage");
-        $req->bindValue(':premierarticle', $premierArticle, \PDO::PARAM_INT);
-        $req->bindValue(':parpage', $parPage, \PDO::PARAM_INT);
-        $req->execute();
-        $articles = $req->fetchAll(\PDO::FETCH_ASSOC);
-        return $articles;
-    }
+    // public function perPageArticle()
+    // {
+    //     $bdd = $this->connect();
+    //     $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type` FROM ressources INNER JOIN `types` 
+    //     ON ressources.type_id = `types`.id
+    //     ORDER BY ressources.id DESC LIMIT :premierarticle, :parpage");
+    //     $req->bindValue(':premierarticle', $premierArticle, \PDO::PARAM_INT);
+    //     $req->bindValue(':parpage', $parPage, \PDO::PARAM_INT);
+    //     $req->execute();
+    //     $articles = $req->fetchAll(\PDO::FETCH_ASSOC);
+    //     return $articles;
+    // }
 
     // search an/several article 
     public function searchArticle($query)
@@ -115,15 +113,16 @@ class RessourcesModel extends Manager
     public function lastArticles()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT `id`, `name`, `content` FROM `ressources` ORDER BY `id` DESC LIMIT 3");
+        $req = $bdd->prepare("SELECT `id`, `name`, `image` FROM `ressources` ORDER BY `id` DESC LIMIT 3");
         $req->execute(array());
         $articles = $req->fetchAll();
         return $articles;
     }
+
     public function selectType()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,type FROM type");
+        $req = $bdd->prepare("SELECT id,type FROM types");
         $req->execute(array());
         $types = $req->fetchAll();
         return $types;
@@ -137,6 +136,7 @@ class RessourcesModel extends Manager
         $themes = $req->fetchAll();
         return $themes;
     }
+
     public function selectCondition()
     {
         $bdd = $this->connect();
@@ -145,6 +145,7 @@ class RessourcesModel extends Manager
         $conditions = $req->fetchAll();
         return $conditions;
     }
+
     public function selectLocation()
     {
         $bdd = $this->connect();
@@ -153,6 +154,7 @@ class RessourcesModel extends Manager
         $locations = $req->fetchAll();
         return $locations;
     }
+
     public function selectEditor()
     {
         $bdd = $this->connect();
@@ -161,6 +163,7 @@ class RessourcesModel extends Manager
         $editors = $req->fetchAll();
         return $editors;
     }
+    
     public function selectAuthor()
     {
         $bdd = $this->connect();
@@ -204,6 +207,17 @@ class RessourcesModel extends Manager
         $req->execute(array());
         $publics = $req->fetchAll();
         return $publics;
+    }
+
+    public function selectResources(){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type` FROM ressources INNER JOIN `types` 
+        ON ressources.type_id = `types`.id
+        ORDER BY ressources.id DESC" );
+        $req->execute(array());
+        $articles = $req->fetchAll();
+        // var_dump($articles);die;
+        return $articles;
     }
 
     public function insertBook($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$editor,$author,$public)
