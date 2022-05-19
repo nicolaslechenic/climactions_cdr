@@ -68,19 +68,18 @@ class RessourcesModel extends Manager
 
 
     // afficher les articles par page 
-    public function perPageArticle($premierArticle, $parPage)
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT * 
-        FROM ressources
-        ORDER BY id
-        DESC LIMIT :premierarticle, :parpage");
-        $req->bindValue(':premierarticle', $premierArticle, \PDO::PARAM_INT);
-        $req->bindValue(':parpage', $parPage, \PDO::PARAM_INT);
-        $req->execute();
-        $articles = $req->fetchAll(\PDO::FETCH_ASSOC);
-        return $articles;
-    }
+    // public function perPageArticle()
+    // {
+    //     $bdd = $this->connect();
+    //     $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type` FROM ressources INNER JOIN `types` 
+    //     ON ressources.type_id = `types`.id
+    //     ORDER BY ressources.id DESC LIMIT :premierarticle, :parpage");
+    //     $req->bindValue(':premierarticle', $premierArticle, \PDO::PARAM_INT);
+    //     $req->bindValue(':parpage', $parPage, \PDO::PARAM_INT);
+    //     $req->execute();
+    //     $articles = $req->fetchAll(\PDO::FETCH_ASSOC);
+    //     return $articles;
+    // }
 
     // search an/several article 
     public function searchArticle($query)

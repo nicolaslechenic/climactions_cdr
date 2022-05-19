@@ -41,14 +41,7 @@ try {
 
     // afficher page des articles 
     elseif ($_GET['action'] == 'pageArticle') {
-      $query = $_POST['query'] ?? "";
-      if (isset($_GET['page']) && !empty($_GET['page'])) {
-
-        $currentPage = (int) strip_tags($_GET['page']);
-      } else {
-        $currentPage = 1;
-      }
-      $controllerFront->pageArticle($query, $currentPage);
+      $controllerFront->pageArticle();
     }
 
 

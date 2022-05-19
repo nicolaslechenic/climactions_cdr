@@ -1,12 +1,11 @@
 </div>
 
 <footer>
-
 </footer>
 
 
 
 </body>
-<script src="./Public/admin/js/script.js"></script>
+<script src="Public\admin\js\script.js"></script>
 
 </html>
