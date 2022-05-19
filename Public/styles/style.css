@@ -334,6 +334,7 @@ a {
 
 .container-article .btn {
   color: var(--text-secondary);
+  border: 1px solid var(--primary);
   background-color: var(--primary);
   padding: 10px 20px;
   border-radius: 10px;
@@ -341,6 +342,10 @@ a {
   text-align: center;
   margin: 0 auto 2rem;
   width: 300px;
+}
+.container-article .btn:hover {
+  color: var(--primary);
+  background-color: var(--white);
 }
 
 /* ----------- footer --------------  */
@@ -500,7 +505,7 @@ a {
 .container-article .info h2{
   font-size: 1.5rem;
   padding: 0;
-  margin: 0 0 2rem 0;
+  margin: 1rem 0 2rem 0;
 }
 .container-article .line{
   border: 2px solid var(--primary);
