@@ -30,11 +30,12 @@
                         ?>
                     <article>
                         <div>
-                            <h2></h2>
+                            <h2><?=$article['name']?></h2>
+                            <img src="<?=$article['image']?>">
                             <p><?= $article['content']; ?></p>
                             <!-- <p><?= $article['theme']; ?></p> -->
                         </div>
-                        <a href="index.php?action=article&id=<?= $article['id']; ?>">Voir l'Article</a>
+                        <a href="index.php?action=article&id=<?=$article['id']?>&type=<?=$article['type_id']?>">Voir l'Article</a>
                     </article>
                     <?php }; ?>
                 </div>
@@ -77,3 +78,4 @@
         <script src="Public/scripts/isotope.js"></script>
     </body>
 </html>
+

@@ -13,11 +13,12 @@ class FrontController extends Controller {
 
 
     // fonction afficher page des articles avec pagination 
-    public function pageArticle()
+    public function pageArticle($query)
     {
         $articleManager = new \Climactions\Models\RessourcesModel();
         $types = $articleManager->selectType();
         $ressources = $articleManager->selectResources();
+        $search = $articleManager->searchArticle($query);
         require "app/Views/frontend/pageArticle.php";
     }
 

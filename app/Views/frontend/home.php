@@ -18,12 +18,12 @@ ob_start(); ?>
             <!-- affichage des 3 derniers articles (titre et genre) -->
             <?php foreach ($lastArticles as $article) { ?>
             <article id="article">
-                <h3 title="<?= $article['outil'] ?>"><?= $article['outil'] ?></h3>
+                <h3><?= $article['name'] ?></h3>
                 <!-- <p> <//?= $article['genre']; ?></p> -->
                 <a href="#"> <img src="./Public/img/deplacement-une-affaire-de-choix.jpeg"
                         alt="Déplacement une affaire de choix">
                 </a>
-                <a href="#" class="bouton-article">En voir plus</a>
+                <a href="index.php?action=article&id=<?=$article['id']?>&type=<?=$article['type_id']?>" class="bouton-article">En voir plus</a>
             </article>
             <?php } ?>
 
@@ -53,9 +53,10 @@ ob_start(); ?>
 
             <div class="cont-btn">
                 <div class="btn-nav left">
-                    <p>
-                        <</p> </div> <div class="btn-nav right">
-                            <p>></p>
+                    <p><</p> 
+                </div> 
+                <div class="btn-nav right">
+                    <p>></p>
                 </div>
             </div>
         </div>
