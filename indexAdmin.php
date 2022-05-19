@@ -43,7 +43,7 @@ try {
 
         // create an admin 
         elseif($_GET['action'] == 'creatAdmin') {
-            isConnect();
+            // isConnect();
             $lastname   = htmlspecialchars($_POST['lastname']);
             $firstname  = htmlspecialchars($_POST['firstname']);
             $email       = htmlspecialchars($_POST['email']);

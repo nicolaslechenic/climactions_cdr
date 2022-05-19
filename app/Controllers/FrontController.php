@@ -13,23 +13,11 @@ class FrontController extends Controller {
 
 
     // fonction afficher page des articles avec pagination 
-    public function pageArticle($query, $currentPage)
+    public function pageArticle()
     {
         $articleManager = new \Climactions\Models\RessourcesModel();
-        $nbarticles = $articleManager->countArticles();
-
-        // nb article par page 
-        $parPage = 8;
-
-        // calcul nb pages total 
-        $pages = ceil($nbarticles / $parPage);
-        
-        $premierArticle = ($currentPage * $parPage) - $parPage;
-        $articles = $articleManager->perPageArticle($premierArticle, $parPage);
-
-        // searchbar 
-        $search = $articleManager->searchArticle($query);
-    
+        $types = $articleManager->selectType();
+        $ressources = $articleManager->selectResources();
         require "app/Views/frontend/pageArticle.php";
     }
 
@@ -54,14 +42,39 @@ class FrontController extends Controller {
     public function contactPost($lastname, $firstname, $email, $phone, $object, $message)
     {
         $contactManager = new \Climactions\Models\ContactModel();
+        extract($_POST);
+		$validation = true;
+		$erreur = [];
+        $confirm = [];
         
 
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $Mail = $contactManager->postMail($lastname, $firstname, $email, $phone, $object, $message);
-            echo "Mail envoyé";
-        } else {
-            echo "échec";
+        if(empty($lastname) || empty($firstname) || empty($email) || empty($confirmEmail) || empty($phone) || empty($object) || empty($message)){
+            $validation = false;
+            $erreur[] = "Tous les champs sont requis !";
         }
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            $validation = false;
+            $erreur[] = "Ladresse email n'est pas valide !";
+        }
+        if($email != $confirmEmail){
+            $validation = false;
+            $erreur[] = "Vos e-mails ne sont pas identiques !";
+        }
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) && $email === $confirmEmail) {
+            $validation;
+            $Mail = $contactManager->postMail($lastname, $firstname, $email, $phone, $object, $message);
+
+            unset($_POST['lastname']);
+            unset($_POST['firstname']);
+            unset($_POST['email']);                 // vide/détruit ce qui est en mémoire
+            require 'app/Views/frontend/confirmSendEmail.php';
+        
+        }
+        else{
+            require $this->viewFrontend("contact");
+            return $erreur;
+        }
+        
     }
 }
 

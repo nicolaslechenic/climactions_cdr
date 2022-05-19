@@ -1,5 +1,7 @@
 <?php 
-require_once './app/Views/frontend/layouts/header.php'; ?>
+
+$title = "Clim' Actions";
+ob_start(); ?>
 
 
 <main id="contenu">
@@ -10,6 +12,7 @@ require_once './app/Views/frontend/layouts/header.php'; ?>
     <section id="articles">
         <div class="container">
             <h2>Nos nouveautés <img src="./Public/img/feuille-articles.svg" alt="image-feuille"> </h2>
+
 
             <!-- affichage des 3 derniers articles (titre et genre) -->
             <?php foreach ($lastArticles as $article) { ?>
@@ -23,6 +26,7 @@ require_once './app/Views/frontend/layouts/header.php'; ?>
             </article>
             <?php } ?>
 
+
             <a href="#" id="bouton-ressources">Découvrir les autres ressources</a>
         </div>
     </section>
@@ -32,16 +36,17 @@ require_once './app/Views/frontend/layouts/header.php'; ?>
             <h2>Agenda <img src="./Public/img/feuille-agenda.svg" alt="image-feuille"></h2>
             <div class="slider">
                 <div class="evenement active">
-                    <img src="./Public/img/icone-facebook (1).svg" alt="Déplacement une affaire de choix">
+                    <img src="./Public/img/icon-facebook.svg" alt="Déplacement une affaire de choix">
                     <p>1</p>
                 </div>
                 <div class="evenement">
-                    <img src="./Public/img/icone-twitter.svg" alt="">
+                    <img src="./Public/img/icon-twitter.svg" alt="">
                     <p>2</p>
                 </div>
                 <div class="evenement">
                     <img src="./Public/img/icone-linkedin.svg">
                     <p>3</p>
+
                 </div>
             </div>
 
@@ -56,5 +61,5 @@ require_once './app/Views/frontend/layouts/header.php'; ?>
     </section>
 </main>
 
-<?php 
-require_once './app/Views/frontend/layouts/footer.php'; ?>
+<?php $content = ob_get_clean();
+require "layouts/template.php";

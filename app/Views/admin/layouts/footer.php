@@ -6,6 +6,7 @@
 <script src="./Public/admin/js/form-categories.js"></script>
 <script>CKEDITOR.replace('editor1');</script>
 </body>
+<script src="Public\admin\js\script.js"></script>
 
 
 </html>

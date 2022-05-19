@@ -41,65 +41,39 @@
         </section>
 
 
-        <?php
-        else :
-        ?>
+        <?php else :?>
 
         <h1>Les Articles</h1>
 
         <div class="button-group filters-button-group">
-            <button class="button is-checked" data-filter="*">Toutes les catégories</button>
+            <button class="button is-checked" data-filter="">Toutes les catégories</button>
             
             <!-- TO DO : faire une boucle sur les boutons pour afficher les catégories --> 
-
-            <button class="button" data-filter=".game">Jeux</button>
-            <button class="button" data-filter=".movie">Films</button>
-            <button class="button" data-filter=".book">Livres</button>
+            <?php foreach ($types as $type) { ?>
+                <button class="button" data-filter=".<?= $type['type']?>"><?= $type['type']?></button>
+                <!-- <button class="button" data-filter=".movie">Films</button>
+                <button class="button" data-filter=".book">Livres</button> -->
+           <?php }?>
         </div>
         <section class="grid">
-            <?php foreach ($articles as $article) {
-                    ?>
-
+            <?php foreach ($ressources as $ressource) {?>
             <div >
-                <article class="article-container element-item all <?= $article['description'] ?> " data-category="">
-                    <h2 class="title"><?= $article['title'] ?></h2>
-                    <p class="content"><?= $article['content']; ?></p>
+                <article class="article-container element-item all <?= $ressource['type']?>">
+                    <h2 class="title"><?= $ressource['name'] ?></h2>
+                    <img src="<?= $ressource['image']?>">
+                    <p class="content"><?= $ressource['content'] ?></p>
                     <p class="read-more"><a class="read-more"
-                            href="index.php?action=article&id=<?= $article['id']; ?>">Voir l'Article</a></p>
+                            href="index.php?action=article&id=<?= $ressource['id']?>">Voir l'Article</a></p>
                 </article>
             </div>
-
-            <?php }; ?>
+            <?php } ?>
         </section>
-
-        <nav id="nav-pagination">
-            <ul class="pagination">
-                <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
-                <li class="page-item <?= ($currentPage == 1) ? "hidden" : "" ?>">
-                    <a href="index.php?action=pageArticle&page=<?= htmlspecialchars($currentPage - 1) ?>"
-                        class="page-link">Précédente</a>
-                </li>
-                <?php for ($page = 1; $page <= $pages; $page++) : ?>
-                <!-- Lien vers chacune des pages (activé si on se trouve sur la page correspondante) -->
-                <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>">
-                    <a href="index.php?action=pageArticle&page=<?= $page ?>" class="page-link"><?= $page ?></a>
-                </li>
-                <?php endfor ?>
-                <!-- Lien vers la page suivante (désactivé si on se trouve sur la dernière page) -->
-                <li class="page-item <?= ($currentPage == $pages) ? "hidden" : "" ?>">
-                    <a href="index.php?action=pageArticle&page=<?= htmlspecialchars($currentPage + 1) ?>"
-                        class="page-link">Suivante</a>
-                </li>
-            </ul>
-        </nav>
-        <?php
-        endif
-        ?>
+            
+        <?php endif ?>
 
         <footer>
 
         </footer>
-        <script src="./Public/scripts/main.js"></script>
-</body>
-
+        <script src="Public/scripts/isotope.js"></script>
+    </body>
 </html>

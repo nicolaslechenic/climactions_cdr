@@ -6,6 +6,7 @@
             <li><a href="#">Accueil</a></li>
             <li><a href="#">Ressources</a></li>
             <li><a href="#">évènements</a></li>
+            <li><a href="index.php?action=contact">Contact</a></li>
             <li><a href="#">Connexion</a></li>
         </ul>
         </div>
