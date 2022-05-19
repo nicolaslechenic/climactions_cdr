@@ -478,26 +478,33 @@ a {
   flex-wrap: wrap;
 }
 
+
 .container-article .img-size{
  width: 40%;
  
 }
 .container-article .img-size img {
   object-fit: cover;
-  width: auto;
-  height: 300px;
+  width: 100%;
+  height: auto;
 }
 .container-article .content {
   padding: 1rem;
-  width: 60%;
+  width: 100%;
 } 
 .container-article .info{
-  
+  width: 40%;
   margin: 0 auto;
+  
+}
+.container-article .info h2{
+  font-size: 1.5rem;
+  padding: 0;
+  margin: 0 0 2rem 0;
 }
 .container-article .line{
   border: 2px solid var(--primary);
-  border-radius: 1px;
+  margin: 1rem 0 2rem 0;
 }
 
 

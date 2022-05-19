@@ -13,20 +13,6 @@ require_once './app/Views/frontend/layouts/header.php'; ?>
                 <img src="./Public/img/deplacement-une-affaire-de-choix.jpeg" alt="">
             </figure>
 
-            <div class="content">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem facilis,
-                    dignissimos ratione
-                    a
-                    nemo explicabo corporis molestias aut delectus optio tempore est alias adipisci possimus,
-                    eligendi
-                    id ad
-                    numquam perspiciatis.</p>
-                <p class="created-at"><strong>Créé le : </strong>18/02/2022</p>
-                <div class="line"></div>
-            </div>
-
-            
-
             <!-- faire des conditions -->
             <section class="info">
                 <h2 class="title">Informations : </h2>
@@ -45,7 +31,22 @@ require_once './app/Views/frontend/layouts/header.php'; ?>
                 <p class="format">Format :</p>
                 <!-- la caution -->
                 <p class="format">Caution :</p>
+
             </section>
+
+
+            <div class="content">
+                <div class="line"></div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem facilis,
+                    dignissimos ratione
+                    a
+                    nemo explicabo corporis molestias aut delectus optio tempore est alias adipisci possimus,
+                    eligendi
+                    id ad
+                    numquam perspiciatis.</p>
+                <p class="created-at"><strong>Créé le : </strong>18/02/2022</p>
+
+            </div>
 
         </div>
 
