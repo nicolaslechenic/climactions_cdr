@@ -8,27 +8,27 @@ ob_start();
     <section class="bloc-contact-user">
 
         <div class="main-bloc-form">
-        <form action="index.php?action=contactPost" method="POST">
+            <form action="index.php?action=contactPost" method="POST">
                 <h1>Contactez-Nous</h1>
 
                 <?php if (isset($erreur)):
                 if($erreur): 
                     foreach($erreur as $e):
                     ?>
-        <p class="msg-error"><?= $e ?></p>
-        <?php
+                <p class="msg-error"><?= $e ?></p>
+                <?php
                 endforeach;
-           
+
                 endif;
             endif;
             ?>
                 <div class="bloc-form">
-                    <label for="lastname">Nom : *</label>
+                    <label for="lastname">Nom : </label>
                     <input type="text" id="lastname" name="lastname" placeholder="Votre Nom" value="<?php if (isset($_POST['lastname'])) echo $_POST['lastname']
                      ?>" required />
                 </div>
                 <div class="bloc-form">
-                    <label for="firstname">Prénom : *</label>
+                    <label for="firstname">Prénom :</label>
                     <input type="text" id="firstname" name="firstname" placeholder="Votre Prénom" value="<?php if (isset($_POST['firstname'])) echo $_POST['firstname']
                      ?>" required />
                 </div>
