@@ -101,6 +101,12 @@ a {
   transition: 0.3s;
 }
 
+/* container  */
+.container-contact{
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 .bouton-article {
   color: var(--text-secondary);
   background-color: var(--primary);
