@@ -41,7 +41,8 @@ try {
 
     // afficher page des articles 
     elseif ($_GET['action'] == 'pageArticle') {
-      $controllerFront->pageArticle();
+      $query = $_POST['query'] ?? "";
+      $controllerFront->pageArticle($query);
     }
 
 

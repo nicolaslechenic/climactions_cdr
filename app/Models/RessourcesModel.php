@@ -5,46 +5,6 @@ namespace Climactions\Models;
 class RessourcesModel extends Manager
 {
 
-    public function filtreFilm()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare('SELECT * FROM document WHERE `type` LIKE "film_multimedia%"');
-        $req->execute(array());
-        return $req;
-    }
-
-    public function filtreLivre()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare('SELECT * FROM document WHERE `type` LIKE "livre%"');
-        $req->execute(array());
-        return $req;
-    }
-
-    public function filtreJeu()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare('SELECT * FROM document WHERE `type` LIKE "jeu%"');
-        $req->execute(array());
-        return $req;
-    }
-
-    public function filtreOutil()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare('SELECT * FROM document WHERE `type` LIKE "expositions%"');
-        $req->execute(array());
-        return $req;
-    }
-
-    public function afficherRessources()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare('SELECT * FROM document');
-        $req->execute(array());
-        return $req;
-    }
-
     public function afficherDetails($idRessources)
     {
         $bdd = $this->connect();
@@ -55,31 +15,6 @@ class RessourcesModel extends Manager
 
 
 
-    // compte le nombre d'articles 
-    public function countArticles()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT COUNT(id) AS nb_articles FROM ressources");
-        $req->execute();
-        $result = $req->fetch();
-        $nbArticles = $result['nb_articles'];
-        return $nbArticles;
-    }
-
-
-    // afficher les articles par page 
-    // public function perPageArticle()
-    // {
-    //     $bdd = $this->connect();
-    //     $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type` FROM ressources INNER JOIN `types` 
-    //     ON ressources.type_id = `types`.id
-    //     ORDER BY ressources.id DESC LIMIT :premierarticle, :parpage");
-    //     $req->bindValue(':premierarticle', $premierArticle, \PDO::PARAM_INT);
-    //     $req->bindValue(':parpage', $parPage, \PDO::PARAM_INT);
-    //     $req->execute();
-    //     $articles = $req->fetchAll(\PDO::FETCH_ASSOC);
-    //     return $articles;
-    // }
 
     // search an/several article 
     public function searchArticle($query)
@@ -113,7 +48,7 @@ class RessourcesModel extends Manager
     public function lastArticles()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT `id`, `name`, `image` FROM `ressources` ORDER BY `id` DESC LIMIT 3");
+        $req = $bdd->prepare("SELECT `id`, type_id, `name`, `image` FROM `ressources` ORDER BY `id` DESC LIMIT 3");
         $req->execute(array());
         $articles = $req->fetchAll();
         return $articles;
