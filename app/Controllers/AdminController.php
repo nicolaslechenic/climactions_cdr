@@ -69,6 +69,14 @@ class AdminController extends Controller {
 
 	// les méthodes de la page Email.php
 
+	public function home() {
+
+        $emailManager = new \Climactions\Models\AdminModel();
+        $emails = $emailManager->emails();
+        require "app/Views/admin/email.php";
+    
+    }
+
 	public function readEmail()
 	{
 		require $this->viewAdmin('readEmail');
