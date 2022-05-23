@@ -105,7 +105,7 @@ a {
 .container-contact{
   max-width: 800px;
   margin: 0 auto;
-}
+} 
 
 .bouton-article {
   color: var(--text-secondary);
@@ -161,6 +161,7 @@ a {
 #bandeau #navigation-bandeau {
   display: flex;
   justify-content: space-between;
+  width: 90%;
 }
 
 #bandeau #navigation-bandeau img {
@@ -206,8 +207,7 @@ a {
 #bandeau #navigation-bandeau #menu + img {
   width: 45px;
   height: 45px;
-  /* margin-top: 20px; */
-  margin: 20px 15px 20px 25px;
+  margin-top: 20px;
   cursor: pointer;
 }
 
@@ -313,6 +313,91 @@ a {
   margin: 0 15px;
   cursor: pointer;
 }
+
+/* ---------------Page de tout les articles-------- */
+
+#bar-search{
+  width: 90%;
+  margin: auto;
+  margin-top: 15px;
+}
+
+/* ---- isotope ---- */
+
+/* clear fix */
+.grid:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.grid{
+  width: 100%;
+}
+
+/* ---- .element-item ---- */
+
+.element-item {
+  color: #262524;
+}
+
+.element-item > * {
+  margin: 0;
+  padding: 0;
+}
+
+.element-item .cadre_image{
+  width:100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.element-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: .2s; 
+}
+
+.element-item img:hover {
+  transform: scale(1.2);
+}
+
+.element-item .date{
+  width: 120px;
+  background-color: var(--primary);
+  margin-top: 15px;
+  padding: auto;
+  text-align: center;
+}
+
+.element-item .date p{
+  color: white;
+}
+
+.element-item .title {
+  margin-top: 15px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 30px;
+  font-weight: normal;
+  text-align: start;
+  color: black;
+}
+
+.element-item .read-more {
+  margin: auto;
+  margin-top: 15px;
+  height: 25px;
+  width: 150px;
+  font-size: 1.2rem;
+  background-color: var(--primary);
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  
+}
+
 /* -------------- page un article --------------  */
 
 .container-article .article {
@@ -367,11 +452,10 @@ a {
 }
 
 #pied .container .item-footer {
-  /* border: 1px solid red; */
   flex: 1 1 340px;
   text-align: center;
   padding: 20px 0;
-  /* align-self: center; */
+  
 }
 
 #pied h2 {
@@ -575,6 +659,7 @@ textarea{
     display: block;
     margin-top: 20px;
   }
+
   /* -------------- page un article --------------  */
 
 .container-article .article {
@@ -632,7 +717,18 @@ textarea{
 }
   
 }
+@media screen and (min-width: 800px) {
 
+/* --------------page de tout les article--------- */
+
+  .ressource .element-item{
+    width: 45%;
+  }
+
+  .element-item{
+    padding: 2%;
+  }
+}
 @media screen and (min-width: 1024px) {
   /* --------------- header -----------------  */
   #bandeau #navigation-bandeau img {
@@ -828,83 +924,3 @@ textarea{
 .button-group .button:last-child {
   border-radius: 0 0.5em 0.5em 0;
 }
-
-/* ---- isotope ---- */
-
-.grid {
-  border: 1px solid #333;
-}
-
-/* clear fix */
-.grid:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-/* ---- .element-item ---- */
-
-.element-item {
-  position: relative;
-  float: left;
-  width: 400px;
-  height: auto;
-  margin: 5px;
-  padding: 10px;
-  background: #888;
-  color: #262524;
-}
-
-.element-item > * {
-  margin: 0;
-  padding: 0;
-}
-
-.element-item img {
-  width:100%;
-  height: auto;
-  object-fit: cover;
-}
-
-.element-item .title {
-  position: absolute;
-  left: 15px;
-  top: 5px;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 30px;
-  font-weight: normal;
-}
-
-.element-item .content {
-  position: absolute;
-  left: 10px;
-  top: 45px;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-}
-
-.element-item .read-more {
-  position: absolute;
-  right: 8px;
-  top: 170px;
-}
-
-.element-item.all {
-  background: #f00;
-  background: hsl(0, 100%, 50%);
-}
-.element-item.game {
-  background: #f80;
-  background: hsl(36, 100%, 50%);
-}
-.element-item.movie {
-  background: #ff0;
-  background: hsl(72, 100%, 50%);
-}
-.element-item.book {
-  background: #00f;
-  background: hsl(108, 100%, 50%);
-}
-

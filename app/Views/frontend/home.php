@@ -28,7 +28,7 @@ ob_start(); ?>
             <?php } ?>
 
 
-            <a href="#" id="bouton-ressources">Découvrir les autres ressources</a>
+            <a href="index.php?action=pageArticle" id="bouton-ressources">Découvrir les autres ressources</a>
         </div>
     </section>
 

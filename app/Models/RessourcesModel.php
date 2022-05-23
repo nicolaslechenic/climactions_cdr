@@ -146,7 +146,7 @@ class RessourcesModel extends Manager
 
     public function selectResources(){
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type` FROM ressources INNER JOIN `types` 
+        $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type`,DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` FROM ressources INNER JOIN `types` 
         ON ressources.type_id = `types`.id
         ORDER BY ressources.id DESC" );
         $req->execute(array());

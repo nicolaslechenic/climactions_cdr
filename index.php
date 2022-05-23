@@ -34,7 +34,7 @@ try {
   if (isset($_GET['action']) && !empty($_GET['action'])) {
 
     // afficher page home
-    if($_GET['action'] == 'home'){
+    if ($_GET['action'] == 'home') {
       $controllerFront->home();
     }
 
@@ -51,14 +51,14 @@ try {
       $controllerFront->article($_GET['id']);
     }
 
-    
+
     // afficher page contact 
-    elseif($_GET['action'] == 'contact'){
+    elseif ($_GET['action'] == 'contact') {
       $controllerFront->contact();
-  }
-    
+    }
+
     // envoi mail en BDD 
-    elseif($_GET['action'] == 'contactPost'){
+    elseif ($_GET['action'] == 'contactPost') {
       $lastname = htmlspecialchars($_POST['lastname']);
       $firstname = htmlspecialchars($_POST['firstname']);
       $email = htmlspecialchars($_POST['email']);
@@ -67,26 +67,20 @@ try {
       $message = htmlspecialchars($_POST['message']);
 
       if (!empty($lastname) && (!empty($firstname) && (!empty($email) && (!empty($phone) && (!empty($object) && (!empty($message))))))) {
-      $controllerFront->contactPost($lastname, $firstname, $email, $phone, $object, $message);
-    } else {
-      throw new Exception('Tous les champs ne sont pas remplis!!');
+        $controllerFront->contactPost($lastname, $firstname, $email, $phone, $object, $message);
+      } else {
+        throw new Exception('Tous les champs ne sont pas remplis!!');
+      }
     }
+  } else {
+    $controllerFront->home();
   }
- 
-  
-        
-} else{
-  $controllerFront->home();
-}
-
-
 } catch (Exception $e) {
   eCatcher($e);
   if ($e->getCode === 404) {
     die('Erreur : ' . $e->getMessage());
   } else {
     header("app/Views/errors/error.php");
-
   }
 } catch (Error $e) {
   eCatcher($e);

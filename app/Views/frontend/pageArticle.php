@@ -1,81 +1,64 @@
-<!DOCTYPE html>
-<html lang="fr">
+<?php
+$title = "Clim' Actions";
+$description = "La page d'accueil";
+ob_start(); ?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="public/styles/style.css">
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
-    <title>Page des Articles</title>
-</head>
-
-<body>
-
-    <h1>article exemple pagination</h1>
-
-    <section id="bar-search">
-        <?php
-        include_once "layouts/searchbar.php";
-        ?>
-        <?php
-        if (isset($search) && !empty($search) && isset($_GET['search'])) :
-        ?>
+<section id="bar-search">
+    <?php
+    include_once "layouts/searchbar.php";
+    ?>
+    <?php
+    if (isset($search) && !empty($search) && isset($_GET['search'])) :
+    ?>
 
         <section>
-            <h2>Votre recherche</h1>
-                <div class="article-container">
+            <h1>Votre recherche</h1>
+            <div class="article-container">
 
-                    <?php foreach ($search as $article) {
-                        ?>
+                <?php foreach ($search as $article) {
+                ?>
                     <article>
                         <div>
-                            <h2><?=$article['name']?></h2>
-                            <img src="<?=$article['image']?>">
+                            <h2><?= $article['name'] ?></h2>
+                            <img src="<?= $article['image'] ?>">
                             <p><?= $article['content']; ?></p>
                             <!-- <p><?= $article['theme']; ?></p> -->
                         </div>
-                        <a href="index.php?action=article&id=<?=$article['id']?>&type=<?=$article['type_id']?>">Voir l'Article</a>
+                        <a href="index.php?action=article&id=<?= $article['id'] ?>&type=<?= $article['type_id'] ?>">Voir l'Article</a>
                     </article>
-                    <?php }; ?>
-                </div>
+                <?php }; ?>
+            </div>
         </section>
 
 
-        <?php else :?>
+    <?php else : ?>
 
         <h1>Les Articles</h1>
 
         <div class="button-group filters-button-group">
             <button class="button is-checked" data-filter="">Toutes les catégories</button>
-            
-            <!-- TO DO : faire une boucle sur les boutons pour afficher les catégories --> 
             <?php foreach ($types as $type) { ?>
-                <button class="button" data-filter=".<?= $type['type']?>"><?= $type['type']?></button>
-                <!-- <button class="button" data-filter=".movie">Films</button>
-                <button class="button" data-filter=".book">Livres</button> -->
-           <?php }?>
+                <button class="button" data-filter=".<?= $type['type'] ?>"><?= $type['type'] ?></button>
+            <?php } ?>
         </div>
         <section class="grid">
-            <?php foreach ($ressources as $ressource) {?>
-            <div >
-                <article class="article-container element-item all <?= $ressource['type']?>">
-                    <h2 class="title"><?= $ressource['name'] ?></h2>
-                    <img src="<?= $ressource['image']?>">
-                    <p class="content"><?= $ressource['content'] ?></p>
-                    <p class="read-more"><a class="read-more"
-                            href="index.php?action=article&id=<?= $ressource['id']?>">Voir l'Article</a></p>
-                </article>
-            </div>
+            <?php foreach ($ressources as $ressource) { ?>
+                <div class="ressource">
+                    <article class="article-container element-item all <?= $ressource['type'] ?>">
+                        <div class="cadre_image">
+                            <img src="<?= $ressource['image'] ?>">
+                        </div>
+                        <div class="date"><p><?=$ressource['date']?></p></div>
+                        <h2 class="title"><?= $ressource['name'] ?></h2>
+                        <div class="read-more"><a class="read-more" href="index.php?action=article&id=<?= $ressource['id'] ?>">Voir l'Article</a></div>
+                    </article>
+                </div>
             <?php } ?>
         </section>
-            
-        <?php endif ?>
+    <?php endif ?>
+</section>
 
-        <footer>
-
-        </footer>
-        <script src="Public/scripts/isotope.js"></script>
-    </body>
-</html>
-
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.js"></script>
+<script src="Public/scripts/isotope.js"></script>
+<?php $content = ob_get_clean();
+require "layouts/template.php";
