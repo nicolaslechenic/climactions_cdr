@@ -316,10 +316,33 @@ a {
 
 /* ---------------Page de tout les articles-------- */
 
+#ressources_title{
+  margin-top: 2rem;
+}
+
 #bar-search{
   width: 90%;
-  margin: auto;
-  margin-top: 15px;
+}
+
+.bar-search {
+  margin:2rem auto ;
+  text-align: center;
+}
+.input-search {
+   width: 220px;
+  height: 30px;
+  text-align: center;
+}
+.btn-search {
+  width: 50px;
+  height: 30px;
+  border: 1px solid var(--primary);
+  background-color: var(--primary);
+  color: var(--white);
+}
+.btn-search:hover {
+  background-color: var(--white);
+  color: var(--primary);
 }
 
 /* ---- isotope ---- */
@@ -339,6 +362,7 @@ a {
 
 .element-item {
   color: #262524;
+  margin: 15px auto;
 }
 
 .element-item > * {
@@ -376,7 +400,7 @@ a {
 }
 
 .element-item .title {
-  margin-top: 15px;
+  margin: 15px auto;
   text-transform: none;
   letter-spacing: 0;
   font-size: 30px;
@@ -387,7 +411,6 @@ a {
 
 .element-item .read-more {
   margin: auto;
-  margin-top: 15px;
   height: 25px;
   width: 150px;
   font-size: 1.2rem;
@@ -720,14 +743,15 @@ textarea{
 @media screen and (min-width: 800px) {
 
 /* --------------page de tout les article--------- */
-
-  .ressource .element-item{
-    width: 45%;
+  .grid{
+    justify-items: stretch;
   }
 
   .element-item{
-    padding: 2%;
+    width: 46%;
+    margin: 15px 2%;
   }
+
 }
 @media screen and (min-width: 1024px) {
   /* --------------- header -----------------  */
@@ -753,7 +777,7 @@ textarea{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 55%;
+    width: 70%;
   }
 
   .hidden {
@@ -840,6 +864,13 @@ textarea{
     margin: 30px auto 50px;
   }
 
+  /* pageArticle.php tous les articles */
+
+  .element-item{
+    width: 31.3%;
+    margin: 15px 1%;
+  }
+
   /* ------------- footer -----------  */
   #pied #menu-bas {
     order: 2;
@@ -860,7 +891,7 @@ textarea{
 
 }
 
-/* pageArticle.php tous les articles */
+
 
 /* ---- button ---- */
 

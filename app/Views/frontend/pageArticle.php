@@ -2,8 +2,8 @@
 $title = "Clim' Actions";
 $description = "La page d'accueil";
 ob_start(); ?>
-
-<section id="bar-search">
+<h1 id="ressources_title">Les Articles</h1>
+<section id="bar-search" class="container">
     <?php
     include_once "layouts/searchbar.php";
     ?>
@@ -33,7 +33,7 @@ ob_start(); ?>
 
     <?php else : ?>
 
-        <h1>Les Articles</h1>
+        
 
         <div class="button-group filters-button-group">
             <button class="button is-checked" data-filter="">Toutes les catégories</button>
@@ -43,7 +43,6 @@ ob_start(); ?>
         </div>
         <section class="grid">
             <?php foreach ($ressources as $ressource) { ?>
-                <div class="ressource">
                     <article class="article-container element-item all <?= $ressource['type'] ?>">
                         <div class="cadre_image">
                             <img src="<?= $ressource['image'] ?>">
