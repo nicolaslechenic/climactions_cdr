@@ -112,7 +112,7 @@ class AdminModel extends Manager
 
     /* ----------------------------------------------------------------------*/
 
-    // gestion des emails
+    // gestion des emails (page email.php)
 
     // afficher tous les emails
 
@@ -147,6 +147,19 @@ class AdminModel extends Manager
         $email = $req->fetch();
         return $email;
     }
+
+    /* ----------------------------------------------------------------------*/
+
+    // gestion des infos (page addressBook.php)
+
+    public function deleteInfo($id){
+        $bdd = $this->connect();
+        $req = $bdd->prepare('DELETE FROM `contact` 
+                              WHERE id = ?');
+        $req->execute(array($id));
+    }
+
+
     
 
    
