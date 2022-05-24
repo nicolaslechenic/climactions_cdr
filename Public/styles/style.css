@@ -124,33 +124,7 @@ a {
   background-color: #03b86c;
 }
 
-/* --------PAGINATION-----------  */
-#nav-pagination {
-  text-align: center;
-  margin: 1rem 0;
-}
 
-.pagination {
-  display: inline-flex;
-  margin-bottom: 2rem;
-}
-
-.pagination .page-item a {
-  transition: all 0.1s ease-in-out;
-  background-color: #f7f7f8;
-  padding: 10px;
-  border: solid 1px aqua;
-}
-
-.pagination .active a,
-.pagination .page-item a:hover {
-  background-color: blue;
-  color: white;
-}
-
-.hidden {
-  display: none;
-}
 
 /* --------------- header --------------------  */
 #bandeau {

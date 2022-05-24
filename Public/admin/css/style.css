@@ -316,6 +316,36 @@ span.btn {
   padding: 0.5rem 1rem;
 }
 
+/* --------------------PAGE EMAIL.PHP-------------  */
+/* --------PAGINATION-----------  */
+#nav-pagination {
+  text-align: center;
+  margin: 3rem 0 1rem;
+}
+
+.pagination {
+  display: inline-flex;
+  margin-bottom: 2rem;
+}
+
+.pagination .page-item a {
+  transition: all 0.1s ease-in-out;
+  background-color: #f7f7f8;
+  padding: 5px 8px;
+  border: solid 1px var(--hover);
+  color: black;
+}
+
+.pagination .active a,
+.pagination .page-item a:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
 /* @media screen and (max-width: 1000px) {
   .global-container {
     grid-template-columns: 1fr;
