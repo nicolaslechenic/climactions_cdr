@@ -10,7 +10,6 @@ ob_start(); ?>
     <?php
     if (isset($search) && !empty($search) && isset($_GET['search'])) :
     ?>
-
         <section>
             <h1>Votre recherche</h1>
             <div class="article-container">

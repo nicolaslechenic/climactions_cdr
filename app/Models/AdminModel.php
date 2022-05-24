@@ -110,14 +110,46 @@ class AdminModel extends Manager
         $req->execute(array($id));
     }
 
+    /* ----------------------------------------------------------------------*/
+
+    // gestion des emails
+
+    // afficher tous les emails
+
     public function emails()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT `lastname`, `firsname`, `email`, `phone` 
+        $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `phone`, `object`, `message`, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
                               FROM `contact` 
-                              ORDER BY `lastname` DESC");
+                              ORDER BY `firstname` ASC");
         $req->execute(array());
         $emails = $req->fetchAll();
         return $emails;
     }
+
+    // supprimer un email
+
+    public function deleteEmail($id){
+        $bdd = $this->connect();
+        $req = $bdd->prepare('DELETE FROM `contact` 
+                              WHERE id = ?');
+        $req->execute(array($id));
+    }
+
+    // lire un email
+
+    public function readEmail($id){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `phone`, `object`, `message`, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
+                             FROM `contact`
+                              WHERE id = ?");
+        $req->execute(array($id));
+        $email = $req->fetch();
+        return $email;
+    }
+    
+
+   
+    
+    
 }

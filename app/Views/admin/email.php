@@ -27,24 +27,13 @@ function getExcerpt()
     
     <ul class="table-item">
         <li><?= $email["firstname"] . " " . $email["lastname"] ?></li>
-        <li><?= getExcerpt() ?></li>
-        <li>date de création</li>
+        <li><?= $email["message"]?></li>
+        <li><?= $email["date"]?></li>
         <li>
-            <span class="btn"><a href="indexAdmin.php?action=readEmail">Lire</a></span>
-            <span class="btn"><a href="#">Supprimer</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=readEmail&id=<?= $email['id'] ?>">Lire</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=deleteEmail&id=<?= $email['id'] ?>">Supprimer</a></span>
         </li>
-    </ul>
-    
-    <!-- <ul class="table-item">
-        <li>Élise Émoi</li>
-        <li>contenu de l'email</li>
-        <li>date de création</li>
-        <li>
-            <span class="btn"><a href="#">Lire</a></span>
-            <span class="btn"><a href="#">Supprimer</a></span>
-        </li>
-    </ul> -->
-
+    </ul> 
 </div>
 <?php }; ?>
 <?php $content = ob_get_clean(); ?>

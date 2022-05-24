@@ -37,6 +37,8 @@ class AdminController extends Controller {
 	}
 	public function emailAdmin()
 	{
+		$emailsManager = new \Climactions\Models\AdminModel();
+        $emails = $emailsManager->emails();
 		require $this->viewAdmin('email');
 	}
 	public function resourceAdmin()
@@ -69,23 +71,21 @@ class AdminController extends Controller {
 
 	// les méthodes de la page Email.php
 
-	public function home() {
-
-        $emailManager = new \Climactions\Models\AdminModel();
-        $emails = $emailManager->emails();
-        require "app/Views/admin/email.php";
-    
-    }
-
-	public function readEmail()
+	public function readEmail($id)
 	{
+		$email = new \Climactions\Models\AdminModel();
+		$readEmail = $email->readEmail($id);  
 		require $this->viewAdmin('readEmail');
 	}
-	public function deleteEmail()
+	public function deleteEmail($id)
 	{
-		require $this->viewAdmin('delete');
-	}
+		$email = new \Climactions\Models\AdminModel();
+		$deleteEmail = $email->deleteEmail($id);
+		header('Location: indexAdmin.php?action=emailAdmin');
 	
+	}
+
+
 
 	public function connexionAdmin() {
 		require $this->viewAdmin('connexionAdmin');

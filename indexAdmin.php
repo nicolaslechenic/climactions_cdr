@@ -179,15 +179,18 @@ try {
           isConnect();
           $backController->deleteResource();
         }
+
         // les méthodes de la page email.php
         elseif($_GET['action'] == 'readEmail'){
-          isConnect();
-          $backController->readEmail();
+          // isConnect();
+          $id = $_GET['id'];
+          $backController->readEmail($id);
         }
         elseif($_GET['action'] == 'deleteEmail'){
           isConnect();
-          $backController->deleteEmail();
-        }
+          $id = $_GET['id'];
+          $backController->deleteEmail($id);
+        } 
 
         else{
           require "app/Views/errors/pageNotFound.php";
