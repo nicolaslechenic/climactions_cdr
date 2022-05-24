@@ -22,31 +22,19 @@ function getExcerpt()
 </div>
 
 <!-- TO DO : Faire une boucle pour afficher les emails -->
-
+<?php foreach ($emails as $email) { ?>
 <div class="table-results">
-
+    
     <ul class="table-item">
-        <li>Ali Gator</li>
-        <!-- TO DO : faire une méthode getExcerpt pour le contenu -->
-        <li><?= getExcerpt() ?></li>
-        <li>date de création</li>
+        <li><?= $email["firstname"] . " " . $email["lastname"] ?></li>
+        <li><?= $email["message"]?></li>
+        <li><?= $email["date"]?></li>
         <li>
-            <span class="btn"><a href="indexAdmin.php?action=readEmail">Lire</a></span>
-            <span class="btn"><a href="#">Supprimer</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=readEmail&id=<?= $email['id'] ?>">Lire</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=deleteEmail&id=<?= $email['id'] ?>">Supprimer</a></span>
         </li>
-    </ul>
-
-    <ul class="table-item">
-        <li>Élise Émoi</li>
-        <li>contenu de l'email</li>
-        <li>date de création</li>
-        <li>
-            <span class="btn"><a href="#">Lire</a></span>
-            <span class="btn"><a href="#">Supprimer</a></span>
-        </li>
-    </ul>
-
+    </ul> 
 </div>
-
+<?php }; ?>
 <?php $content = ob_get_clean(); ?>
 <?php require 'layouts/dashboard.php'; ?>
