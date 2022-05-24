@@ -68,7 +68,7 @@ class AdminController extends Controller {
 	public function addressBookAdmin()
 	{
 		$infoManager = new \Climactions\Models\AdminModel();
-        $infos = $infoManager->emails();
+        $infos = $infoManager->infos();
 		require $this->viewAdmin('addressBook');
 	}
 
