@@ -6,8 +6,6 @@
     <h3 class="table-title">Contenu de l'email</h3>
 </div>
 
-<!-- TO DO : Récupérer l'email grace à son ID -->
-
 <div class="table-results">
 
     <ul id="read-email">
@@ -17,8 +15,7 @@
         <li><strong><?= $readEmail["date"]?></strong></li>
         <li>
             <span class="btn"><a href="indexAdmin.php?action=emailAdmin">Revenir</a></span>
-            <!-- TO DO : faire une méthode delete() -->
-            <span class="btn"><a href="#">Supprimer</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=deleteEmail&id=<?= $readEmail['id'] ?>">Supprimer</a></span>
         </li>
 
     </ul>
