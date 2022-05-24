@@ -170,6 +170,11 @@ h1 {
   grid-template-columns: repeat(4, 1fr);
   align-items: center;
   padding: 15px 10px;
+  
+  
+}
+.table-item li{
+  margin: 10px;
 }
 
 #read-email {
@@ -187,8 +192,11 @@ h1 {
 #read-email li:nth-child(3) {
   margin-top: 10px;
 }
+.table-item:nth-child(odd){
+  background: var(--bg-primary);
+}
 
-.table-item:nth-child(odd) {
+.table-results:nth-of-type(2n+1) .table-item{
   background: var(--bg-primary);
 }
 

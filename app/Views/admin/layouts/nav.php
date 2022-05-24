@@ -23,10 +23,6 @@
                     <i class="fa-solid fa-envelope"></i>
                     <span class="nav-links">Email</span>
                 </a>
-                <a href="indexAdmin.php?action=opinionAdmin" class="bloc-link">
-                    <i class="fa-solid fa-thumbs-up"></i>
-                    <span class="nav-links">Avis</span>
-                </a>
                 <a href="indexAdmin.php?action=resourceAdmin" class="bloc-link">
                     <i class="fa-solid fa-database"></i>
                     <span class="nav-links">Ressources</span>

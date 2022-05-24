@@ -21,9 +21,8 @@ function getExcerpt()
     <h3 class="table-title">Action</h3>
 </div>
 
-<!-- TO DO : Faire une boucle pour afficher les emails -->
-<?php foreach ($emails as $email) { ?>
 <div class="table-results">
+<?php foreach ($emails as $email) { ?>
     
     <ul class="table-item">
         <li><?= $email["firstname"] . " " . $email["lastname"] ?></li>
@@ -34,7 +33,10 @@ function getExcerpt()
             <span class="btn"><a href="indexAdmin.php?action=deleteEmail&id=<?= $email['id'] ?>">Supprimer</a></span>
         </li>
     </ul> 
+    
+    <?php }; ?>
 </div>
+
 <?php }; ?>
 
 <nav id="nav-pagination">
@@ -56,6 +58,7 @@ function getExcerpt()
         </li>
     </ul>
 </nav>
+
 
 <?php $content = ob_get_clean(); ?>
 <?php require 'layouts/dashboard.php'; ?>

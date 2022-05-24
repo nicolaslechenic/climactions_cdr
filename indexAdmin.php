@@ -140,6 +140,7 @@ try {
         
         // go to page home admin 
         // les pages de l'administration
+
         elseif($_GET['action'] == 'homeAdmin'){
           isConnect();
           $backController->homeAdmin();
@@ -170,12 +171,9 @@ try {
           isConnect();
           $backController->addressBookAdmin();
         }
-        elseif($_GET['action'] == 'opinionAdmin'){
-          isConnect();
-          $backController->opinionAdmin();
-        }
+        
+        // les méthodes de la page Resource.php
 
-        // les méthodes de la page Resource.php (CRUD)
         elseif($_GET['action'] == 'createResource'){
           isConnect();
           $backController->createResource();
@@ -190,6 +188,7 @@ try {
         }
 
         // les méthodes de la page email.php
+
         elseif($_GET['action'] == 'readEmail'){
           // isConnect();
           $id = $_GET['id'];
@@ -200,6 +199,14 @@ try {
           $id = $_GET['id'];
           $backController->deleteEmail($id);
         } 
+
+        // les méthodes de la page addressBook.php
+
+        elseif($_GET['action'] == 'deleteInfo'){
+          isConnect();
+          $id = $_GET['id'];
+          $backController->deleteInfo($id);
+        }
 
         else{
           require "app/Views/errors/pageNotFound.php";

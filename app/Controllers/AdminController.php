@@ -31,12 +31,15 @@ class AdminController extends Controller {
 	{
 		require $this->viewAdmin('account');
 	}
+
 	public function homeAdmin()
 	{
 		require $this->viewAdmin('home');
 	}
 
+
 	 public function emailAdmin($currentPage)
+
 	{
 		$emailsManager = new \Climactions\Models\AdminModel();
         // $emails = $emailsManager->emails();
@@ -56,21 +59,20 @@ class AdminController extends Controller {
 
 		require $this->viewAdmin('email');
 	}
-	
+
 	public function resourceAdmin()
 	{
 		require $this->viewAdmin('resource');
 	}
-	public function opinionAdmin()
-	{
-		require $this->viewAdmin('opinions');
-	}
+
 	public function addressBookAdmin()
 	{
+		$infoManager = new \Climactions\Models\AdminModel();
+        $infos = $infoManager->emails();
 		require $this->viewAdmin('addressBook');
 	}
 
-	// les méthodes de la page Resource.php (CRUD)
+	// les méthodes de la page Resource.php 
 
 	public function createResource()
 	{
@@ -98,10 +100,16 @@ class AdminController extends Controller {
 		$email = new \Climactions\Models\AdminModel();
 		$deleteEmail = $email->deleteEmail($id);
 		header('Location: indexAdmin.php?action=emailAdmin');
-	
 	}
 
+	// les méthodes de la page addressBook.php
 
+	public function deleteInfo($id)
+	{
+		$info = new \Climactions\Models\AdminModel();
+		$deleteInfo = $info->deleteInfo($id);
+		header('Location: indexAdmin.php?action=addressBookAdmin');
+	}
 
 	public function connexionAdmin() {
 		require $this->viewAdmin('connexionAdmin');
