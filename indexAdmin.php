@@ -17,7 +17,7 @@ $dotenv->load();
 // set_error_handler('errorHandler');
 
 function eCatcher($e) {
-  if($_ENV["APP_ENV"] == "") {
+  if($_ENV["APP_ENV"] == "dev") {
     $whoops = new \Whoops\Run;
     $whoops->allowQuit(false);
     $whoops->writeToOutput(false);
@@ -145,10 +145,19 @@ try {
           isConnect();
           $backController->homeAdmin();
         }
+
         elseif($_GET['action'] == 'emailAdmin'){
-          isConnect();
-          $backController->emailAdmin();
+          // isConnect();
+          if (isset($_GET['page']) && !empty($_GET['page'])) {
+
+            $currentPage = (int) strip_tags($_GET['page']);
+
+        } else {
+            $currentPage = 1;
         }
+          $backController->emailAdmin($currentPage);
+        }
+
         elseif($_GET['action'] == 'accountAdmin'){
           isConnect();
           $backController->accountAdmin();

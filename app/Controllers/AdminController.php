@@ -37,10 +37,26 @@ class AdminController extends Controller {
 		require $this->viewAdmin('home');
 	}
 
-	public function emailAdmin()
+
+	 public function emailAdmin($currentPage)
+
 	{
 		$emailsManager = new \Climactions\Models\AdminModel();
-        $emails = $emailsManager->emails();
+        // $emails = $emailsManager->emails();
+
+		// count nb email
+		$nbrEmail = $emailsManager->countEmail();
+
+		// nb email per page 
+        $perPage = 8;
+
+		// calcul nb pages total 
+        $pages = ceil($nbrEmail / $perPage);
+        
+        $firstEmail = ($currentPage * $perPage) - $perPage;
+        $emails = $emailsManager->emailPage($firstEmail, $perPage);
+
+
 		require $this->viewAdmin('email');
 	}
 

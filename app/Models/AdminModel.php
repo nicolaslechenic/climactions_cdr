@@ -116,15 +116,28 @@ class AdminModel extends Manager
 
     // afficher tous les emails
 
-    public function emails()
+    public function emailPage($firstEmail, $perPage)
     {
         $bdd = $this->connect();
         $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `phone`, `object`, `message`, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
                               FROM `contact` 
-                              ORDER BY `firstname` ASC");
-        $req->execute(array());
-        $emails = $req->fetchAll();
+                              ORDER BY `created_at` ASC LIMIT :firstemail, :perpage");
+                              $req->bindValue(':firstemail', $firstEmail, \PDO::PARAM_INT);
+                              $req->bindValue(':perpage', $perPage, \PDO::PARAM_INT);
+        $req->execute();
+        $emails = $req->fetchAll(\PDO::FETCH_ASSOC);
         return $emails;
+    }
+
+    // count all email 
+    public function countEmail()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT COUNT(id) AS nb_email FROM contact");
+        $req->execute();
+        $result = $req->fetch();
+        $nbEmail = $result['nb_email'];
+        return $nbEmail;
     }
 
     // supprimer un email
