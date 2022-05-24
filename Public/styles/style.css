@@ -357,6 +357,11 @@ a {
 
 /* ---- button-group ---- */
 
+.button-group{
+  margin: 1.5rem auto;
+  text-align: center;
+}
+
 .button-group:after {
   content: "";
   display: block;
@@ -364,7 +369,6 @@ a {
 }
 
 .button-group .button {
-  float: left;
   border-radius: 0;
   margin-left: 0;
   margin-right: 1px;
@@ -379,6 +383,10 @@ a {
 
 #ressources_title{
   margin-top: 2rem;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--primary);
 }
 
 #bar-search{
@@ -808,19 +816,14 @@ textarea{
 
 /* --------------page de tout les article--------- */
   #ressources_title{
-    text-align: start;
-    width: 90%;
     margin: 2rem auto;
   }
 
   #search{
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 100%;
-  }
-
-  .bar-search{
-    text-align: start;
   }
 
   .element-item{
@@ -878,7 +881,6 @@ textarea{
   }
 
   .button-group .button {
-    float: left;
     border-radius: 0;
     margin-left: 0;
     margin-right: 1px;
@@ -1004,6 +1006,18 @@ textarea{
   }
 
   /* pageArticle.php tous les articles */
+
+  #ressources_title{
+    text-align: start;
+  }
+
+  .button-group {
+    text-align : start
+  }
+
+  .bar-search{
+    text-align: start;
+  }
 
   .element-item{
     width: 31.3%;
