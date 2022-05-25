@@ -14,7 +14,7 @@
 <div class="table-results">
 
 
-    <ul id="table-item2">
+    <ul class="table-item2">
         <li class="username"><?= $admin['firstname'] ?></li>
         <!-- TO DO : faire une méthode getExcerpt -->
         <li><?= $admin['email'] ?></li>

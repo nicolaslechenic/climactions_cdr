@@ -14,7 +14,7 @@
 
 <div class="table-results">
 
-    <ul class="table-item">
+    <ul class="table-item2">
         <li><?= $admin['firstname'] ?></li>
         <li><?= $admin['email'] ?></li>
         <li><?= $admin['role'] ?></li>
