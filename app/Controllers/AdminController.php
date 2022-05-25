@@ -32,14 +32,37 @@ class AdminController extends Controller {
 		require $this->viewAdmin('account');
 	}
 
+
+	// display page home 
 	public function homeAdmin()
 	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$listAdmin = $adminManager->listAdmin();
+
 		require $this->viewAdmin('home');
 	}
 
 
-	 public function emailAdmin($currentPage)
+	// display page readAdmin 
+	public function readAdmin($id)
+	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$admin = $adminManager->getOneAdmin($id);
 
+		require $this->viewAdmin('readAdmin');
+	}
+
+	// delete a admin 
+	public function deleteOneAdmin($id)
+	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$deleteAdmin = $adminManager->deleteOneAdmin($id);
+
+		header('Location: indexAdmin.php?action=deconnexion');
+	}
+
+
+	 public function emailAdmin($currentPage)
 	{
 		$emailsManager = new \Climactions\Models\AdminModel();
         // $emails = $emailsManager->emails();
@@ -117,6 +140,7 @@ class AdminController extends Controller {
 
 	public function connexion($email,$password){
 		$adminManager = new \Climactions\Models\AdminModel();
+		$listAdmin = $adminManager->listAdmin();
 		$connexAdm = $adminManager->collectPassword($email,$password);
 		$result = $connexAdm->fetch();
 		if(!empty($result)){
@@ -136,7 +160,7 @@ class AdminController extends Controller {
         		echo 'Vos identifiants sont incorrects';
 			}
 		} else{
-			echo "il ya une erreur";
+			echo "il ya une erreur, ce compte n'existe pas!";
 		}
 	}
 

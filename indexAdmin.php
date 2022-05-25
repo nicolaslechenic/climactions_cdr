@@ -36,7 +36,7 @@ try {
     if (isset($_GET['action'])) {
         
         if($_GET['action'] == 'pageCreationAdmin') {
-        isConnect();
+        // isConnect();
         $backController->pageConnexionAdmin();
     
         }
@@ -186,6 +186,18 @@ try {
           isConnect();
           $backController->deleteResource();
         }
+
+
+        // method page home.php 
+        elseif($_GET['action'] == 'readAdmin'){
+          isConnect();
+          $backController->readAdmin($_GET['id']);
+        }
+        elseif($_GET['action'] == 'deleteAdmin'){
+          isConnect();
+          $backController->deleteOneAdmin($_GET['id']);
+        }
+
 
         // les méthodes de la page email.php
 
