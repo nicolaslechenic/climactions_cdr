@@ -29,8 +29,9 @@ function getExcerpt()
         <li><?= $email["message"]?></li>
         <li><?= $email["date"]?></li>
         <li>
-            <span class="btn"><a href="indexAdmin.php?action=readEmail&id=<?= $email['id'] ?>">Lire</a></span>
-            <span class="btn"><a href="indexAdmin.php?action=deleteEmail&id=<?= $email['id'] ?>">Supprimer</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=readEmail&id=<?= $email['id']?>"  title="Lire"><i class="fa-solid fa-eye"></i></a></span>
+            <span class="btn"><a href="indexAdmin.php?action=deleteEmail&id=<?= $email['id'] ?>" title="Supprimer"><i class="fa-solid fa-trash-can"></i></a></span>
+            <span class="btn"><a href="#" title="Ajouter au carnet d'adresse"><i class="fa-solid fa-address-book"></i></a></span>
         </li>
     </ul> 
     

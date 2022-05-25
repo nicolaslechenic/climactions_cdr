@@ -149,7 +149,7 @@ h1 {
 /* Table */
 .table {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 2.5fr 1fr 0.5fr;
 }
 .table-read-email {
   display: grid;
@@ -167,7 +167,7 @@ h1 {
 
 .table-item {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 2.5fr 1fr 0.5fr;
   align-items: center;
   padding: 15px 10px;
   
@@ -208,27 +208,21 @@ h1 {
   display: list-item;
 }
 
-span.btn {
+.btn, .btn-create{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 300px;
   background-color: var(--primary);
-  width: 140px;
   height: 30px;
   text-align: center;
   font-size: 16px;
   margin: 10px auto;
 }
-.btn {
-  width: 300px;
-  background-color: var(--primary);
+.btn{
+  width: 80px;
+}
+.btn-create{
   width: 140px;
-  height: 30px;
-  text-align: center;
-  font-size: 16px;
-  color: white;
-  border: none;
 }
 .btn:hover {
   transform: scale(1.05);
@@ -382,7 +376,7 @@ span.btn {
 
   .table-item {
     grid-template-columns: 1fr;
-    grid-auto-rows: 55px;
+    /* grid-auto-rows: 55px; */
     margin-bottom: 50px;
     height: auto;
     text-align: center;
@@ -416,4 +410,5 @@ span.btn {
   #form-create-article input[type="checkbox"] {
     margin-top: 6px;
   }
+
 }
