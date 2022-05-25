@@ -336,9 +336,9 @@ a {
 }
 
 .button:hover {
-  background-color: #8cf;
+  background-color: #00d57c;
   text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
-  color: #222;
+  color: white;
 }
 
 .button:active,
@@ -393,6 +393,7 @@ a {
 
 #bar-search{
   width: 90%;
+  margin-bottom: 20px;
 }
 
 .bar-search {
@@ -865,12 +866,6 @@ textarea{
     font-size: 16px;
     text-shadow: 0 1px white;
     cursor: pointer;
-  }
-
-  .button:hover {
-    background-color: #8cf;
-    text-shadow: 0 1px hsla(0, 0%, 100%, 0.5);
-    color: #222;
   }
 
   .button:active,
