@@ -57,6 +57,24 @@ class AdminModel extends Manager
 
     // ------------------------------------------------------------------------------------------------------------------
 
+    // display list admin 
+    public function listAdmin()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT id, `firstname`, `email`, `role` FROM admin");
+        $req->execute(array());
+        return $req;
+    }
+
+    // disply one admin 
+    public function getOneAdmin($id)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT id, firstname, lastname, email, role FROM admin WHERE id = ?");
+        $req->execute(array($id));
+        return $req->fetch();
+    }
+
     // afficher les articles
 
     public function getArticles()

@@ -1,7 +1,7 @@
 <?php
-
-require 'app/Views/frontend/layouts/nav.php';
-?>
+$title = "page de création d'un administrateur";
+$description = "page de création d'un administrateur";
+ob_start(); ?>
 
 
 <section id="container_inscription_admin">
@@ -34,6 +34,5 @@ require 'app/Views/frontend/layouts/nav.php';
 </section>
 
 
-<?php
-require 'app/Views/frontend/layouts/footer.php';
-?>
+<?php $content = ob_get_clean();
+require "app/Views/frontend/layouts/template.php";

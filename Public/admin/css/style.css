@@ -385,3 +385,12 @@ span.btn {
     margin-top: 6px;
   }
 }
+
+@media screen and (min-width: 1024px){
+  /* page readAdmin.php  */
+  #table-item2{
+    display: flex;
+    justify-content: space-between;
+  }
+  
+}

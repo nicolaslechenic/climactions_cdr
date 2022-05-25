@@ -17,7 +17,7 @@ $dotenv->load();
 // set_error_handler('errorHandler');
 
 function eCatcher($e) {
-  if($_ENV["APP_ENV"] == "") {
+  if($_ENV["APP_ENV"] == "d") {
     $whoops = new \Whoops\Run;
     $whoops->allowQuit(false);
     $whoops->writeToOutput(false);
@@ -36,7 +36,7 @@ try {
     if (isset($_GET['action'])) {
         
         if($_GET['action'] == 'pageCreationAdmin') {
-        isConnect();
+        // isConnect();
         $backController->pageConnexionAdmin();
     
         }
@@ -179,6 +179,16 @@ try {
           isConnect();
           $backController->deleteResource();
         }
+
+        // method page home.php 
+        elseif($_GET['action'] == 'readAdmin'){
+          isConnect();
+          $backController->readAdmin($_GET['id']);
+        }
+        // elseif($_GET['action'] == 'deleteAdmin'){
+        //   isConnect();
+        //   $backController->deleteAdmin();
+        // }
         // les méthodes de la page email.php
         elseif($_GET['action'] == 'readEmail'){
           isConnect();
