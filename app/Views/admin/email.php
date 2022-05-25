@@ -37,8 +37,6 @@ function getExcerpt()
     <?php }; ?>
 </div>
 
-<?php }; ?>
-
 <nav id="nav-pagination">
     <ul class="pagination">
         <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->

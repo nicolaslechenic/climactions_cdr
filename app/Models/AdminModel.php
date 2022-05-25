@@ -153,7 +153,7 @@ class AdminModel extends Manager
 
     public function readEmail($id){
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `phone`, `object`, `message`, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
+        $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `object`, `message`, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
                              FROM `contact`
                               WHERE id = ?");
         $req->execute(array($id));
@@ -165,17 +165,22 @@ class AdminModel extends Manager
 
     // gestion des infos (page addressBook.php)
 
-    public function deleteInfo($id){
+    public function infos()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `phone`
+                              FROM `contact`");
+        $req->execute(array());
+        $infos = $req->fetchAll();
+        return $infos;
+    }
+
+    public function deleteInfo($id)
+    {
         $bdd = $this->connect();
         $req = $bdd->prepare('DELETE FROM `contact` 
                               WHERE id = ?');
         $req->execute(array($id));
-    }
-
-
-    
-
-   
-    
+    } 
     
 }
