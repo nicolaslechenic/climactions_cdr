@@ -21,9 +21,10 @@ class RessourcesModel extends Manager
     {
         $bdd = $this->connect();
 
-        $req = $bdd->prepare("SELECT * FROM ressources 
+        $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type`,DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` FROM ressources,`types`  
         WHERE name LIKE :query 
         OR content LIKE :query
+        AND ressources.type_id = `types`.id
         ORDER BY id 
         DESC LIMIT 6");
         $req->execute([':query' => '%'.$query.'%']);
