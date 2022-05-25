@@ -13,7 +13,7 @@
 <body>
 
     <header id="bandeau">
-        <nav id="navigation-bandeau" class="container">
+        <nav id="navigation-bandeau"  class="container">
 
             <a href="/"><img src="./Public/img/logo_clim_action.png" alt="Logo"></a>
 

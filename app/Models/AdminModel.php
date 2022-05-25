@@ -135,4 +135,78 @@ class AdminModel extends Manager
         $req = $bdd->prepare('DELETE FROM article WHERE id = ?');
         $req->execute(array($id));
     }
+
+    /* ----------------------------------------------------------------------*/
+
+    // gestion des emails (page email.php)
+
+    // afficher tous les emails
+
+    public function emailPage($firstEmail, $perPage)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `phone`, `object`, `message`, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
+                              FROM `contact` 
+                              ORDER BY `created_at` ASC LIMIT :firstemail, :perpage");
+                              $req->bindValue(':firstemail', $firstEmail, \PDO::PARAM_INT);
+                              $req->bindValue(':perpage', $perPage, \PDO::PARAM_INT);
+        $req->execute();
+        $emails = $req->fetchAll(\PDO::FETCH_ASSOC);
+        return $emails;
+    }
+
+    // count all email 
+    public function countEmail()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT COUNT(id) AS nb_email FROM contact");
+        $req->execute();
+        $result = $req->fetch();
+        $nbEmail = $result['nb_email'];
+        return $nbEmail;
+    }
+
+    // supprimer un email
+
+    public function deleteEmail($id){
+        $bdd = $this->connect();
+        $req = $bdd->prepare('DELETE FROM `contact` 
+                              WHERE id = ?');
+        $req->execute(array($id));
+    }
+
+    // lire un email
+
+    public function readEmail($id){
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `object`, `message`, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
+                             FROM `contact`
+                              WHERE id = ?");
+        $req->execute(array($id));
+        $email = $req->fetch();
+        return $email;
+    }
+
+    /* ----------------------------------------------------------------------*/
+
+    // gestion des infos (page addressBook.php)
+
+    public function infos()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT `id`, `lastname`, `firstname`, `email`, `phone`
+                              FROM `contact`");
+        $req->execute(array());
+        $infos = $req->fetchAll();
+        return $infos;
+    }
+
+    public function deleteInfo($id)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare('DELETE FROM `contact` 
+                              WHERE id = ?');
+        $req->execute(array($id));
+    } 
+    
 }

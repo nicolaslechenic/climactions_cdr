@@ -140,14 +140,24 @@ try {
         
         // go to page home admin 
         // les pages de l'administration
+
         elseif($_GET['action'] == 'homeAdmin'){
           isConnect();
           $backController->homeAdmin();
         }
+
         elseif($_GET['action'] == 'emailAdmin'){
-          isConnect();
-          $backController->emailAdmin();
+          // isConnect();
+          if (isset($_GET['page']) && !empty($_GET['page'])) {
+
+            $currentPage = (int) strip_tags($_GET['page']);
+
+        } else {
+            $currentPage = 1;
         }
+          $backController->emailAdmin($currentPage);
+        }
+
         elseif($_GET['action'] == 'accountAdmin'){
           isConnect();
           $backController->accountAdmin();
@@ -161,12 +171,9 @@ try {
           isConnect();
           $backController->addressBookAdmin();
         }
-        elseif($_GET['action'] == 'opinionAdmin'){
-          isConnect();
-          $backController->opinionAdmin();
-        }
+        
+        // les méthodes de la page Resource.php
 
-        // les méthodes de la page Resource.php (CRUD)
         elseif($_GET['action'] == 'createResource'){
           isConnect();
           $backController->createResource();
@@ -180,6 +187,7 @@ try {
           $backController->deleteResource();
         }
 
+
         // method page home.php 
         elseif($_GET['action'] == 'readAdmin'){
           isConnect();
@@ -190,14 +198,26 @@ try {
           $backController->deleteOneAdmin($_GET['id']);
         }
 
+
         // les méthodes de la page email.php
+
         elseif($_GET['action'] == 'readEmail'){
-          isConnect();
-          $backController->readEmail();
+          // isConnect();
+          $id = $_GET['id'];
+          $backController->readEmail($id);
         }
         elseif($_GET['action'] == 'deleteEmail'){
           isConnect();
-          $backController->deleteEmail();
+          $id = $_GET['id'];
+          $backController->deleteEmail($id);
+        } 
+
+        // les méthodes de la page addressBook.php
+
+        elseif($_GET['action'] == 'deleteInfo'){
+          isConnect();
+          $id = $_GET['id'];
+          $backController->deleteInfo($id);
         }
 
         else{

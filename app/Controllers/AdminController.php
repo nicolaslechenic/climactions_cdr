@@ -32,6 +32,7 @@ class AdminController extends Controller {
 		require $this->viewAdmin('account');
 	}
 
+
 	// display page home 
 	public function homeAdmin()
 	{
@@ -40,6 +41,7 @@ class AdminController extends Controller {
 
 		require $this->viewAdmin('home');
 	}
+
 
 	// display page readAdmin 
 	public function readAdmin($id)
@@ -60,24 +62,40 @@ class AdminController extends Controller {
 	}
 
 
-	public function emailAdmin()
+	 public function emailAdmin($currentPage)
 	{
+		$emailsManager = new \Climactions\Models\AdminModel();
+        // $emails = $emailsManager->emails();
+
+		// count nb email
+		$nbrEmail = $emailsManager->countEmail();
+
+		// nb email per page 
+        $perPage = 8;
+
+		// calcul nb pages total 
+        $pages = ceil($nbrEmail / $perPage);
+        
+        $firstEmail = ($currentPage * $perPage) - $perPage;
+        $emails = $emailsManager->emailPage($firstEmail, $perPage);
+
+
 		require $this->viewAdmin('email');
 	}
+
 	public function resourceAdmin()
 	{
 		require $this->viewAdmin('resource');
 	}
-	public function opinionAdmin()
-	{
-		require $this->viewAdmin('opinions');
-	}
+
 	public function addressBookAdmin()
 	{
+		$infoManager = new \Climactions\Models\AdminModel();
+        $infos = $infoManager->infos();
 		require $this->viewAdmin('addressBook');
 	}
 
-	// les méthodes de la page Resource.php (CRUD)
+	// les méthodes de la page Resource.php 
 
 	public function createResource()
 	{
@@ -94,15 +112,27 @@ class AdminController extends Controller {
 
 	// les méthodes de la page Email.php
 
-	public function readEmail()
+	public function readEmail($id)
 	{
+		$email = new \Climactions\Models\AdminModel();
+		$readEmail = $email->readEmail($id);  
 		require $this->viewAdmin('readEmail');
 	}
-	public function deleteEmail()
+	public function deleteEmail($id)
 	{
-		require $this->viewAdmin('delete');
+		$email = new \Climactions\Models\AdminModel();
+		$deleteEmail = $email->deleteEmail($id);
+		header('Location: indexAdmin.php?action=emailAdmin');
 	}
-	
+
+	// les méthodes de la page addressBook.php
+
+	public function deleteInfo($id)
+	{
+		$info = new \Climactions\Models\AdminModel();
+		$deleteInfo = $info->deleteInfo($id);
+		header('Location: indexAdmin.php?action=addressBookAdmin');
+	}
 
 	public function connexionAdmin() {
 		require $this->viewAdmin('connexionAdmin');
@@ -157,44 +187,46 @@ class AdminController extends Controller {
 		if(isset($_POST['email']))
 		{
 			$mail = new PHPMailer(true);
-		try{
-			// configuration pour voir les bugs
-			// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-		  
-			// on configure le SMTP 
-			$mail->isSMTP();
-			$mail->Host = 'localhost';
-			$mail->Port = 1025; //port mailhog 
-		  
-			// charset 
-			$mail->CharSet = 'utf-8';
-		  
-			// destinataires 
-			$mail->addAddress($_POST['email']);
+			try{
+				// configuration pour voir les bugs
+				// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			
-		  
-			// expéditeur 
-			$mail->setFrom('no-reply@site.fr');
-		  
-			// contenu 
-			$mail->isHTML();
-			$mail->Subject = "Nouveau mot de passe";
-			$password = uniqid();
-			$mail->Body = "Bonjour ".$_POST['email']. "Votre nouveau mot de passe: ".$password;
-			$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-			$changePassword = $adminManager->getNewPassword($hashedPassword);
+				// on configure le SMTP 
+				$mail->isSMTP();
+				$mail->Host = 'localhost';
+				$mail->Port = 1025; //port mailhog 
 			
-	
-			// on envoie 
-			$mail->send();
-			echo "Message envoyé";
+				// charset 
+				$mail->CharSet = 'utf-8';
 			
-		  
-		} 
-		catch (Exception)
-		{
-			echo "Message non envoyé. Erreur: {$mail->ErrorInfo}";
-		}
+				// destinataires 
+				$mail->addAddress($_POST['email']);
+				
+			
+				// expéditeur 
+				$mail->setFrom('no-reply@site.fr');
+			
+				// contenu 
+				$mail->isHTML();
+				$mail->Subject = "Nouveau mot de passe";
+				$password = uniqid();
+				$mail->Body = "Bonjour ".$_POST['email']. "Votre nouveau mot de passe: ".$password;
+				$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+				$changePassword = $adminManager->getNewPassword($hashedPassword);
+				
+		
+				// on envoie 
+				$mail->send();
+				echo "Message envoyé";
+				
+			
+			} 
+			
+			catch (Exception) 
+			{
+				
+				echo "Message non envoyé. Erreur: $mail->ErrorInfo}";
+			}
 		}
 
 		header('Location: indexAdmin.php');
