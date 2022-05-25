@@ -163,44 +163,46 @@ class AdminController extends Controller {
 		if(isset($_POST['email']))
 		{
 			$mail = new PHPMailer(true);
-		try{
-			// configuration pour voir les bugs
-			// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
-		  
-			// on configure le SMTP 
-			$mail->isSMTP();
-			$mail->Host = 'localhost';
-			$mail->Port = 1025; //port mailhog 
-		  
-			// charset 
-			$mail->CharSet = 'utf-8';
-		  
-			// destinataires 
-			$mail->addAddress($_POST['email']);
+			try{
+				// configuration pour voir les bugs
+				// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			
-		  
-			// expéditeur 
-			$mail->setFrom('no-reply@site.fr');
-		  
-			// contenu 
-			$mail->isHTML();
-			$mail->Subject = "Nouveau mot de passe";
-			$password = uniqid();
-			$mail->Body = "Bonjour ".$_POST['email']. "Votre nouveau mot de passe: ".$password;
-			$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-			$changePassword = $adminManager->getNewPassword($hashedPassword);
+				// on configure le SMTP 
+				$mail->isSMTP();
+				$mail->Host = 'localhost';
+				$mail->Port = 1025; //port mailhog 
 			
-	
-			// on envoie 
-			$mail->send();
-			echo "Message envoyé";
+				// charset 
+				$mail->CharSet = 'utf-8';
 			
-		  
-		} 
-		catch (Exception)
-		{
-			echo "Message non envoyé. Erreur: {$mail->ErrorInfo}";
-		}
+				// destinataires 
+				$mail->addAddress($_POST['email']);
+				
+			
+				// expéditeur 
+				$mail->setFrom('no-reply@site.fr');
+			
+				// contenu 
+				$mail->isHTML();
+				$mail->Subject = "Nouveau mot de passe";
+				$password = uniqid();
+				$mail->Body = "Bonjour ".$_POST['email']. "Votre nouveau mot de passe: ".$password;
+				$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+				$changePassword = $adminManager->getNewPassword($hashedPassword);
+				
+		
+				// on envoie 
+				$mail->send();
+				echo "Message envoyé";
+				
+			
+			} 
+			
+			catch (Exception) 
+			{
+				
+				echo "Message non envoyé. Erreur: $mail->ErrorInfo}";
+			}
 		}
 
 		header('Location: indexAdmin.php');
