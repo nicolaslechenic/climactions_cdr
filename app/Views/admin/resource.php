@@ -4,12 +4,9 @@
 
 <!-- TO DO : faire la barre de recherche en javascript -->
 
-<div class="input-control">
-    <label for="search">
-        <i class="fa-solid fa-magnifying-glass"></i>
-    </label>
-    <input type="text" name="search" id="search" placeholder="chercher" />
-</div>
+<?php
+require_once "app/Views/admin/layouts/search.php";
+?>
 
 <h2 class="main-title">Création et mise à jour d'un article</h2>
 
@@ -30,9 +27,9 @@
         <li>titre de mon article</li>
         <li class="article-title">contenu de mon article</li>
         <li class="article-created-at">date de création</li>
-        <li>
-            <span class="btn"><a href="#">Modifier</a></span>
-            <span class="btn"><a class="delete" href="#">Supprimer</a></span>
+        <li class="flex">
+            <span class="btn"><a href="#"><i class="fa-solid fa-pen"></i></a></span>
+            <span class="btn"><a class="delete" href="#"><i class="fa-solid fa-trash-can"></i></a></span>
         </li>
     </ul>
 
@@ -40,14 +37,9 @@
         <li>titre de mon article</li>
         <li class="article-title">contenu de mon article</li>
         <li class="article-created-at">date de création</li>
-        <li>
-
-            <span class="btn"><a href="#">Modifier</a></span>
-            <span class="btn"><a class="delete" href="#">Supprimer</a></span>
-
+        <li class="flex">
             <span class="btn"><a href="#"><i class="fa-solid fa-pen"></i></a></span>
-            <span class="btn"><a href="#"><i class="fa-solid fa-trash-can"></i></a></span>
-
+            <span class="btn"><a class="delete" href="#"><i class="fa-solid fa-trash-can"></i></a></span>
         </li>
     </ul>
 

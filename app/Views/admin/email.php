@@ -14,6 +14,10 @@ function getExcerpt()
 
 <h1>Les emails</h1>
 
+<?php
+require_once "app/Views/admin/layouts/search.php";
+?>
+
 <div class="table">
     <h3 class="table-title">Prénom et Nom</h3>
     <h3 class="table-title">Contenu de l'email</h3>
@@ -28,15 +32,10 @@ function getExcerpt()
         <li><?= $email["firstname"] . " " . $email["lastname"] ?></li>
         <li><?= $email["message"]?></li>
         <li><?= $email["date"]?></li>
-        <li>
-
-            <span class="btn"><a href="indexAdmin.php?action=readEmail&id=<?= $email['id'] ?>">Lire</a></span>
-            <span class="btn"><a class="delete" href="indexAdmin.php?action=deleteEmail&id=<?= $email['id'] ?>">Supprimer</a></span>
-
+        <li class="flex">
             <span class="btn"><a href="indexAdmin.php?action=readEmail&id=<?= $email['id']?>"  title="Lire"><i class="fa-solid fa-eye"></i></a></span>
-            <span class="btn"><a href="indexAdmin.php?action=deleteEmail&id=<?= $email['id'] ?>" title="Supprimer"><i class="fa-solid fa-trash-can"></i></a></span>
+            <span class="btn"><a class="delete" href="indexAdmin.php?action=deleteEmail&id=<?= $email['id'] ?>" title="Supprimer"><i class="fa-solid fa-trash-can"></i></a></span>
             <span class="btn"><a href="#" title="Ajouter au carnet d'adresse"><i class="fa-solid fa-address-book"></i></a></span>
-
         </li>
     </ul> 
     

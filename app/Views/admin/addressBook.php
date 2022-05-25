@@ -2,21 +2,23 @@
 
 <h1>Carnet d'adresses</h1>
 
-<div class="table">
-    <h3 class="table-title">Prénom et Nom</h3>
-    <h3 class="table-title">Email</h3>
-    <h3 class="table-title">Numéro de téléphone</h3>
-    <h3 class="table-title">Action</h3>
+<?php
+require_once "app/Views/admin/layouts/search.php";
+?>
+
+<div class="table-addressBook">
+    <h3 class="table-title-addressBook">Prénom et Nom</h3>
+    <h3 class="table-title-addressBook">Email</h3>
+    <h3 class="table-title-addressBook">Action</h3>
 </div>
 
 <div class="table-results">
 <?php foreach ($infos as $info) { ?> 
-    <ul class="table-item">
+    <ul class="table-item-addressBook">
         <li><?= $info["firstname"] . " " . $info["lastname"] ?></li>
         <li><?= $info["email"]?></li>
-        <li><?= $info["phone"]?></li>
         <li>
-            <span class="btn"><a class="delete" href="indexAdmin.php?action=deleteInfo&id=<?= $info['id'] ?>">Supprimer</a></span>
+            <span class="btn"><a class="delete" href="indexAdmin.php?action=deleteInfo&id=<?= $info['id'] ?>"><i class="fa-solid fa-trash-can"></i></a></span>
         </li>
     </ul> 
 <?php }; ?>

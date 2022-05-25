@@ -14,15 +14,15 @@
 <div class="table-results">
 
 
-    <ul class="table-item2">
+    <ul class="table-item">
         <li class="username"><?= $admin['firstname'] ?></li>
         <!-- TO DO : faire une méthode getExcerpt -->
         <li><?= $admin['email'] ?></li>
         <li><?= $admin['role'] ?></li>
-        <li>
-            <span class="btn"><a href="indexAdmin.php?action=homeAdmin">Revenir</a></span>
+        <li class="flex">
+            <span class="btn"><a href="indexAdmin.php?action=homeAdmin"><i class="fa-solid fa-arrow-left"></i></a></span>
             <?php if(isset($admin['role']) && ($admin['role'] == "Administrateur")) : ?>
-            <span class="btn"><a href="indexAdmin.php?action=deleteAdmin&id=<?= $admin['id'] ?>">Supprimer</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=deleteAdmin&id=<?= $admin['id'] ?>"><i class="fa-solid fa-trash-can"></i></a></span>
             <?php else : ?>
                 <?php endif; ?>
         </li>

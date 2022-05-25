@@ -144,7 +144,7 @@
             </select>
         </div>
 
-        <button class="btn" type="submit">Créer l'article</button>
+        <button class="btn-create" type="submit">Créer l'article</button>
     </form>
 </section>
 

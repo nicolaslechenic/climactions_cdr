@@ -118,6 +118,7 @@ h1 {
   background-color: var(--bg-primary);
   border-radius: 6px;
   padding: 15px;
+  margin-bottom: 2rem;
 }
 
 .input-control i {
@@ -142,39 +143,59 @@ h1 {
   font-size: 16px;
 }
 
-.main-title {
-  margin: 30px 0;
-}
+
 
 /* Table */
 .table {
   display: grid;
   grid-template-columns: 1fr 2.5fr 1fr 0.5fr;
 }
+.table-addressBook{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.table-home{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
 .table-read-email {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
 
-.table-title {
+.table-title,
+.table-title-addressBook {
   font-size: 16px;
-  padding: 10px 15px 20px;
+  margin: 10px auto;
 }
 
 .table-results {
   grid-column: 1/-1;
+  
 }
 
 .table-item {
   display: grid;
   grid-template-columns: 1fr 2.5fr 1fr 0.5fr;
-  align-items: center;
-  padding: 15px 10px;
-  
-  
+  align-items: center; 
 }
+
+.table-item-addressBook{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center; 
+}
+.table-item-home{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center; 
+}
+
+.table-item-addressBook li,
+.table-item-home li,
 .table-item li{
-  margin: 10px;
+  margin: 10px auto;
 }
 
 #read-email {
@@ -192,13 +213,16 @@ h1 {
 #read-email li:nth-child(3) {
   margin-top: 10px;
 }
-.table-item:nth-child(odd){
+.table-item:nth-child(odd),
+.table-item-home:nth-child(odd),
+.table-item-addressBook:nth-child(odd)
+{
   background: var(--bg-primary);
 }
 
-.table-results:nth-of-type(2n+1) .table-item{
+/* .table-results:nth-of-type(2n+1) .table-item{
   background: var(--bg-primary);
-}
+} */
 
 .table p {
   padding: 0 15px;
@@ -221,6 +245,7 @@ h1 {
 .btn{
   width: 80px;
 }
+
 .btn-create{
   width: 140px;
 }
@@ -366,15 +391,21 @@ h1 {
     padding: 0;
   }
 
-  .table {
+  .table,
+  .table-home,
+  .table-addressBook{
     display: block;
   }
 
-  .table-title {
+  .table-title,
+  .table-title-home,
+  .table-title-addressBook {
     display: none;
   }
 
-  .table-item {
+  .table-item,
+  .table-item-home,
+  .table-item-addressBook {
     grid-template-columns: 1fr;
     /* grid-auto-rows: 55px; */
     margin-bottom: 50px;
@@ -410,14 +441,13 @@ h1 {
   #form-create-article input[type="checkbox"] {
     margin-top: 6px;
   }
-
-}
-
-@media screen and (min-width: 1024px){
-  /* page readAdmin.php  */
-  .table-item2{
-    display: flex;
-    justify-content: space-between;
+  .flex{
+    display: flex; 
   }
-  
+  .btn{
+    margin: 10px;
+  }
+
 }
+
+
