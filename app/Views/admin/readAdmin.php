@@ -1,7 +1,6 @@
 <?php ob_start(); ?>
 
-<h1>Bienvenue</h1>
-
+<h1><?= $admin['firstname'] ." ". $admin['lastname'] ?></h1>
 
 <div class="table">
     <h3 class="table-title">Prénom</h3>
@@ -10,26 +9,26 @@
     <h3 class="table-title">Action</h3>
 </div>
 
-<?php foreach($listAdmin as $admin) : ?>
+<!-- TO DO : Récupérer l'email grace à son ID -->
 
 <div class="table-results">
 
+
     <ul class="table-item2">
-        <li><?= $admin['firstname'] ?></li>
+        <li class="username"><?= $admin['firstname'] ?></li>
+        <!-- TO DO : faire une méthode getExcerpt -->
         <li><?= $admin['email'] ?></li>
         <li><?= $admin['role'] ?></li>
         <li>
-            <span class="btn"><a href="indexAdmin.php?action=readAdmin&id=<?= $admin['id'] ?>">Voir</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=homeAdmin">Revenir</a></span>
             <?php if(isset($admin['role']) && ($admin['role'] == "Administrateur")) : ?>
             <span class="btn"><a href="indexAdmin.php?action=deleteAdmin&id=<?= $admin['id'] ?>">Supprimer</a></span>
             <?php else : ?>
                 <?php endif; ?>
         </li>
+
     </ul>
 </div>
-
-
-<?php endforeach ?>
 
 <?php $content = ob_get_clean(); ?>
 <?php require 'layouts/dashboard.php'; ?>

@@ -13,7 +13,7 @@
 
 <h2 class="main-title">Création et mise à jour d'un article</h2>
 
-<span class="btn"><a href="indexAdmin.php?action=createResource">Créer un article</a></span>
+<span class="btn-create"><a href="indexAdmin.php?action=createResource">Créer un article</a></span>
 
 <div class="table">
     <h3 class="table-title">Titre</h3>
@@ -41,8 +41,13 @@
         <li class="article-title">contenu de mon article</li>
         <li class="article-created-at">date de création</li>
         <li>
+
             <span class="btn"><a href="#">Modifier</a></span>
             <span class="btn"><a class="delete" href="#">Supprimer</a></span>
+
+            <span class="btn"><a href="#"><i class="fa-solid fa-pen"></i></a></span>
+            <span class="btn"><a href="#"><i class="fa-solid fa-trash-can"></i></a></span>
+
         </li>
     </ul>
 
