@@ -45,7 +45,7 @@ ob_start(); ?>
                             <img src="<?= $ressource['image'] ?>">
                         </div>
                         <div class="date"><p><?=$ressource['date']?></p></div>
-                        <h2 class="title"><?= $ressource['name'] ?></h2>
+                        <h3 class="title"><?= $ressource['name'] ?></h2>
                         <div class="read-more"><a class="read-more" href="index.php?action=article&id=<?= $ressource['id'] ?>">Voir l'Article</a></div>
                     </article>
                 </div>
