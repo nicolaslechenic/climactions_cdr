@@ -75,6 +75,14 @@ class AdminModel extends Manager
         return $req->fetch();
     }
 
+    // delete one admin 
+    public function deleteOneAdmin($id)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("DELETE FROM `admin` WHERE id = ? AND `role` = 'Administrateur'");
+        $req->execute(array($id));
+    }
+
     // afficher les articles
 
     public function getArticles()

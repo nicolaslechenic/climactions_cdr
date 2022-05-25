@@ -17,7 +17,7 @@ $dotenv->load();
 // set_error_handler('errorHandler');
 
 function eCatcher($e) {
-  if($_ENV["APP_ENV"] == "d") {
+  if($_ENV["APP_ENV"] == "dev") {
     $whoops = new \Whoops\Run;
     $whoops->allowQuit(false);
     $whoops->writeToOutput(false);
@@ -185,10 +185,11 @@ try {
           isConnect();
           $backController->readAdmin($_GET['id']);
         }
-        // elseif($_GET['action'] == 'deleteAdmin'){
-        //   isConnect();
-        //   $backController->deleteAdmin();
-        // }
+        elseif($_GET['action'] == 'deleteAdmin'){
+          isConnect();
+          $backController->deleteOneAdmin($_GET['id']);
+        }
+
         // les méthodes de la page email.php
         elseif($_GET['action'] == 'readEmail'){
           isConnect();

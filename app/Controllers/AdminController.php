@@ -50,6 +50,15 @@ class AdminController extends Controller {
 		require $this->viewAdmin('readAdmin');
 	}
 
+	// delete a admin 
+	public function deleteOneAdmin($id)
+	{
+		$adminManager = new \Climactions\Models\AdminModel();
+		$deleteAdmin = $adminManager->deleteOneAdmin($id);
+
+		header('Location: indexAdmin.php?action=deconnexion');
+	}
+
 
 	public function emailAdmin()
 	{
@@ -121,7 +130,7 @@ class AdminController extends Controller {
         		echo 'Vos identifiants sont incorrects';
 			}
 		} else{
-			echo "il ya une erreur";
+			echo "il ya une erreur, ce compte n'existe pas!";
 		}
 	}
 

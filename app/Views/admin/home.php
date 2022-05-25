@@ -21,7 +21,7 @@
         <li>
             <span class="btn"><a href="indexAdmin.php?action=readAdmin&id=<?= $admin['id'] ?>">Voir</a></span>
             <?php if(isset($admin['role']) && ($admin['role'] == "Administrateur")) : ?>
-            <span class="btn"><a href="#">Supprimer</a></span>
+            <span class="btn"><a href="indexAdmin.php?action=deleteAdmin&id=<?= $admin['id'] ?>">Supprimer</a></span>
             <?php else : ?>
                 <?php endif; ?>
         </li>
