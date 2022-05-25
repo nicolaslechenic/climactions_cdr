@@ -16,7 +16,7 @@
         <li><?= $info["email"]?></li>
         <li><?= $info["phone"]?></li>
         <li>
-            <span class="btn"><a href="indexAdmin.php?action=deleteInfo&id=<?= $info['id'] ?>">Supprimer</a></span>
+            <span class="btn"><a class="delete" href="indexAdmin.php?action=deleteInfo&id=<?= $info['id'] ?>">Supprimer</a></span>
         </li>
     </ul> 
 <?php }; ?>

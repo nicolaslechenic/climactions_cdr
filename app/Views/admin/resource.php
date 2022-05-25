@@ -32,7 +32,7 @@
         <li class="article-created-at">date de création</li>
         <li>
             <span class="btn"><a href="#">Modifier</a></span>
-            <span class="btn"><a href="#">Supprimer</a></span>
+            <span class="btn"><a class="delete" href="#">Supprimer</a></span>
         </li>
     </ul>
 
@@ -42,7 +42,7 @@
         <li class="article-created-at">date de création</li>
         <li>
             <span class="btn"><a href="#">Modifier</a></span>
-            <span class="btn"><a href="#">Supprimer</a></span>
+            <span class="btn"><a class="delete" href="#">Supprimer</a></span>
         </li>
     </ul>
 
