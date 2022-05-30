@@ -297,7 +297,7 @@ h1 {
     color: white;
     padding: 10px;
     border-radius: 5px;
-    margin-left: 10px;
+    margin: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -306,14 +306,35 @@ h1 {
 }
 #section-connectAdmin a {
   color: var(--primary);
+  display: inline-block;
+  margin: 10px;
+}
+
+/* PAGE ACCOUNT.PHP  */
+#pageAccount{
+  max-width: 500px;
+  border: 2px solid #ccc;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  margin: 2rem auto 0;
+  min-height: 400px;
+  text-align: center;
+}
+#pageAccount h1{
+  color: var(--primary);
+}
+#pageAccount p{
+  font-size: 1.5rem;
+    font-style: italic;
+    color: var(--hover);
+}
+.changePassword{
   display: block;
-  margin: 1rem 10px;
+  margin: 3rem;
+  color: var(--primary);
 }
-#section-connectAdmin a:hover{
-  color: var(--text-secondary);
-  background-color: var(--primary);
-  padding: 5px;
-}
+
 
 /* PAGE ADMIN INSCRIPTION  */
 #container_inscription_admin{
@@ -408,25 +429,25 @@ h1 {
   margin: 0 0 1rem 1.2rem;
 }
 
-/* page account admin  */
-#pageAccount a {
-  color: black;
-}
 
 /* page new password  */
+#section-NewPassword h1{
+  text-align: center;
+}
 #section-NewPassword form {
-  width: 500px;
+  max-width: 500px;
   border: 2px solid #ccc;
   padding: 30px;
   background: #fff;
   border-radius: 15px;
+  margin: 0 auto;
 }
 #section-NewPassword input {
   display: block;
   border: 2px solid #ccc;
-  width: 95%;
+  width: 97%;
   padding: 10px;
-  margin: 10px auto;
+  margin: 10px auto 20px;
   border-radius: 5px;
 }
 #section-NewPassword label {
@@ -434,8 +455,25 @@ h1 {
   font-size: 18px;
   padding: 10px;
 }
+.btnChangePsw{
+    background-color: var(--primary);
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btnChangePsw:hover{
+  transform: scale(1.05);
+}
 #section-NewPassword a {
-  color: black;
+  color: var(--primary);
+  display: inline-block;
+  margin: 1rem 10px;
 }
 .msg-error {
   background-color: #e01a1a;
@@ -443,6 +481,34 @@ h1 {
   border-radius: 5px;
   margin: 1rem 0;
   padding: 0.5rem 1rem;
+}
+
+
+/* PAGE PASSWORD FORGOT  */
+#password-forgot form{
+  max-width: 500px;
+  border: 2px solid #ccc;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  margin: 3rem auto;
+}
+#password-forgot h1{
+  font-size: 2rem;
+  text-align: center;
+}
+#password-forgot label{
+  color: #888;
+  font-size: 18px;
+  padding: 10px;
+}
+#password-forgot input{
+  display: block;
+  border: 2px solid #ccc;
+  width: 97%;
+  padding: 10px;
+  margin: 10px auto 20px;
+  border-radius: 5px;
 }
 
 /* --------------------PAGE EMAIL.PHP-------------  */

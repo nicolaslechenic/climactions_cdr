@@ -193,6 +193,7 @@ class AdminController extends Controller {
 			$_SESSION['id'] = $result['id'];
 			$_SESSION['firstname'] = $result['firstname'];
 			$_SESSION['lastname'] = $result['lastname'];
+		
 			
 			if ($isPasswordCorrect) {
 

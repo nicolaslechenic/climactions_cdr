@@ -3,7 +3,7 @@
 
 <section id="section-NewPassword">
 
-    <h1>New password</h1>
+    <h1>Nouveau Mot de passe</h1>
 
     <form action="indexAdmin.php?action=newPasswordPost&id=<?= $_SESSION['id'] ?>" method="POST">
         <?php if (isset($erreur)):
@@ -26,12 +26,11 @@
             <input type="password" name="newPassword" id="newPassword" required />
         </div>
         <div>
-            <label for="passwordConfirm">Confirmation de votre mot de passe:</label>
+            <label for="passwordConfirm">Confirmation mot de passe:</label>
             <input type="password" name="passwordConfirm" id="passwordConfirm" required />
         </div>
 
-        <br>
-        <button type="submit">Changer</button>
+        <button class="btnChangePsw" type="submit">Changer</button>
         <a href="indexAdmin.php?action=accountAdmin&id=<?= $_SESSION['id'] ?>">Retour</a>
     </form>
 
