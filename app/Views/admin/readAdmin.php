@@ -2,7 +2,7 @@
 
 <h1><?= $admin['firstname'] ." ". $admin['lastname'] ?></h1>
 
-<div class="table">
+<div class="table-home">
     <h3 class="table-title">Prénom</h3>
     <h3 class="table-title">email</h3>
     <h3 class="table-title">Rôle</h3>
@@ -13,8 +13,7 @@
 
 <div class="table-results">
 
-
-    <ul class="table-item">
+    <ul class="table-item-home">
         <li class="username"><?= $admin['firstname'] ?></li>
         <!-- TO DO : faire une méthode getExcerpt -->
         <li><?= $admin['email'] ?></li>
