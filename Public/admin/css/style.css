@@ -143,18 +143,16 @@ h1 {
   font-size: 16px;
 }
 
-
-
 /* Table */
 .table {
   display: grid;
   grid-template-columns: 1fr 2.5fr 1fr 0.5fr;
 }
-.table-addressBook{
+.table-addressBook {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.table-home{
+.table-home {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
@@ -172,29 +170,28 @@ h1 {
 
 .table-results {
   grid-column: 1/-1;
-  
 }
 
 .table-item {
   display: grid;
   grid-template-columns: 1fr 2.5fr 1fr 0.5fr;
-  align-items: center; 
+  align-items: center;
 }
 
-.table-item-addressBook{
+.table-item-addressBook {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: center; 
+  align-items: center;
 }
-.table-item-home{
+.table-item-home {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  align-items: center; 
+  align-items: center;
 }
 
 .table-item-addressBook li,
 .table-item-home li,
-.table-item li{
+.table-item li {
   margin: 10px auto;
 }
 
@@ -216,13 +213,16 @@ h1 {
 
 .table-item,
 .table-item-home,
-.table-item-addressBook
-{
+.table-item-addressBook {
   background: var(--bg-primary);
   margin: 1rem auto;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
-
+.table-item:hover,
+.table-item-home:hover,
+.table-item-addressBook:hover {
+  filter: brightness(1.05);
+}
 
 .table p {
   padding: 0 15px;
@@ -232,7 +232,8 @@ h1 {
   display: list-item;
 }
 
-.btn, .btn-create{
+.btn,
+.btn-create {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -241,18 +242,19 @@ h1 {
   text-align: center;
   font-size: 16px;
 }
-.btn{
+.btn {
   width: 80px;
   margin: 10px auto;
 }
-.btn-create{
+.btn-create {
   width: 140px;
   margin: 20px auto;
 }
-.btn:hover, .btn-create:hover {
+.btn:hover,
+.btn-create:hover {
   transform: scale(1.05);
 }
-.main-title{
+.main-title {
   text-align: center;
 }
 .main-content {
@@ -277,6 +279,7 @@ h1 {
   color: #555555;
   cursor: pointer;
 }
+
 .increase {
   width: 30px;
   height: 30px;
@@ -297,6 +300,7 @@ h1 {
   width: 150px;
   float: left;
 }
+
 #form-create-article .item-form {
   margin: 20px;
 }
@@ -396,7 +400,7 @@ h1 {
 
   .table,
   .table-home,
-  .table-addressBook{
+  .table-addressBook {
     display: block;
   }
 
@@ -444,14 +448,11 @@ h1 {
   #form-create-article input[type="checkbox"] {
     margin-top: 6px;
   }
-  .flex{
-    display: flex; 
+  .flex {
+    display: flex;
   }
 
-  .btn{
+  .btn {
     margin: 10px;
   }
-
 }
-
-
