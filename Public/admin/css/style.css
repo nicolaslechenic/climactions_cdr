@@ -213,16 +213,16 @@ h1 {
 #read-email li:nth-child(3) {
   margin-top: 10px;
 }
-.table-item:nth-child(odd),
-.table-item-home:nth-child(odd),
-.table-item-addressBook:nth-child(odd)
+
+.table-item,
+.table-item-home,
+.table-item-addressBook
 {
   background: var(--bg-primary);
+  margin: 1rem auto;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* .table-results:nth-of-type(2n+1) .table-item{
-  background: var(--bg-primary);
-} */
 
 .table p {
   padding: 0 15px;
@@ -240,19 +240,21 @@ h1 {
   height: 30px;
   text-align: center;
   font-size: 16px;
-  margin: 10px auto;
 }
 .btn{
   width: 80px;
+  margin: 10px auto;
 }
-
 .btn-create{
   width: 140px;
+  margin: 20px auto;
 }
-.btn:hover {
+.btn:hover, .btn-create:hover {
   transform: scale(1.05);
 }
-
+.main-title{
+  text-align: center;
+}
 .main-content {
   background-color: var(--bg-articles);
 }
@@ -289,6 +291,7 @@ h1 {
   display: list-item;
   list-style-type: none;
 }
+
 #form-create-article label {
   display: block;
   width: 150px;
@@ -444,6 +447,7 @@ h1 {
   .flex{
     display: flex; 
   }
+
   .btn{
     margin: 10px;
   }
