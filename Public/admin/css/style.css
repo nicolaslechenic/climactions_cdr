@@ -262,6 +262,59 @@ h1 {
 }
 
 
+/* PAGE CONNEXION ADMIN  */
+#section-connectAdmin h1{
+  text-align: center;
+  color: var(--primary);
+}
+#section-connectAdmin form {
+  max-width: 500px;
+  border: 2px solid #ccc;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+#section-connectAdmin input {
+  display: block;
+  border: 2px solid #ccc;
+  width: 95%;
+  padding: 10px;
+  margin: 10px auto 25px;
+  border-radius: 5px;
+}
+#section-connectAdmin label {
+  color: #888;
+  font-size: 18px;
+  padding: 10px;
+}
+.btnConnexion{
+    display: block;
+    background-color: var(--primary);
+    text-align: center;
+    font-size: 16px;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.btnConnexion:hover{
+  transform: scale(1.05);
+}
+#section-connectAdmin a {
+  color: var(--primary);
+  display: block;
+  margin: 1rem 10px;
+}
+#section-connectAdmin a:hover{
+  color: var(--text-secondary);
+  background-color: var(--primary);
+  padding: 5px;
+}
+
 /* PAGE ADMIN INSCRIPTION  */
 #container_inscription_admin{
   max-width: 600px;
