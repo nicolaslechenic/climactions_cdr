@@ -28,8 +28,11 @@
     </ul>
 </div>
 
-
 <?php endforeach ?>
+
+<div>
+    <a class="btn" href="indexAdmin.php?action=pageCreationAdmin">Créer</a>
+</div>
 
 <?php $content = ob_get_clean(); ?>
 <?php require 'layouts/dashboard.php'; ?>

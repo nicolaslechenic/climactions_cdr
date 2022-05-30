@@ -44,6 +44,12 @@ class AdminController extends Controller {
 			$validation = false;
 			$erreur[] = "Le mot de passe de confirmation n'est pas correcte !";
 		}
+
+		if($adminManager->exist_firstname($firstname)){
+			$validation = false;
+			$erreur[] = "Ce prénom est déjà utilisé !";
+		}
+		
 		if($adminManager->exist_email($email)){
 			$validation = false;
 			$erreur[] = "Cet email est déjà utilisé !";
@@ -52,7 +58,7 @@ class AdminController extends Controller {
 		if($validation && filter_var($email, FILTER_VALIDATE_EMAIL)){
 
 			$admin = $adminManager->creatAdmin($lastname, $firstname, $email, $password);
-			require $this->viewAdmin('adminInscription');
+			require $this->viewAdmin('connexionAdmin');
 			
 		} else{
 			require $this->viewAdmin('adminInscription');
@@ -94,7 +100,7 @@ class AdminController extends Controller {
 		$adminManager = new \Climactions\Models\AdminModel();
 		$deleteAdmin = $adminManager->deleteOneAdmin($id);
 
-		header('Location: indexAdmin.php?action=deconnexion');
+		header('Location: indexAdmin.php?action=homeAdmin');
 	}
 
 
