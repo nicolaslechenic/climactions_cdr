@@ -19,10 +19,52 @@ class AdminController extends Controller {
 	
 	public function createAdmin($lastname, $firstname, $email, $password) {
 		
+		extract($_POST);
+
 		$adminManager = new \Climactions\Models\AdminModel();
-		$admin = $adminManager->creatAdmin($lastname, $firstname, $email, $password);
+		$validation = true;
+		$erreur = [];
+
+		if (empty($lastname) || empty($firstname) || empty($email) || empty($emailconf) || empty($password) || empty($passwordconf)){
+			$validation = false;
+			$erreur[] = "Tous les champs sont requis !";
+		}
+
+		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+			$validation = false;
+			$erreur[] = "L'adresse email n'est pas valide !"; 
+		}
+
+		elseif($emailconf != $email){
+			$validation = false;
+			$erreur[] = "L'email de confirmation n'est pas correcte !";
+		}
+
+		elseif($passwordconf != $password){
+			$validation = false;
+			$erreur[] = "Le mot de passe de confirmation n'est pas correcte !";
+		}
+
+		if($adminManager->exist_firstname($firstname)){
+			$validation = false;
+			$erreur[] = "Ce prénom est déjà utilisé !";
+		}
 		
-		require $this->viewAdmin('adminInscription');
+		if($adminManager->exist_email($email)){
+			$validation = false;
+			$erreur[] = "Cet email est déjà utilisé !";
+		}
+
+		if($validation && filter_var($email, FILTER_VALIDATE_EMAIL)){
+
+			$admin = $adminManager->creatAdmin($lastname, $firstname, $email, $password);
+			require $this->viewAdmin('connexionAdmin');
+			
+		} else{
+			require $this->viewAdmin('adminInscription');
+			return $erreur;
+		}
+		
 	}
 
 	// affichage des pages de l'administration
@@ -58,7 +100,7 @@ class AdminController extends Controller {
 		$adminManager = new \Climactions\Models\AdminModel();
 		$deleteAdmin = $adminManager->deleteOneAdmin($id);
 
-		header('Location: indexAdmin.php?action=deconnexion');
+		header('Location: indexAdmin.php?action=homeAdmin');
 	}
 
 
@@ -191,7 +233,7 @@ class AdminController extends Controller {
 				// configuration pour voir les bugs
 				// $mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			
-				// on configure le SMTP 
+				// on configure le SMTP
 				$mail->isSMTP();
 				$mail->Host = 'localhost';
 				$mail->Port = 1025; //port mailhog 

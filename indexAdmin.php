@@ -36,7 +36,7 @@ try {
     if (isset($_GET['action'])) {
         
         if($_GET['action'] == 'pageCreationAdmin') {
-        // isConnect();
+        isConnect();
         $backController->pageConnexionAdmin();
     
         }
@@ -51,7 +51,7 @@ try {
 
             $password   = password_hash($pass, PASSWORD_DEFAULT);
 
-            $backController->createAdmin($lastname, $firstname, $email, $password);
+            $erreur = $backController->createAdmin($lastname, $firstname, $email, $password);
         }
 
 

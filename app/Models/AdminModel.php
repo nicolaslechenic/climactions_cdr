@@ -9,11 +9,39 @@ class AdminModel extends Manager
     {
         $bdd = $this->connect();
 
-        $req = $bdd->prepare('INSERT INTO admin (lastname, firstname, email,  password) VALUE (?, ?, ?, ?)');
-        $req->execute(array($lastname, $firstname, $email, $password));
+        $req = $bdd->prepare('INSERT INTO admin (lastname, firstname, email,  password) VALUE (:lastname, :firstname, :email, :password)');
+        $req->execute([
+            "lastname" => htmlspecialchars($lastname), 
+            "firstname" => htmlspecialchars($firstname), 
+            "email" => htmlspecialchars($email), 
+            "password" => password_hash($password, PASSWORD_DEFAULT)
+        ]);
 
         return $req;
     }
+
+    // if email exist 
+    public function exist_email($email)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT COUNT(id) FROM admin WHERE email = ?");
+        $req->execute([$email]);
+
+        $result = $req->fetch()[0];
+        return $result;
+    }
+    
+    // if firstname exist 
+    public function exist_firstname($firstname)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT COUNT(id) FROM admin WHERE firstname = ?");
+        $req->execute([$firstname]);
+
+        $result = $req->fetch()[0];
+        return $result;
+    }
+
 
 
     public function collectPassword($email, $password)

@@ -261,6 +261,55 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
+
+/* PAGE ADMIN INSCRIPTION  */
+#container_inscription_admin{
+  max-width: 600px;
+  margin: 10rem auto;
+  text-align: center;
+  margin: 1.5rem auto;
+}
+.createAdmin-container{
+  padding: 0 1.5rem 2rem;
+}
+.bloc-form label{
+  display: block;
+  text-align: start;
+  margin-bottom: 5px;
+}
+.bloc-form input{
+  height: 30px;
+  margin-bottom: 1rem;
+  width: 100%;
+  padding-left: 5px;
+}
+.btn-createAdmin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    height: 30px;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px auto;
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+.btn-createAdmin:hover{
+  transform: scale(1.05);
+}
+
+.msg-error{
+  background-color: #E01A1A;
+  color: white;
+  border-radius: 5px;
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+}
+
 /* forumulaire création d'un article */
 
 #form-create-article select,
