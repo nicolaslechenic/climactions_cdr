@@ -552,6 +552,7 @@ a {
 #pied #reseaux {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   width: 70%;
   margin: 30px auto 0;
 }
@@ -564,6 +565,14 @@ a {
   width: 50px;
   height: auto;
   transition: 0.3s;
+}
+
+#reseaux > a:nth-child(2) > img:nth-child(1) {
+  width: 57px;
+}
+
+#reseaux > a:nth-child(3) > img:nth-child(1) {
+  width: 61px;
 }
 
 #pied #reseaux a img:hover {
@@ -583,6 +592,7 @@ a {
   width: 85%;
   height: auto;
   margin: 25px 0;
+  border-radius: 10px;
 }
 /* -------------------------PAGE-CONTACT--------------- */
 .bloc-contact-user{
