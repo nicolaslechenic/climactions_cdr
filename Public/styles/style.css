@@ -656,16 +656,26 @@ textarea{
   padding: 0.5rem 1rem;
   text-align: center;
 }
-/* -------------- MENTIONS LEGALES --------------  */
+/* -------------- MENTIONS LEGALES / COOKIES / CGU --------------  */
 
 .legal-notice .title,
-.legal-notice h2{
+.legal-notice h2,
+.cookies .title,
+.cookies h2,
+.cgu .title,
+.cgu h2
+{
   padding: 2rem;
 }
 
-.legal-notice p{
+.legal-notice p,
+.cookies p,
+.cgu p{
   width: 80%;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
+}
+.legal-notice p span{
+  text-decoration: underline;
 }
 .legal-notice figure{
   width: 50%;
@@ -677,6 +687,11 @@ textarea{
   width: 100%;
   margin: 0 auto;
 }
+
+p.last{
+  padding-bottom: 2rem;
+}
+
 
 
 /* PAGE SEND MAIL */

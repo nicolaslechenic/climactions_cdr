@@ -172,7 +172,7 @@ ob_start(); ?>
 
     <h2>Liens hypertextes et cookies</h2>
 
-    <p>La navigation sur le site <span>www.cdr-climactions-bretagnesud.bzh</span> est susceptible de provoquer
+    <p class="last">La navigation sur le site <span>www.cdr-climactions-bretagnesud.bzh</span>  est susceptible de provoquer
         l’installation de cookie(s) sur
         l’ordinateur de l’utilisateur. Un cookie est un fichier de petite taille, qui ne permet pas l’identification de
         l’utilisateur, mais qui enregistre des informations relatives à la navigation d’un ordinateur sur un site. Les
