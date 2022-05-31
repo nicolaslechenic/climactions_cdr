@@ -38,6 +38,22 @@ class FrontController extends Controller {
         require $this->viewFrontend('contact');
     }
 
+    // afficher page legalNotice.php
+    public function legalNotice()
+    {
+        require $this->viewFrontend('legalNotice');
+    }
+    // afficher page cookies.php
+    public function cookies()
+    {
+        require $this->viewFrontend('cookies');
+    }
+    // afficher page cgu.php
+    public function cgu()
+    {
+        require $this->viewFrontend('cgu');
+    }
+
 
     // fonction envoyer contact en bdd 
     public function contactPost($lastname, $firstname, $email, $phone, $object, $message)

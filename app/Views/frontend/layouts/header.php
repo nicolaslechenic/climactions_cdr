@@ -15,12 +15,11 @@
     <header id="bandeau">
         <nav id="navigation-bandeau"  class="container">
 
-            <a href="/"><img src="./Public/img/logo_clim_action.png" alt="Logo"></a>
+            <a href="/"><img src="./Public/img/logo_clim_action.png" alt="logo-climactions"></a>
 
             <ul id="menu" class="hidden">
                 <li><a href="index.php">Accueil</a></li>
                 <li><a href="index.php?action=pageArticle">Ressources</a></li>
-                <li><a href="#">évènements</a></li>
                 <li><a href="index.php?action=contact">Contact</a></li>
                 <li><a href="https://climactions-bretagnesud.bzh/">Retourner sur le site</a></li>
             </ul>

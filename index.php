@@ -58,6 +58,21 @@ try {
       $controllerFront->contact();
     }
 
+    // afficher page legalMention
+    if ($_GET['action'] == 'legalNotice') {
+      $controllerFront->legalNotice();
+    }
+
+    // afficher page cgu.php
+    if ($_GET['action'] == 'cgu') {
+      $controllerFront->cgu(); 
+    }
+
+    // afficher page cookies.php
+    if ($_GET['action'] == 'cookies') {
+      $controllerFront->cookies();
+    }
+
     // envoi mail en BDD 
     elseif ($_GET['action'] == 'contactPost') {
       $lastname = htmlspecialchars($_POST['lastname']);

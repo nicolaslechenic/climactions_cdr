@@ -3,7 +3,7 @@ require_once 'header.php';
 ?>
 
 
-<main class="main-content">
+<main class="main-content container">
     <?= $content ?>   
 </main>
 
