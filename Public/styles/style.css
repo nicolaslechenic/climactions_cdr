@@ -913,7 +913,7 @@ textarea{
     text-align: center;
     margin: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     align-items: center;
     width: 70%;
   }
@@ -922,8 +922,12 @@ textarea{
     display: block;
   }
 
-  #bandeau #navigation-bandeau #menu li {
-    padding: 10px 0;
+  #bandeau #navigation-bandeau #menu li:not(:last-child) {
+    padding: 10px 15px;
+  }
+
+  #bandeau #navigation-bandeau #menu li:last-child {
+    padding: 10px 0 10px 15px;
   }
 
   #bandeau #navigation-bandeau #menu li a:hover {
