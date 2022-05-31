@@ -669,6 +669,43 @@ textarea{
   padding: 0.5rem 1rem;
   text-align: center;
 }
+/* -------------- MENTIONS LEGALES / COOKIES / CGU --------------  */
+
+.legal-notice .title,
+.legal-notice h2,
+.cookies .title,
+.cookies h2,
+.cgu .title,
+.cgu h2
+{
+  padding: 2rem;
+}
+
+.legal-notice p,
+.cookies p,
+.cgu p{
+  width: 80%;
+  margin: 0 auto;
+}
+.legal-notice p span{
+  text-decoration: underline;
+}
+.legal-notice figure{
+  width: 50%;
+  margin: 0 auto;
+}
+
+.legal-notice .logo-climactions,
+.legal-notice .logo-greta{
+  width: 100%;
+  margin: 0 auto;
+}
+
+p.last{
+  padding-bottom: 2rem;
+}
+
+
 
 /* PAGE SEND MAIL */
 #section-confirm-mail{
