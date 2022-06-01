@@ -99,10 +99,12 @@ a {
   color: black;
   font-family: "Roboto Condensed", sans-serif;
   transition: 0.3s;
+  line-height: 1.3;
+  font-size: 1.1rem;
 }
 
 /* container  */
-.container-contact{
+.container-contact {
   max-width: 800px;
   margin: 0 auto;
 } 
@@ -112,9 +114,6 @@ a {
   background-color: var(--primary);
   padding: 10px 20px;
   border-radius: 10px;
-  /* display: inline-block; */
-  /* width: 120px; */
-  /* margin: -40px auto 0; */
   position: relative;
   bottom: 15px;
   transition: 0.3s;
@@ -159,13 +158,13 @@ a {
 
 #bandeau #navigation-bandeau #menu li a:hover {
   color: var(--hover);
-  /* text-decoration: underline; */
 }
 
 #bandeau #navigation-bandeau #menu li:last-child a {
   color: var(--text-secondary);
   background-color: var(--primary);
   padding: 5px 12px;
+  border: 1px solid var(--primary);
   border-radius: 10px;
   transition: 0.3s;
   text-transform: none;
@@ -581,35 +580,84 @@ a {
   margin: 25px 0;
   border-radius: 10px;
 }
-/* -------------------------PAGE-CONTACT--------------- */
-.bloc-contact-user{
+
+#legals-footer {
+  background-color: var(--bg-primary);
+  text-align: center;
+  padding: 10px 0;
+}
+
+#legals-footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+#legals-footer ul li {
+  padding: 0 10px;
+}
+
+#legals-footer ul li a {
+  font-family: "Roboto", sans-serif;
+  color: var(--text-primary);
+}
+
+#legals-footer ul li a:hover {
+  color: var(--primary);
+}
+
+#legals-footer p {
+  color: var(--text-primary);
+  margin: 10px auto 0;
+}
+
+#legals-footer p a {
+  font-family: "Roboto", sans-serif;
+  color: var(--text-primary);
+}
+
+#legals-footer p a:hover {
+  color: var(--primary);
+}
+
+
+/* ---------------PAGE-CONTACT--------------- */
+
+.bloc-contact-user {
   text-align: center;
   margin: 1.5rem auto;
 }
-.main-bloc-form form{
+
+.main-bloc-form form {
   padding: 0 1.5rem 2rem;
   max-width: 700px;
   margin: 0 auto;
 }
-.main-bloc-form form h1{
+
+.main-bloc-form form h1 {
   margin-bottom: 2rem;
 }
-.bloc-form label{
+
+.bloc-form label {
   display: block;
   text-align: start;
   margin-bottom: 5px;
 }
-.bloc-form input{
+
+.bloc-form input {
   height: 30px;
   margin-bottom: 1rem;
   width: 100%;
   padding-left: 5px;
 }
-.main-bloc-form form p{
+
+.main-bloc-form form p {
   font-size: 1rem;
   text-align: initial;
 }
-.send-contact{
+
+.send-contact {
   padding: 0.8rem 2rem;
   background-color: var(--hover);
   color: white;
@@ -624,20 +672,21 @@ a {
   display: block;
   transition: all 0.5s ease-in-out;
 }
-.send-contact:hover{
+
+.send-contact:hover {
   transform: scale(1.05);
 }
-.activeBtn{
+.activeBtn {
   background-color: var(--primary);
 }
 
-textarea{
+textarea {
   height: 100px;
   width: 100%;
   margin-bottom: 2rem;
   padding-left: 5px;
 }
-.msg-error{
+.msg-error {
   background-color: #E01A1A;
   color: white;
   border-radius: 5px;
@@ -645,7 +694,7 @@ textarea{
   padding: 0.5rem 1rem;
   text-align: center;
 }
-.msg-success{
+.msg-success {
   background-color: var(--primary);
   color: white;
   border-radius: 5px;
@@ -653,8 +702,8 @@ textarea{
   padding: 0.5rem 1rem;
   text-align: center;
 }
-/* -------------- MENTIONS LEGALES / COOKIES / CGU --------------  */
 
+/* -------------- MENTIONS LEGALES / COOKIES / CGU --------------  */
 .legal-notice .title,
 .legal-notice h2,
 .cookies .title,
@@ -667,25 +716,25 @@ textarea{
 
 .legal-notice p,
 .cookies p,
-.cgu p{
+.cgu p {
   width: 80%;
   margin: 0 auto;
 }
-.legal-notice p span{
+.legal-notice p span {
   text-decoration: underline;
 }
-.legal-notice figure{
+.legal-notice figure {
   width: 50%;
   margin: 0 auto;
 }
 
 .legal-notice .logo-climactions,
-.legal-notice .logo-greta{
+.legal-notice .logo-greta {
   width: 100%;
   margin: 0 auto;
 }
 
-p.last{
+p.last {
   padding-bottom: 2rem;
 }
 
@@ -750,10 +799,7 @@ p.last{
 
   #contenu #articles #article {
     width: 30%;
-    /* margin: 30px auto; */
     text-align: center;
-    /* max-height: 100vh; */
-    /* border: 1px solid black; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
