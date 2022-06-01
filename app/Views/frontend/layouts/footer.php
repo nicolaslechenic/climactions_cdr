@@ -13,10 +13,10 @@
         <div id="reseaux-sociaux" class="item-footer">
             <h2>Nos réseaux sociaux</h2>
             <div id="reseaux">
-                <a href="#"><img src="./Public/img/icon-facebook.svg" alt="facebook" title="Facebook"></a>
-                <a href="#"><img src="./Public/img/icon-twitter.svg" alt="twitter" title="Twitter"></a>
-                <a href="#"><img src="./Public/img/icon-instagram.svg" alt="instagram" title="Instagram"></a>
-                <a href="#"><img src="./Public/img/icon-linkedin.svg" alt="linkedin" title="Linkedin"></a>
+                <a href="fr-fr.facebook.com/climactions/"><img src="./Public/img/icon-facebook.svg" alt="facebook" title="Facebook"></a>
+                <a href="twitter.com/climactions"><img src="./Public/img/icon-twitter.svg" alt="twitter" title="Twitter"></a>
+                <a href="instagram.com/climactions.bretagnesud/?hl=fr"><img src="./Public/img/icon-instagram.svg" alt="instagram" title="Instagram"></a>
+                <a href="fr.linkedin.com/company/clim%27actions-bretagne-sud"><img src="./Public/img/icon-linkedin.svg" alt="linkedin" title="Linkedin"></a>
             </div>
         </div>
 
