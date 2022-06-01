@@ -4,12 +4,9 @@ $description = "La page d'accueil";
 ob_start(); ?>
 
 <section id="bar-search" class="container">
-    <?php
+    <?php 
     include_once "layouts/searchbar.php";
-    ?>
-    <?php
-    if (isset($search) && !empty($search) && isset($_GET['search'])) :
-    ?>
+    if (isset($search) && !empty($search) && isset($_GET['search'])) : ?>
         <section>
             <h2>Votre recherche</h2>
             <div class="article-container" id="search">
@@ -26,10 +23,8 @@ ob_start(); ?>
             </div>
         </section>
 
-
     <?php else : ?>
 
-        
     <h1 id="ressources_title" class="container">Les Articles</h1>
         <div class="button-group filters-button-group">
             <button class="button is-checked" data-filter="">Toutes les catégories</button>

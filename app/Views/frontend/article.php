@@ -4,12 +4,8 @@ $description = "La page affichage d'un article";
 require_once './app/Views/frontend/layouts/header.php'; 
 ob_start(); ?>
 
-<main class="container container-article">
-
-    <article>
-
+    <article class="container-article">
         <h1 class="title">Titre de l'article</h1>
-
         <div class="article">
 
             <figure class="img-size">
@@ -34,9 +30,7 @@ ob_start(); ?>
                 <p class="format">Format :</p>
                 <!-- la caution -->
                 <p class="format">Caution :</p>
-
             </section>
-
 
             <div class="content">
                 <div class="line"></div>
@@ -48,16 +42,9 @@ ob_start(); ?>
                     id ad
                     numquam perspiciatis.</p>
                 <p class="created-at"><strong>Créé le : </strong>18/02/2022</p>
-
+                </div>
             </div>
-
-        </div>
-
     </article>
     <a href="#" class="btn">Revenir sur tous les articles</a>
-
-
-</main>
-
 <?php 
 require_once './app/Views/frontend/layouts/footer.php'; ?>

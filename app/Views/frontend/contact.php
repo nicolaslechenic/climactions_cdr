@@ -4,8 +4,7 @@ $description = "Page de contact";
 ob_start();
 ?>
 
-<main class="container-contact">
-    <section class="bloc-contact-user">
+    <section class="container-contact bloc-contact-user">
 
         <div class="main-bloc-form">
             <form action="index.php?action=contactPost" method="POST">
@@ -66,7 +65,6 @@ ob_start();
         </div>
 
     </section>
-</main>
 <script src="./Public/scripts/contact.js"></script>
 <?php $content = ob_get_clean(); ?>
 <?php require "layouts/template.php";
