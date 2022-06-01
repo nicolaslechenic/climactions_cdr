@@ -125,7 +125,6 @@ a {
 }
 
 
-
 /* --------------- header --------------------  */
 #bandeau {
   width: 100%;
@@ -193,6 +192,31 @@ a {
   font-weight: 800;
 }
 
+#encart {
+  margin: 30px auto;
+  padding: 15px;
+  border: 5px solid var(--primary);
+  border-radius: 10px;
+}
+
+#encart h2 {
+  margin: 10px 0 20px;
+}
+
+#encart p {
+  padding: 0 15px 0;
+}
+
+#encart a {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
 #contenu #articles h2,
 #contenu #agenda h2 {
   text-align: left;
@@ -247,46 +271,6 @@ a {
   background-color: #03b86c;
 }
 
-/* -------------- slider --------------  */
-#contenu #agenda .container .slider .evenement {
-  width: 85%;
-  margin: 0 auto;
-  display: none;
-  text-align: center;
-}
-
-#contenu #agenda .container .slider .evenement.active {
-  display: block;
-  animation: fade 0.8s;
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-#contenu #agenda .container .slider .evenement img {
-  max-width: 100%;
-}
-
-.cont-btn {
-  width: 85%;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-}
-
-.btn-nav p {
-  font-size: 3rem;
-  font-weight: 100;
-  margin: 0 15px;
-  cursor: pointer;
-}
 
 /* ---------------Page de tout les articles-------- */
 
