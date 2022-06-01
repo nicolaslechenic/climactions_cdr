@@ -23,17 +23,17 @@ ob_start();
             ?>
                 <div class="bloc-form">
                     <label for="lastname">Nom : </label>
-                    <input type="text" id="lastname" name="lastname" placeholder="Votre Nom" value="<?php if (isset($_POST['lastname'])) echo $_POST['lastname']
+                    <input type="text" id="lastname" name="lastname" placeholder="Votre Nom" value="<?php if (isset($_POST['lastname'])) echo htmlspecialchars($_POST['lastname'])
                      ?>" required />
                 </div>
                 <div class="bloc-form">
                     <label for="firstname">Prénom :</label>
-                    <input type="text" id="firstname" name="firstname" placeholder="Votre Prénom" value="<?php if (isset($_POST['firstname'])) echo $_POST['firstname']
+                    <input type="text" id="firstname" name="firstname" placeholder="Votre Prénom" value="<?php if (isset($_POST['firstname'])) echo htmlspecialchars($_POST['firstname'])
                      ?>" required />
                 </div>
                 <div class="bloc-form">
                     <label for="email">E-mail : *</label>
-                    <input type="email" id="email" name="email" placeholder="Votre e-mail" value="<?php if (isset($_POST['email'])) echo $_POST['email']
+                    <input type="email" id="email" name="email" placeholder="Votre e-mail" value="<?php if (isset($_POST['email'])) echo htmlspecialchars($_POST['email'])
                      ?>" required />
                 </div>
                 <div class="bloc-form">
