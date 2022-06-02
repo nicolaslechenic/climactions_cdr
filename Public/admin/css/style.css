@@ -192,7 +192,10 @@ h1 {
 .table-item-addressBook li,
 .table-item-home li,
 .table-item li {
-  margin: 10px auto;
+  margin: 2rem auto;
+}
+.table-item li.article-title{
+  margin: 2rem;
 }
 
 #read-email {
@@ -265,9 +268,8 @@ h1 {
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
-
 /* PAGE CONNEXION ADMIN  */
-#section-connectAdmin h1{
+#section-connectAdmin h1 {
   text-align: center;
   color: var(--primary);
 }
@@ -292,20 +294,20 @@ h1 {
   font-size: 18px;
   padding: 10px;
 }
-.btnConnexion{
-    display: block;
-    background-color: var(--primary);
-    text-align: center;
-    font-size: 16px;
-    border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.btnConnexion {
+  display: block;
+  background-color: var(--primary);
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.btnConnexion:hover{
+.btnConnexion:hover {
   transform: scale(1.05);
 }
 #section-connectAdmin a {
@@ -315,7 +317,7 @@ h1 {
 }
 
 /* PAGE ACCOUNT.PHP  */
-#pageAccount{
+#pageAccount {
   max-width: 500px;
   border: 2px solid #ccc;
   padding: 30px;
@@ -325,63 +327,62 @@ h1 {
   min-height: 400px;
   text-align: center;
 }
-#pageAccount h1{
+#pageAccount h1 {
   color: var(--primary);
 }
-#pageAccount p{
+#pageAccount p {
   font-size: 1.5rem;
-    font-style: italic;
-    color: var(--hover);
+  font-style: italic;
+  color: var(--hover);
 }
-.changePassword{
+.changePassword {
   display: block;
   margin: 3rem;
   color: var(--primary);
 }
 
-
 /* PAGE ADMIN INSCRIPTION  */
-#container_inscription_admin{
+#container_inscription_admin {
   max-width: 600px;
   margin: 10rem auto;
   text-align: center;
   margin: 1.5rem auto;
 }
-.createAdmin-container{
+.createAdmin-container {
   padding: 0 1.5rem 2rem;
 }
-.bloc-form label{
+.bloc-form label {
   display: block;
   text-align: start;
   margin-bottom: 5px;
 }
-.bloc-form input{
+.bloc-form input {
   height: 30px;
   margin-bottom: 1rem;
   width: 100%;
   padding-left: 5px;
 }
-.btn-createAdmin{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary);
-    height: 30px;
-    text-align: center;
-    font-size: 16px;
-    margin: 10px auto;
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-    color: var(--text-secondary);
-    transition: all 0.3s ease;
+.btn-createAdmin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary);
+  height: 30px;
+  text-align: center;
+  font-size: 16px;
+  margin: 10px auto;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
 }
-.btn-createAdmin:hover{
+.btn-createAdmin:hover {
   transform: scale(1.05);
 }
 
-.msg-error{
-  background-color: #E01A1A;
+.msg-error {
+  background-color: #e01a1a;
   color: white;
   border-radius: 5px;
   margin: 1rem 0;
@@ -436,9 +437,8 @@ h1 {
   margin: 0 0 1rem 1.2rem;
 }
 
-
 /* page new password  */
-#section-NewPassword h1{
+#section-NewPassword h1 {
   text-align: center;
 }
 #section-NewPassword form {
@@ -462,19 +462,19 @@ h1 {
   font-size: 18px;
   padding: 10px;
 }
-.btnChangePsw{
-    background-color: var(--primary);
-    text-align: center;
-    font-size: 16px;
-    border: none;
-    color: white;
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.btnChangePsw {
+  background-color: var(--primary);
+  text-align: center;
+  font-size: 16px;
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
-.btnChangePsw:hover{
+.btnChangePsw:hover {
   transform: scale(1.05);
 }
 #section-NewPassword a {
@@ -490,9 +490,9 @@ h1 {
   padding: 0.5rem 1rem;
 }
 
-
 /* PAGE PASSWORD FORGOT  */
-#password-forgot form{
+
+#password-forgot form {
   max-width: 500px;
   border: 2px solid #ccc;
   padding: 30px;
@@ -500,16 +500,16 @@ h1 {
   border-radius: 15px;
   margin: 3rem auto;
 }
-#password-forgot h1{
+#password-forgot h1 {
   font-size: 2rem;
   text-align: center;
 }
-#password-forgot label{
+#password-forgot label {
   color: #888;
   font-size: 18px;
   padding: 10px;
 }
-#password-forgot input{
+#password-forgot input {
   display: block;
   border: 2px solid #ccc;
   width: 97%;
@@ -519,7 +519,9 @@ h1 {
 }
 
 /* --------------------PAGE EMAIL.PHP-------------  */
+
 /* --------PAGINATION-----------  */
+
 #nav-pagination {
   text-align: center;
   margin: 3rem 0 1rem;
@@ -546,6 +548,29 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+/* barre de recherche */
+
+.bar-search {
+  margin: 2rem auto;
+  text-align: center;
+}
+.input-search {
+  width: 220px;
+  height: 30px;
+  text-align: center;
+}
+.btn-search {
+  width: 50px;
+  height: 30px;
+  border: 1px solid var(--primary);
+  background-color: var(--primary);
+  color: var(--white);
+}
+.btn-search:hover {
+  background-color: var(--white);
+  color: var(--primary);
 }
 
 @media screen and (max-width: 800px) {
@@ -605,7 +630,7 @@ h1 {
   #form-create-article input[type="text"],
   #form-create-article input[type="number"],
   #form-create-article textarea,
-  #form-create-article select {
+  #form-create-article select.flex.i {
     width: 95%;
     margin: 5px;
   }
@@ -619,7 +644,6 @@ h1 {
   .flex {
     display: flex;
   }
-
   .btn {
     margin: 10px;
   }

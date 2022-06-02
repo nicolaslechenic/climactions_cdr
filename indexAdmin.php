@@ -162,10 +162,21 @@ try {
           isConnect();
           $backController->accountAdmin();
         }
-
+        // affichage de la page resources.php (barre de recherche et pagination)
+        
         elseif($_GET['action'] == 'resourceAdmin'){
-          isConnect();
-          $backController->resourceAdmin();
+          // isConnect();
+
+          $query = $_POST['query'] ?? "";
+
+          if (isset($_GET['page']) && !empty($_GET['page'])) {
+
+            $currentPage = (int) strip_tags($_GET['page']);
+
+        } else {
+            $currentPage = 1;
+        }
+          $backController->resourceAdmin($query, $currentPage);
         }
         elseif($_GET['action'] == 'addressBookAdmin'){
           isConnect();

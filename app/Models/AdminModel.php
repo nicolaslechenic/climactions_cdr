@@ -194,8 +194,59 @@ class AdminModel extends Manager
         return $nbEmail;
     }
 
-    // supprimer un email
+    /* ----------------------------------------------------------------------*/
 
+    // gestion des ressources (page resource.php)
+
+    // afficher toutes les ressources
+
+    public function resourcePage($firstResource, $perPage)
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT `id`, `name`, `image`, `content`, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
+                              FROM `ressources` 
+                              ORDER BY `created_at` ASC LIMIT :firstresource, :perpage");
+                              $req->bindValue(':firstresource', $firstResource, \PDO::PARAM_INT);
+                              $req->bindValue(':perpage', $perPage, \PDO::PARAM_INT);
+        $req->execute();
+        $resources = $req->fetchAll(\PDO::FETCH_ASSOC);
+        return $resources;
+    }
+
+    // ----------------------------------------
+    
+    public function searchResource($query)
+    {
+        $bdd = $this->connect();
+
+        $req = $bdd->prepare("SELECT id, name, image, content ,DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
+                                FROM ressources 
+                                WHERE name LIKE :query 
+                                OR content LIKE :query
+                                ORDER BY id 
+                                DESC LIMIT 6");
+        $req->execute([':query' => '%'.$query.'%']);
+    
+        $search = $req->fetchAll();
+        return $search;
+    }
+    
+    // compter les ressources
+    
+    public function countResource()
+    {
+        $bdd = $this->connect();
+        $req = $bdd->prepare("SELECT COUNT(id) AS nb_resources FROM ressources");
+        $req->execute();
+        $result = $req->fetch();
+        $nbResource = $result['nb_resources'];
+        return $nbResource;
+    }
+    
+    // ----------------------------------------
+    
+    // supprimer un email
+    
     public function deleteEmail($id){
         $bdd = $this->connect();
         $req = $bdd->prepare('DELETE FROM `contact` 
