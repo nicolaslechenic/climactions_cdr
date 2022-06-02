@@ -30,7 +30,7 @@
 <?php endforeach ?>
 
 <div>
-    <a class="btn" href="indexAdmin.php?action=pageCreationAdmin">Créer</a>
+    <a class="btn-create" href="indexAdmin.php?action=pageCreationAdmin">Créer</a>
 </div>
 
 <?php $content = ob_get_clean(); ?>

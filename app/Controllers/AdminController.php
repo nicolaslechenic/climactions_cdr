@@ -104,10 +104,13 @@ class AdminController extends Controller {
 	}
 
 
-	 public function emailAdmin($currentPage)
+	 public function emailAdmin($query, $currentPage)
 	{
 		$emailsManager = new \Climactions\Models\AdminModel();
-        // $emails = $emailsManager->emails();
+        
+		$search = $emailsManager->searchEmail($query);
+
+		// var_dump($search); die;
 
 		// count nb email
 		$nbrEmail = $emailsManager->countEmail();
@@ -123,10 +126,26 @@ class AdminController extends Controller {
 
 
 		require $this->viewAdmin('email');
-	}
+	}   
 
-	public function resourceAdmin()
+	public function resourceAdmin($query, $currentPage)
 	{
+		$resourcesManager = new \Climactions\Models\AdminModel();
+		
+        $search = $resourcesManager->searchResource($query);
+        
+		// count nb Resource
+		$nbrResource = $resourcesManager->countResource();
+
+		// nb email per page 
+        $perPage = 8;
+
+		// calcul nb pages total 
+        $pages = ceil($nbrResource / $perPage);
+        
+        $firstResource = ($currentPage * $perPage) - $perPage;
+        $resources = $resourcesManager->resourcePage($firstResource, $perPage);
+		
 		require $this->viewAdmin('resource');
 	}
 
