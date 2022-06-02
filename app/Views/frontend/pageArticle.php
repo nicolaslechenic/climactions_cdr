@@ -16,7 +16,7 @@ ob_start(); ?>
                             <img src="<?= $article['image'] ?>">
                         </div>
                         <div class="date"><p><?=$article['date']?></p></div>
-                        <h2 class="title"><?= $article['name'] ?></h2>
+                        <h2 class="title"><?= $article['resource'] ?></h2>
                         <div class="read-more"><a class="read-more" href="index.php?action=article&id=<?= $article['id'] ?>">Voir l'Article</a></div>
                     </article>
                 <?php } ?>
@@ -29,7 +29,7 @@ ob_start(); ?>
         <div class="button-group filters-button-group">
             <button class="button is-checked" data-filter="">Toutes les catégories</button>
             <?php foreach ($types as $type) { ?>
-                <button class="button" data-filter=".<?= $type['type'] ?>"><?= $type['type'] ?></button>
+                <button class="button" data-filter=".<?= $type['name'] ?>"><?= $type['name'] ?></button>
             <?php } ?>
         </div>
         <section class="grid">

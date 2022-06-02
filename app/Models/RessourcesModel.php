@@ -14,17 +14,15 @@ class RessourcesModel extends Manager
     }
 
 
-
-
     // search an/several article 
     public function searchArticle($query)
     {
         $bdd = $this->connect();
 
-        $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type`,DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` FROM ressources,`types`  
-        WHERE name LIKE :query 
+        $req = $bdd->prepare("SELECT resource.id,resource.name AS resource,image,content,type_id,`type`.name AS type,DATE_FORMAT(modified_at, '%d/%m/%Y') AS `date` FROM resource,`type`  
+        WHERE resource.name LIKE :query 
         OR content LIKE :query
-        AND ressources.type_id = `types`.id
+        AND resource.type_id = `type`.id
         ORDER BY id 
         DESC LIMIT 6");
         $req->execute([':query' => '%'.$query.'%']);
@@ -39,7 +37,7 @@ class RessourcesModel extends Manager
     {
         $bdd = $this->connect();
         $id = $_GET['id'];
-        $req = $bdd->prepare("SELECT * FROM ressources WHERE id = ?");
+        $req = $bdd->prepare("SELECT * FROM resource WHERE id = ?");
         $req->execute([$id]);
 
         return $req->fetch();
@@ -49,7 +47,7 @@ class RessourcesModel extends Manager
     public function lastArticles()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT `id`, type_id, `name`, `image` FROM `ressources` ORDER BY `id` DESC LIMIT 3");
+        $req = $bdd->prepare("SELECT `id`, type_id, `name`, `image` FROM `resource` ORDER BY `id` DESC LIMIT 3");
         $req->execute(array());
         $articles = $req->fetchAll();
         return $articles;
@@ -58,7 +56,7 @@ class RessourcesModel extends Manager
     public function selectType()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,type FROM types");
+        $req = $bdd->prepare("SELECT id,`name` FROM type");
         $req->execute(array());
         $types = $req->fetchAll();
         return $types;
@@ -76,65 +74,12 @@ class RessourcesModel extends Manager
     public function selectCondition()
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,condition FROM condition");
+        $req = $bdd->prepare("SELECT id,name FROM condition");
         $req->execute(array());
         $conditions = $req->fetchAll();
         return $conditions;
     }
-
-    public function selectLocation()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,location FROM location");
-        $req->execute(array());
-        $locations = $req->fetchAll();
-        return $locations;
-    }
-
-    public function selectEditor()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,name FROM editor");
-        $req->execute(array());
-        $editors = $req->fetchAll();
-        return $editors;
-    }
     
-    public function selectAuthor()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,name FROM author");
-        $req->execute(array());
-        $authors = $req->fetchAll();
-        return $authors;
-    }
-
-    public function selectProductor()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,name FROM productor");
-        $req->execute(array());
-        $productors = $req->fetchAll();
-        return $productors;
-    }
-
-    public function selectRealisator()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,name FROM realisator");
-        $req->execute(array());
-        $realisators = $req->fetchAll();
-        return $realisators;
-    }
-
-    public function selectCreator()
-    {
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT id,name FROM creator");
-        $req->execute(array());
-        $creators = $req->fetchAll();
-        return $creators;
-    }
 
     public function selectPublic()
     {
@@ -147,144 +92,13 @@ class RessourcesModel extends Manager
 
     public function selectResources(){
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.id,name,image,content,type_id,`type`,DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` FROM ressources INNER JOIN `types` 
-        ON ressources.type_id = `types`.id
-        ORDER BY ressources.id DESC" );
+        $req = $bdd->prepare("SELECT resource.id,resource.name,image,content,type_id,`type`.name AS type,DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` FROM resource INNER JOIN `type` 
+        ON resource.type_id = `type`.id
+        ORDER BY resource.id DESC" );
         $req->execute(array());
         $articles = $req->fetchAll();
         // var_dump($articles);die;
         return $articles;
-    }
-
-    public function insertBook($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$editor,$author,$public)
-    {
-        $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
-        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2= $bdd->prepare("INSERT INTO livre (editor_id,author_id,public_id,ressource_id) 
-        VALUES (:editor_id,:author_id,:public_id,:ressource_id)");
-        $data1 = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":type_id" => $type,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated
-        ];
-
-        $data2 = [
-            ":editor" => $editor,
-            ":author" => $author,
-            ":public_id" => $public,
-            ":ressource_id" => $req1->lastInsertId()
-        ];
-  
-        $req1->execute($data1);
-        $req2->execute($data2);
-    }
-
-    public function selectBook(){
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,editor.`name`,author.`name`,public.`name` 
-        FROM ressources,theme,location,`condition`,livre,editor,author,public 
-        WHERE ressources.id = livre.ressource_id 
-        AND ressources.condition_id = `condition`.id 
-        AND ressources.location_id = location.id 
-        AND ressources.theme_id = theme.id 
-        AND livre.editor_id = editor.id 
-        AND livre.author_id = author.id 
-        AND livre.public_id = public.id");
-        $req->execute(array());
-        $livre = $req->fetchAll();
-        return $livre;
-    }
-
-    public function selectOneBook($idRessources){
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,editor.`name`,author.`name`,public.`name` 
-        FROM ressources,theme,location,`condition`,livre,editor,author,public 
-        WHERE ressources.id = ?
-        AND ressources.id = livre.ressource_id 
-        AND ressources.condition_id = `condition`.id 
-        AND ressources.location_id = location.id 
-        AND ressources.theme_id = theme.id 
-        AND livre.editor_id = editor.id 
-        AND livre.author_id = author.id 
-        AND livre.public_id = public.id");
-        $req->execute(array($idRessources));
-        $livre = $req->fetch();
-        return $livre;
-    }
-
-    public function updateBook($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$editor,$author,$public){
-        $bdd = $this->connect();
-        $req = $bdd->prepare("UPDATE ressources,livre
-        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,author_id = :author_id, editor_id = :editor_id ,public_id = :public_id 
-        WHERE ressources.id = :ressources_id
-        AND ressources.id = livre.ressource_id");
-
-        $data = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated,
-            ":editor" => $editor,
-            ":author" => $author,
-            ":public_id" => $public,
-            ":ressources_id" => $idRessources
-        ];
-
-        $req->execute($data);
-    }
-
-    
-
-    public function insertMovie($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$producer,$director,$public)
-    {
-        $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
-        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2 = $bdd->prepare("INSERT INTO film (producer_id,director_id,public_id,ressources_id) 
-        VALUES (:producer_id,:producer_id,_public_id,:ressources_id)");
-        $data1 = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":type_id" => $type,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated
-        ];
-
-        $data2 = [
-            ":producer_id" => $producer,
-            ":director_id" => $director,
-            ":public_id" => $public,
-            ":ressources_id" => $req1->lastInsertId()
-        ];
-  
-        $req1->execute($data1);
-        $req2->execute($data2);
     }
 
     public function selectMovie(){
