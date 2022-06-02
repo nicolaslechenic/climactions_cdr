@@ -148,6 +148,9 @@ try {
 
         elseif($_GET['action'] == 'emailAdmin'){
           // isConnect();
+
+          $query = $_POST['query'] ?? "";
+
           if (isset($_GET['page']) && !empty($_GET['page'])) {
 
             $currentPage = (int) strip_tags($_GET['page']);
@@ -155,7 +158,7 @@ try {
         } else {
             $currentPage = 1;
         }
-          $backController->emailAdmin($currentPage);
+          $backController->emailAdmin($query, $currentPage);
         }
 
         elseif($_GET['action'] == 'accountAdmin'){

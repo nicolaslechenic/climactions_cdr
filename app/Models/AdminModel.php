@@ -184,6 +184,7 @@ class AdminModel extends Manager
     }
 
     // count all email 
+
     public function countEmail()
     {
         $bdd = $this->connect();
@@ -192,6 +193,23 @@ class AdminModel extends Manager
         $result = $req->fetch();
         $nbEmail = $result['nb_email'];
         return $nbEmail;
+    }
+
+    public function searchEmail($query)
+    {
+        $bdd = $this->connect();
+
+        $req = $bdd->prepare("SELECT id, lastname, firstname, message, DATE_FORMAT(created_at, '%d/%m/%Y') AS `date` 
+                                FROM contact 
+                                WHERE lastname LIKE :query 
+                                OR firstname LIKE :query
+                                ORDER BY id 
+                                DESC LIMIT 6");
+        // var_dump($req); die;
+        $req->execute([':query' => '%'.$query.'%']);
+    
+        $searchEmail = $req->fetchAll();
+        return $searchEmail;
     }
 
     /* ----------------------------------------------------------------------*/
@@ -227,8 +245,8 @@ class AdminModel extends Manager
                                 DESC LIMIT 6");
         $req->execute([':query' => '%'.$query.'%']);
     
-        $search = $req->fetchAll();
-        return $search;
+        $searchResource = $req->fetchAll();
+        return $searchResource;
     }
     
     // compter les ressources

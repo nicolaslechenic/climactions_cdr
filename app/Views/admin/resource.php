@@ -3,22 +3,25 @@
 <h1>Les articles</h1>
 
 <section id="bar-search" class="container">
+
+    <!-- barre de recherche -->
+    
     <?php 
     include_once "layouts/search.php";
     if (isset($search) && !empty($search) && isset($_GET['search'])) : ?>
+    
     <section>
+        
+    <span class="btn-create"><a href="indexAdmin.php?action=resourceAdmin">Revenir</a></span>
 
-        <div class="article-container" id="search">
+        <div class="table">
+            <h3 class="table-title">Titre</h3>
+            <h3 class="table-title">Contenu</h3>
+            <h3 class="table-title">Publié le</h3>
+            <h3 class="table-title">Action</h3>
+        </div>
 
-            <span class="btn-create"><a href="indexAdmin.php?action=resourceAdmin">Revenir</a></span>
-
-            <div class="table">
-                <h3 class="table-title">Titre</h3>
-                <h3 class="table-title">Contenu</h3>
-                <h3 class="table-title">Publié le</h3>
-                <h3 class="table-title">Action</h3>
-            </div>
-<div class="bg">
+        <div class="bg">
             <?php foreach ($search as $resource) {?>
             <div class="table-results">
                 <ul class="table-item">
@@ -64,7 +67,11 @@
         </div>
         <?php }; ?>
     </div>
+
     <?php endif ?>
+
+    <!-- pagination -->
+
     <nav id="nav-pagination">
         <ul class="pagination">
             <!-- Lien vers la page précédente (désactivé si on se trouve sur la 1ère page) -->
@@ -88,6 +95,7 @@
             </li>
         </ul>
     </nav>
+
 </section>
 <?php $content = ob_get_clean(); ?>
 <?php require 'layouts/dashboard.php'; ?>
