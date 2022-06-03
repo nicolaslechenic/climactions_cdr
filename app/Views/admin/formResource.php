@@ -10,12 +10,19 @@
         <!-- le type -->
         <div class="item-form">
             <label for="type">Type</label>
-            <select id="select-block" name="type" id="type" required>
+            <!-- <select id="select-block" name="type" id="type" required>
                 <option value="#">Choisir</option>
                 <option class="item" value="game" onchange='changeAction(this.value)'>Jeu</option>
                 <option class="item" value="movie" onchange='changeAction(this.value)'>Film</option>
                 <option class="item" value="book" onchange='changeAction(this.value)'>Livre</option>
                 <option class="item" value="flyer" onchange='changeAction(this.value)'>Flyer</option>
+            </select> -->
+            <select id="select-block" name="type" id="type" required>
+                <option value="#">Choisir</option>
+                <option class="item" value="game">Jeu</option>
+                <option class="item" value="movie">Film</option>
+                <option class="item" value="book">Livre</option>
+                <option class="item" value="flyer">Flyer</option>
             </select>
         </div>
 

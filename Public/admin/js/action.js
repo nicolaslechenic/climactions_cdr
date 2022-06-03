@@ -14,9 +14,14 @@ selectBlock.onchange = function(){
         formCreate.action = 'indexAdmin.php?action=create';
     }
 }
-function changeAction(val){
-    selectBlock.setAttribute('action', val);
-}
+// function changeAction(val){
+//     selectBlock.setAttribute('action', val);
+// }
+
+// selectBlock.addEventListener("change", function(){
+   
+
+// })
 
 // --------------------------------------------------------
 
