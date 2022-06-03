@@ -4,17 +4,18 @@
 
     <h1>Création d'un article</h1>
 
-    <form id="form-create-article" action="indexAdmin.php?action=create" method="post">
+    <form id="form-create-article" action="" method="post">
+        
 
         <!-- le type -->
         <div class="item-form">
             <label for="type">Type</label>
             <select id="select-block" name="type" id="type" required>
                 <option value="#">Choisir</option>
-                <option value="game">Jeu</option>
-                <option value="movie">Film</option>
-                <option value="book">Livre</option>
-                <option value="flyer">Flyer</option>
+                <option class="item" value="game" onchange='changeAction(this.value)'>Jeu</option>
+                <option class="item" value="movie" onchange='changeAction(this.value)'>Film</option>
+                <option class="item" value="book" onchange='changeAction(this.value)'>Livre</option>
+                <option class="item" value="flyer" onchange='changeAction(this.value)'>Flyer</option>
             </select>
         </div>
 
@@ -144,7 +145,7 @@
             </select>
         </div>
 
-        <button class="btn-create" type="submit">Créer l'article</button>
+        <button class="btn-create" type="submit">Créer un Jeu</button>
     </form>
 </section>
 
