@@ -101,164 +101,84 @@ class RessourcesModel extends Manager
         return $articles;
     }
 
-    public function selectMovie(){
+    public function selectResourceMovieBook($idResource){
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,director.`name`,producer.`name`,public.`name` 
-        FROM ressources,theme,location,`condition`,film,producer,director,public 
-        WHERE ressources.id = film.ressources_id 
-        AND condition_id = `condition`.id 
-        AND ressources.location_id = location.id 
-        AND ressources.theme_id = theme.id 
-        AND film.producer_id = producer.id 
-        AND film.director_id = director.id 
-        AND film.public_id = public.id; ");
-        $req->execute(array());
-        $movie = $req->fetchAll();
-        return $movie;
+
+        $req = $bdd->prepare("SELECT resource.name,theme.`name` AS theme,`condition`.name AS `condition`,public.name AS public,`type`.`name` AS `type`,firstname,lastname,image,content,deposit,quantity,DATE_FORMAT(modified_at, '%d/%m/%Y') AS `date` 
+        FROM resource,`type`,admin,`condition`,public,theme 
+        WHERE resource.id = ?
+        AND resource.type_id = `type`.id
+        AND resource.theme_id = theme.id
+        AND resource.public_id = public.id
+        AND resource.condition_id = `condition`.id
+        AND resource.admin_id = admin.id;");
+
+        $req2 = $bdd->prepare("SELECT staff.name AS staff,role.name AS role
+        FROM staff,role,resource
+        WHERE resource.id = 
+        AND resource.id = staff.resource_id
+        AND staff.role_id = role.id;");
+
+        $req->execute(array($idResource));
+        $req2->execute(array($idResource));
+        $movieBook = $req->fetch();
+        $staff = $req2->fetchAll();
+
+        return $movieBook;
+        return $staff;
     }
 
-    public function selectOneMovie($idRessources){
+    public function selectResourceGame($idResource){
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,director.`name`,producer.`name`,public.`name` 
-        FROM ressources,theme,location,`condition`,film,producer,director,public 
-        WHERE ressources.id = ?
-        AND ressources.id = film.ressources_id 
-        AND condition_id = `condition`.id 
-        AND ressources.location_id = location.id 
-        AND ressources.theme_id = theme.id 
-        AND film.producer_id = producer.id 
-        AND film.director_id = director.id 
-        AND film.public_id = public.id; ");
-        $req->execute(array($idRessources));
-        $movie = $req->fetch();
-        return $movie;
-    }
 
-    public function updateMovie($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$producer_id,$director_id,$public){
-        $bdd = $this->connect();
-        $req = $bdd->prepare("UPDATE ressources,film
-        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,producer_id = :producer_id, director_id = :director_id ,public_id = :public_id 
-        WHERE ressources.id = :ressources_id
-        AND ressources.id = film.ressource_id");
+        $req = $bdd->prepare("SELECT resource.name,theme.`name` AS theme,`condition`.name AS `condition`,public.name AS public,`type`.`name` AS `type`,game_format.name AS game_format,firstname,lastname,image,content,deposit,quantity,DATE_FORMAT(modified_at, '%d/%m/%Y') AS `date`
+        FROM resource,`type`,admin,`condition`,public,theme,game,game_format
+        WHERE resource.id = ?
+        AND resource.type_id = `type`.id
+        AND resource.theme_id = theme.id
+        AND resource.public_id = public.id
+        AND resource.condition_id = `condition`.id
+        AND resource.admin_id = admin.id
+        AND game.id_resource = resource.id
+        AND game.id_format = game_format.id;");
 
-        $data = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated,
-            ":producer_id" => $producer_id,
-            ":director_id" => $director_id,
-            ":public_id" => $public,
-            ":ressources_id" => $idRessources
-        ];
+        $req2 = $bdd->prepare("SELECT staff.name AS staff,role.name AS role
+        FROM staff,role,resource
+        WHERE resource.id = ?
+        AND resource.id = staff.resource_id
+        AND staff.role_id = role.id;");
 
-        $req->execute($data);
-    }
-
-    public function insertGames($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format,$creator,$public)
-    {
-        $bdd = $this->connect();
-        $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
-        VALUES (:name,:image,:content,:quantite,:ademe,:caution,:catalogue,:type_id,:condition_id,:theme_id,:location_id,:is_validated)");
-        $req2 = $bdd->prepare("INSERT INTO games (format,creator_id,public_id,ressources_id) 
-        VALUES (:format,:creator_id,:public_id,:ressources_id)");
-        $data1 = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":type_id" => $type,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated
-        ];
-
-        $data2 = [
-            ":format" => $format,
-            ":creator_id" => $creator,
-            ":public_id" => $public,
-            ":ressources_id" => $req1->lastInsertId()
-        ];
-  
-        $req1->execute($data1);
-        $req2->execute($data2);
-    }
-
-    public function selectGames(){
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,creator.`name`,public.`name` 
-        FROM ressources,theme,location,`condition`,games,public,creator 
-        WHERE ressources.id = games.ressources_id 
-        AND ressources.condition_id = `condition`.id 
-        AND ressources.location_id = location.id 
-        AND ressources.theme_id = theme.id 
-        AND games.creator_id = creator.id 
-        AND games.public_id = public.id; ");
-        $req->execute(array());
-        $game = $req->fetchAll();
-        return $game;
-    }
-
-    public function selectOneGame($idRessources){
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,creator.`name`,public.`name` 
-        FROM ressources,theme,location,`condition`,games,public,creator 
-        WHERE ressources.id = ?
-        AND ressources.id = games.ressources_id 
-        AND ressources.condition_id = `condition`.id 
-        AND ressources.location_id = location.id 
-        AND ressources.theme_id = theme.id 
-        AND games.creator_id = creator.id 
-        AND games.public_id = public.id; ");
-        $req->execute(array($idRessources));
+        $req->execute(array($idResource));
+        $req2->execute(array($idResource));
         $game = $req->fetch();
+        $staff = $req2->fetchAll();
+
         return $game;
+        return $staff;
     }
 
-    public function updateGame($idRessources,$name,$image,$content,$quantite,$ademe,$caution,$catalogue,$condition,$theme,$location,$is_validated,$creator_id,$format,$public){
+    public function selectResourceExpo($idResource){
         $bdd = $this->connect();
-        $req = $bdd->prepare("UPDATE ressources,film
-        SET name = :name,image = :image,content = :content ,quantite = :quantite ,ademe = :ademe ,caution = :caution,catalogue = :catalogue, condition_id = :condition ,theme_id = :theme_id ,location_id = :location_id ,is_validated = :is_validated ,creator_id = :creator_id format = :format ,public_id = :public_id 
-        WHERE ressources.id = :ressources_id
-        AND ressources.id = games.ressource_id");
 
-        $data = [
-            ":name" => $name,
-            ":image" => $image,
-            ":content" => $content,
-            ":quantite" => $quantite,
-            ":ademe" => $ademe,
-            ":caution" => $caution,
-            ":catalogue" => $catalogue,
-            ":condition_id" => $condition,
-            ":theme_id" => $theme,
-            ":location_id" => $location,
-            ":is_validated" => $is_validated,
-            ":creator_id" => $creator_id,
-            ":format" => $format,
-            ":public_id" => $public,
-            ":ressources_id" => $idRessources
-        ];
+        $req = $bdd->prepare("SELECT resource.name,theme.`name` AS theme,`condition`.name AS `condition`,`type`.`name` AS `type`,public.name AS public,firstname,lastname,image,content,deposit,quantity,DATE_FORMAT(modified_at, '%d/%m/%Y') AS `date`,poster_bool,sign_bool
+        FROM resource,`type`,admin,`condition`,theme,exposure
+        WHERE resource.id = ?
+        AND resource.type_id = `type`.id
+        AND resource.theme_id = theme.id
+        AND resource.public_id = public.id
+        AND resource.condition_id = `condition`.id
+        AND resource.admin_id = admin.id
+        AND exposure.resource_id = resource.id;");
 
-        $req->execute($data);
+        $req->execute(array($idResource));
+        $expo = $req->fetch();
+
+        return $expo;
     }
 
-    public function insertFlyers($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format)
+    
+
+    public function insertResource($name,$image,$content,$quantite,$ademe,$caution,$catalogue,$type,$condition,$theme,$location,$is_validated,$format)
     {
         $bdd = $this->connect();
         $req1 = $bdd->prepare("INSERT INTO ressources (name,image,content,quantite,ademe,caution,catalogue,type_id,condition_id,theme_id,location_id,is_validated) 
@@ -289,30 +209,16 @@ class RessourcesModel extends Manager
         $req2->execute($data2);
     }
 
-    public function selectFlyer(){
-        $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,flyers.`format` 
-        FROM ressources,theme,location,`condition`,flyers 
-        WHERE ressources.id = flyers.ressources_id 
-        AND condition_id = `condition`.id 
-        AND ressources.location_id = location.id 
-        AND ressources.theme_id = theme.id;");
-        $req->execute(array());
-        $movie = $req->fetchAll();
-        return $movie;
-    }
-
     public function selectOneFlyer($idRessources){
         $bdd = $this->connect();
-        $req = $bdd->prepare("SELECT ressources.`name`,theme.`name`,ressources.image,ressources.quantite,ressources.ademe,ressources.caution,ressources.catalogue,ressources.created_at,ressources.is_validated,
-        `condition`.`condition`,location.location,flyers.`format` 
-        FROM ressources,theme,location,`condition`,flyers 
-        WHERE ressources.id = ?
-        AND ressources.id = flyers.ressources_id 
-        AND condition_id = `condition`.id 
-        AND ressources.location_id = location.id 
-        AND ressources.theme_id = theme.id;");
+        $req = $bdd->prepare("SELECT resource.name,theme.`name` AS theme,`condition`.name AS `condition`,`type`.`name` AS `type`,firstname,lastname,image,content,deposit,quantity,DATE_FORMAT(modified_at, '%d/%m/%Y') AS `date` 
+        FROM resource,`type`,admin,`condition`,public,theme 
+        WHERE resource.id = ?
+        AND resource.type_id = `type`.id
+        AND resource.theme_id = theme.id
+        AND resource.public_id = public.id
+        AND resource.condition_id = `condition`.id
+        AND resource.admin_id = admin.id;");
         $req->execute(array($idRessources));
         $movie = $req->fetch();
         return $movie;
@@ -347,7 +253,7 @@ class RessourcesModel extends Manager
 
     public function deleteRessource($idRessources){
         $bdd = $this->connect();
-        $req = $bdd->prepare("DELETE FROM ressources WHERE ressources.id = ?");
+        $req = $bdd->prepare("DELETE FROM resource WHERE resource.id = ?");
         $delete = $req->execute(array($idRessources));
     }
 }
