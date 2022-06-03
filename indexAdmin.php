@@ -221,7 +221,7 @@ try {
         }
 
         else{
-          require "app/Views/errors/pageNotFound.php";
+          require "app/Views/errors/404.php";
           // throw new Exception("La page demandée n'existe pas", 404);
         }
        

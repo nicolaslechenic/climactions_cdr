@@ -156,8 +156,12 @@ a {
   padding: 10px 0;
 }
 
+#bandeau #navigation-bandeau #menu li a {
+  color: var(--text-primary);
+}
+
 #bandeau #navigation-bandeau #menu li a:hover {
-  color: var(--hover);
+  color: var(--primary);
 }
 
 #bandeau #navigation-bandeau #menu li:last-child a {
@@ -217,14 +221,13 @@ a {
   text-decoration: none;
 }
 
-#contenu #articles h2,
-#contenu #agenda h2 {
+#contenu #articles h2 {
+  width: 100%;
   text-align: left;
   padding: 20px 0 20px 20px;
 }
 
-#contenu #articles h2 img,
-#contenu #agenda h2 img {
+#contenu #articles h2 img {
   margin-left: 15%;
   margin-bottom: 10px;
   width: 35px;
@@ -260,7 +263,7 @@ a {
   background-color: var(--primary);
   margin: 0 auto 30px;
   display: block;
-  width: 200px;
+  max-width: 410px;
   box-sizing: content-box;
   padding: 15px 30px;
   border-radius: 10px;
@@ -389,7 +392,6 @@ a {
 }
 
 /* ---- .element-item ---- */
-
 .element-item {
   color: #262524;
   margin: 15px auto;
@@ -455,7 +457,6 @@ a {
 }
 
 /* -------------- page un article --------------  */
-
 .container-article .article {
   width: 90%;
   margin: 2rem auto;
@@ -511,7 +512,6 @@ a {
   flex: 1 1 340px;
   text-align: center;
   padding: 20px 0;
-  
 }
 
 #pied h2 {
@@ -588,6 +588,10 @@ a {
   padding: 10px 0;
 }
 
+#legals-footer p, #legals-footer a {
+  font-size: 1rem;
+}
+
 #legals-footer ul {
   display: flex;
   flex-wrap: wrap;
@@ -624,7 +628,6 @@ a {
 
 
 /* ---------------PAGE-CONTACT--------------- */
-
 .bloc-contact-user {
   text-align: center;
   margin: 1.5rem auto;
@@ -739,8 +742,6 @@ p.last {
   padding-bottom: 2rem;
 }
 
-
-
 /* PAGE SEND MAIL */
 #section-confirm-mail{
   height: 300px;
@@ -762,6 +763,87 @@ p.last {
   background-color: var(--primary);
 }
 
+/* -------------- Pages errors --------------  */
+
+#page-404 {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: url('/public/img/errors/bg-404page.jpg') no-repeat center;
+}
+
+#page-404 h1 {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 3.5rem;
+  font-weight: 900;
+}
+
+#page-oops {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: url('/public/img/errors/bg-oopspage.jpg') no-repeat center;
+}
+
+.txt-error {
+  width: 75%;
+  margin: 30px auto 0;
+  padding: 25px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border: 5px solid var(--primary);
+  border-radius: 10px;
+  background-color: #1a1a1ab0;
+}
+
+.txt-error h1 {
+  width: 100%;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 0 auto 30px;
+  color: var(--text-secondary);
+}
+
+.txt-error p, a {
+  font-size: 1.5rem;
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.txt-error p {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.txt-error p:last-of-type {
+  margin-bottom: 25px;
+}
+
+.txt-error a {
+  width: 45%;
+  padding: 15px;
+  margin: 20px auto 5px;
+  border: 3px solid var(--text-secondary);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.txt-error a:hover {
+  color: var(--primary);
+  background-color: var(--bg-primary);
+  border: 3px solid var(--primary)
+}
+
+
 /* ------------------------- media desktop ------------------------------  */
 @media screen and (min-width: 600px)  {
  
@@ -777,15 +859,7 @@ p.last {
     border-radius:  0 0.5em 0.5em 0;
   }
 
-  .button-group
-
-  #contenu #articles h2,
-  #contenu #agenda h2 {
-    width: 100%;
-  }
-
-  #contenu #articles h2 img,
-  #contenu #agenda h2 img {
+  #contenu #articles h2 img {
     margin-left: 35%;
     margin-bottom: 10px;
     width: 45px;
@@ -999,7 +1073,7 @@ p.last {
   }
 
   #bandeau #navigation-bandeau #menu li a:hover {
-    color: var(--hover);
+    color: var(--primary);
   }
 
   #bandeau #navigation-bandeau #menu li:last-child a {
@@ -1022,13 +1096,7 @@ p.last {
   }
 
   /* ------------------ body ----------------  */
-  #contenu #articles h2,
-  #contenu #agenda h2 {
-    width: 100%;
-  }
-
-  #contenu #articles h2 img,
-  #contenu #agenda h2 img {
+  #contenu #articles h2 img {
     margin-left: 35%;
     margin-bottom: 10px;
     width: 45px;
