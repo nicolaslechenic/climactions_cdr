@@ -96,9 +96,9 @@ try {
   if ($e->getCode === 404) {
     die('Erreur : ' . $e->getMessage());
   } else {
-    header("app/Views/errors/error.php");
+    header("app/Views/errors/404.php");
   }
 } catch (Error $e) {
   eCatcher($e);
-  header("location: app/Views/errors/error.php");
+  header("location: app/Views/errors/oops.php");
 }

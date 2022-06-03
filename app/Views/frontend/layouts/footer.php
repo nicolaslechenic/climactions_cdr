@@ -39,7 +39,7 @@
             <li><a href="index.php?action=legalNotice">Mentions légales</a></li>
             <li><a href="index.php?action=cookies">Cookies</a></li>
         </ul>
-        <p>Tous droits réservés - 2022 - <a href="climactions-bretagnesud.bzh/">Clim'actions Bretagne Sud</a></p>
+        <p>Tous droits réservés - 2022 - <a href="https://climactions-bretagnesud.bzh/">Clim'actions Bretagne Sud</a></p>
     </div>
 
 </footer>
