@@ -78,7 +78,6 @@ try {
       $lastname = htmlspecialchars($_POST['lastname']);
       $firstname = htmlspecialchars($_POST['firstname']);
       $email = htmlspecialchars($_POST['email']);
-      // $phone = htmlspecialchars($_POST['phone']);
       $object = htmlspecialchars($_POST['object']);
       $message = htmlspecialchars($_POST['message']);
 
