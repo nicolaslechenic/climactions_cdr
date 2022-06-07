@@ -300,7 +300,7 @@ class RessourcesModel extends Manager
     public function updateResourceExpo($data)
     {
         $bdd = $this->connect();
-        $req1 = $bdd->prepare("UPDATE resource,exposure SET name = :name, theme_id = :theme_id, image = :image, content = :content, quantity = :quantity,deposit = :deposit, public_id = :public_id, type_id = :type_id, condition_id = :condition_id, theme_id = :theme_id, admin_id = :admin_id, id 
+        $req1 = $bdd->prepare("UPDATE resource,exposure SET name = :name, theme_id = :theme_id, image = :image, content = :content, quantity = :quantity,deposit = :deposit, public_id = :public_id, type_id = :type_id, condition_id = :condition_id, theme_id = :theme_id, admin_id = :admin_id, poster_bool = :poster_bool, sign_bool = sign_bool 
         WHERE resource.id = :id
         AND resource.id = exposure.resource_id;");
         
@@ -315,7 +315,9 @@ class RessourcesModel extends Manager
             "public_id" => $data["public"],
             "type_id" => $data['type'],
             "condition_id" => $data['condition'],
-            "admin_id" => $data['admin']
+            "admin_id" => $data['admin'],
+            "poster_bool" => $data['poster'],
+            "sign_bool" => $data['sign']
         ));
     }
 
