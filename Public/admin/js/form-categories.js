@@ -31,6 +31,7 @@ $("#select-block").change(function() {
         
         $(".format-flyer").hide();
         $(".format-game").hide();
+        $(".format-expo").hide();
 
         $(".name-public").show();
 
