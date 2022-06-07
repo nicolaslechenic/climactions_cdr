@@ -4,25 +4,17 @@
 
     <h1>Création d'un article</h1>
 
-    <form id="form-create-article" action="" method="post">
-        
+    <form id="form-create-article" action="" method="post" enctype="multipart/form-data">
 
         <!-- le type -->
-        <div class="item-form">
+        <div class="item-form type">
             <label for="type">Type</label>
-            <!-- <select id="select-block" name="type" id="type" required>
-                <option value="#">Choisir</option>
-                <option class="item" value="game" onchange='changeAction(this.value)'>Jeu</option>
-                <option class="item" value="movie" onchange='changeAction(this.value)'>Film</option>
-                <option class="item" value="book" onchange='changeAction(this.value)'>Livre</option>
-                <option class="item" value="flyer" onchange='changeAction(this.value)'>Flyer</option>
-            </select> -->
             <select id="select-block" name="type" id="type" required>
                 <option value="#">Choisir</option>
                 <option class="item" value="game">Jeu</option>
                 <option class="item" value="movie">Film</option>
                 <option class="item" value="book">Livre</option>
-                <option class="item" value="flyer">Flyer</option>
+                <option class="item" value="expo">Exposition</option>
             </select>
         </div>
 
@@ -32,50 +24,9 @@
             <input type="text" name="name" id="name" required>
         </div>
 
-        <!-- le contenu -->
-        <div class="form-input-content">
-            <p>Contenu</p>
-            <textarea aria-label="content" required="required" name="editor1" id="editor1" cols="30"
-                rows="8"></textarea>
-        </div>
-
-
-        <!-- la quantité -->
-        <div class="item-form quantite">
-            <label for="quantite">Quantité</label>
-            <input type="number" value="1" min=1 name="quantite" id="quantite" required>
-        </div>
-
-        <!-- Ademe -->
-        <div class="item-form ademe">
-            <label for="ademe">Ademe</label>
-            <input class="increase" type="checkbox" name="ademe" id="ademe" required>
-        </div>
-
-        <!-- la caution -->
-        <div class="item-form caution">
-            <label for="caution">Caution</label>
-            <input type="text" name="caution" id="caution" required>
-        </div>
-
-        <!-- catalogue -->
-        <div class="item-form catalogue">
-            <label for="catalogue">Catalogue</label>
-            <input class="increase" type="checkbox" name="catalogue" id="catalogue" required>
-        </div>
-
-        <!-- état -->
-        <div class="item-form condition">
-            <label for="condition">État</label>
-            <select name="condition" id="condition">
-                <option value="">Très bon état</option>
-                <option value="">Bon état</option>
-                <option value="">État correct</option>
-            </select>
-        </div>
-
         <!-- le thème  -->
-        <div class="item-form type">
+        <!-- TO DO : FAIRE UNE BOUCLE -->
+        <div class="item-form ">
             <label for="content">Thème</label>
             <select name="type" id="type">
                 <option value="">thème 1</option>
@@ -84,77 +35,90 @@
             </select>
         </div>
 
-        <!-- emplacement -->
-        <div class="item-form location">
-            <label for="location">Emplacement</label>
-            <select name="location" id="location">
-                <option value="">rangement 1</option>
-                <option value="">rangement 2</option>
-                <option value="">rangement 3</option>
+        <!-- l'image -->
+
+        <div class="item-form image">
+            <label for="image">Image</label>
+            <input type="file" name="image" id="image" required>
+        </div>
+
+        <!-- le contenu -->
+        <div class="item-form content">
+            <p class="content-label">Contenu</p>
+            <textarea aria-label="content" required="required" name="editor1" id="editor1" cols="30" rows="8">
+            </textarea>
+        </div>
+
+        <!-- la quantité -->
+        <div class="item-form quantite">
+            <label for="quantite">Quantité</label>
+            <input type="number" value="1" min=1 name="quantity" id="quantite" required>
+        </div>
+
+        <!-- la caution -->
+        <div class="item-form caution">
+            <label for="caution">Caution</label>
+            <input type="text" name="deposit" id="caution" required>
+        </div>
+
+        <!-- état -->
+        <div class="item-form condition">
+            <label for="condition">État</label>
+            <select name="condition" id="condition" required>
+                <option value="">Très bon état</option>
+                <option value="">Bon état</option>
+                <option value="">État correct</option>
             </select>
         </div>
 
-        <!-- validation -->
-        <div class="item-form is_validated">
-            <label for="is_validated">Validation</label>
-            <input class="increase" type="checkbox" name="is_validated" id="is_validated" required>
-        </div>
+        <!-- ------------------------------------------------- -->
 
-        <!-- éditeur -->
-        <div class="item-form  name-editor">
-            <label for="name-editor">Éditeur</label>
-            <input type="text" name="name-editor" id="name-editor">
-        </div>
+        <!-- staff -->
 
-        <!-- auteur -->
-        <div class="item-form name-author">
-            <label for="name-author">Auteur</label>
-            <input type="text" name="name-author" id="name-author">
-        </div>
-
-        <!-- producteur -->
-        <div class="item-form name-producer">
-            <label for="name-producer">Producteur</label>
-            <input type="text" name="name-producer" id="name-producer">
-        </div>
-
-        <!-- réalisateur -->
-        <div class="item-form name-director">
-            <label for="name-director">Réalisateur</label>
-            <input type="text" name="name-director" id="name-director">
+        <div class="item-form  name-author">
+            <label for="name-editor">Auteur</label>
+            <input type="text" name="personality" id="name-author" required>
         </div>
 
         <!-- format jeu -->
         <div class="item-form format-game">
             <label for="format-game">Format jeu</label>
-            <input type="text" name="format-game" id="format-game">
+            <select name="type" id="format-game" required>
+                <option value="">Format 1</option>
+                <option value="">Format 2</option>
+                <option value="">Format 3</option>
+            </select>
         </div>
 
-        <!-- createur -->
-        <div class="item-form name-creator">
-            <label for="name-creator">Créateur</label>
-            <input type="text" name="name-creator" id="name-creator">
+        <!-- format expo -->
+        <div class="item-form format-expo">
+            <label for="format-flyer">Format affiche</label>
+            <input class="increase" type="checkbox" name="format-poster" id="format-flyer">
         </div>
 
-        <!-- format flyer -->
-        <div class="item-form format-flyer">
-            <label for="format-flyer">Format flyer</label>
-            <input class="increase" type="checkbox" name="format-flyer" id="format-flyer">
+        <div class="item-form format-expo">
+            <label for="format-flyer">Format panneau</label>
+            <input class="increase" type="checkbox" name="format-sign" id="format-flyer">
         </div>
+
+        <!-- pour jeu / livre / film -->
 
         <!-- public -->
         <div class="item-form name-public">
             <label for="name-public">Public</label>
             <select name="name-public" id="name-public">
-                <option value="">1</option>
-                <option value="">2</option>
-                <option value="">3</option>
+                <option value="#">1</option>
+                <option value="#">2</option>
+                <option value="#">3</option>
             </select>
         </div>
 
         <button class="btn-create" type="submit">Créer un Jeu</button>
     </form>
 </section>
+
+<script src="./Public/admin/js/action.js"></script>
+<script src="./Public/admin/js/form-categories.js"></script>
 
 <?php $content = ob_get_clean(); ?>
 <?php require 'layouts/dashboard.php'; ?>

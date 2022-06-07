@@ -3,14 +3,10 @@
 // -----------------------------------------------------------------------------
 
 jQuery(document).ready(function($){
-    $(".name-producer").hide();
-    $(".name-director").hide();
-    $(".format-flyer").hide();
-    $(".name-editor").hide();
-    $(".name-author").hide();  
-    $(".name-creator").hide();
-    $(".format-game").hide();  
-    $(".name-public").hide();  
+    $(".format-game").hide();
+    $(".name-author").hide();   
+    $(".format-expo").hide();
+    $(".name-public").hide();
 });
 
 
@@ -18,57 +14,35 @@ $("#select-block").change(function() {
 
     if ( $("#select-block").val() == "game" ){
         
-        $(".name-producer").hide();
-        $(".name-director").hide();
-        $(".format-flyer").hide();
-        $(".name-editor").hide();
-        $(".name-author").hide();
-        
-        $(".name-creator").show();
+        $(".format-expo").hide();
         $(".format-game").show();
-        $(".name-public").show();
-        
+        $(".name-public").show();    
+        $(".name-author").show();    
     }
     
     if ( $("#select-block").val() == "movie" ){ 
         
-        $(".name-editor").hide();
-        $(".name-author").hide();
-        $(".format-flyer").hide();
-        $(".name-creator").hide();
-        $(".format-game").hide();
-        
-        $(".name-producer").show();
-        $(".name-director").show();
+        $(".format-expo").hide();
+        $(".format-game").hide();   
         $(".name-public").show();
     }
    
     if ( $("#select-block").val() == "book" ){
         
-        $(".name-producer").hide();
-        $(".name-director").hide();
         $(".format-flyer").hide();
-        $(".name-creator").hide();
         $(".format-game").hide();
 
-        $(".name-editor").show();
-        $(".name-author").show();
         $(".name-public").show();
 
     }
 
-    if ( $("#select-block").val() == "flyer" ){
+    if ( $("#select-block").val() == "expo" ){
         
-        $(".name-producer").hide();
-        $(".name-director").hide();
-        $(".format-flyer").hide();
-        $(".name-creator").hide();
         $(".format-game").hide();
-        $(".name-editor").hide();
-        $(".name-author").hide();
         $(".name-public").hide();
+        $(".name-author").hide();
 
-        $(".format-flyer").show();
+        $(".format-expo").show();
 
     }
 

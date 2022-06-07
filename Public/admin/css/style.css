@@ -194,7 +194,7 @@ h1 {
 .table-item li {
   margin: 2rem auto;
 }
-.table-item li.article-title{
+.table-item li.article-title {
   margin: 2rem;
 }
 
@@ -252,6 +252,8 @@ h1 {
 .btn-create {
   width: 140px;
   margin: 20px auto;
+  color: var(--white);
+  border: none;
 }
 .btn:hover,
 .btn-create:hover {
@@ -409,6 +411,10 @@ h1 {
   height: 30px;
   cursor: pointer;
 }
+.content-label {
+  width: 130px;
+  margin: 10px 0;
+}
 
 #form-create-article select option:hover {
   color: var(--primary);
@@ -427,6 +433,12 @@ h1 {
 
 #form-create-article .item-form {
   margin: 20px;
+}
+div.image {
+  padding: 1rem 0;
+}
+#form-create-article div.image label {
+  margin-top : -1px;
 }
 
 #form-create-article .btn {
@@ -630,8 +642,8 @@ h1 {
   #form-create-article input[type="text"],
   #form-create-article input[type="number"],
   #form-create-article textarea,
-  #form-create-article select.flex.i {
-    width: 95%;
+  #form-create-article select {
+    width: 100%;
     margin: 5px;
   }
   #form-create-article label {
