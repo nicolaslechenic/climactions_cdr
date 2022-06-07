@@ -56,7 +56,7 @@ class FrontController extends Controller {
 
 
     // fonction envoyer contact en bdd 
-    public function contactPost($lastname, $firstname, $email, $phone, $object, $message)
+    public function contactPost($lastname, $firstname, $email, $object, $message)
     {
         $contactManager = new \Climactions\Models\ContactModel();
         extract($_POST);
@@ -64,7 +64,7 @@ class FrontController extends Controller {
 		$erreur = [];
         
 
-        if(empty($lastname) || empty($firstname) || empty($email) || empty($confirmEmail) || empty($phone) || empty($object) || empty($message)){
+        if(empty($lastname) || empty($firstname) || empty($email) || empty($confirmEmail) || empty($object) || empty($message)){
             $validation = false;
             $erreur[] = "Tous les champs sont requis !";
         }
@@ -78,7 +78,7 @@ class FrontController extends Controller {
         }
         if (filter_var($email, FILTER_VALIDATE_EMAIL) && $email === $confirmEmail) {
             $validation;
-            $Mail = $contactManager->postMail($lastname, $firstname, $email, $phone, $object, $message);
+            $Mail = $contactManager->postMail($lastname, $firstname, $email, $object, $message);
 
             unset($_POST['lastname']);
             unset($_POST['firstname']);

@@ -78,12 +78,12 @@ try {
       $lastname = htmlspecialchars($_POST['lastname']);
       $firstname = htmlspecialchars($_POST['firstname']);
       $email = htmlspecialchars($_POST['email']);
-      $phone = htmlspecialchars($_POST['phone']);
+      // $phone = htmlspecialchars($_POST['phone']);
       $object = htmlspecialchars($_POST['object']);
       $message = htmlspecialchars($_POST['message']);
 
-      if (!empty($lastname) && (!empty($firstname) && (!empty($email) && (!empty($phone) && (!empty($object) && (!empty($message))))))) {
-        $controllerFront->contactPost($lastname, $firstname, $email, $phone, $object, $message);
+      if (!empty($lastname) && (!empty($firstname) && (!empty($email) && (!empty($object) && (!empty($message)))))) {
+        $controllerFront->contactPost($lastname, $firstname, $email, $object, $message);
       } else {
         throw new Exception('Tous les champs ne sont pas remplis!!');
       }

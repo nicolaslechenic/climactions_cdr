@@ -40,10 +40,10 @@ ob_start();
                     <label for="confirmEmail">Confirmation E-mail : *</label>
                     <input type="email" id="confirmEmail" name="confirmEmail" placeholder="Votre e-mail" required />
                 </div>
-                <div class="bloc-form">
+                <!-- <div class="bloc-form">
                     <label for="phone">Téléphone : *</label>
                     <input type="phone" id="phone" name="phone" placeholder="Votre Numéro de Téléphone" required />
-                </div>
+                </div> -->
                 <div class="bloc-form">
                     <label for="object">Objet : *</label>
                     <input type="object" id="object" name="object" placeholder="objet de votre demande" required />

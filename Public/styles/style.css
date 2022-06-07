@@ -757,6 +757,7 @@ p.last {
   border-radius: 5px;
   width: 67%;
   transition: all 0.3s ease-in-out;
+  color: var(--primary);
 }
 #section-confirm-mail a:hover{
   color: var(--white);
