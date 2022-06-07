@@ -7,7 +7,7 @@ class ContactModel extends Manager
     public function postMail($lastname, $firstname, $email, $object, $message)
     {
         $bdd = $this->connect();
-        $req = $bdd->prepare('INSERT INTO contact (lastname, firstname, email, object, message) VALUES (:lastname, :firstname, :email, :object, :message)');
+        $req = $bdd->prepare('INSERT INTO email (lastname, firstname, email, object, message) VALUES (:lastname, :firstname, :email, :object, :message)');
         
         $req->execute(array(
             ':lastname' => $lastname,
