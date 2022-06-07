@@ -37,6 +37,4 @@ class Manager {
     }
     return $objects;
   }
-
-  
 }
