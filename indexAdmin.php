@@ -242,6 +242,24 @@ try {
           $path = $backController->upload($file);
         }
 
+        // création d'une ressource (les films et les livres)
+
+        elseif($_GET['action'] == 'create'){
+          isConnect();
+          
+          $name = htmlspecialchars($_POST['name']);
+          $themeId = htmlspecialchars($_POST['theme']);
+          $image = htmlspecialchars($_POST['image']);
+          $content = htmlspecialchars($_POST['content']);
+          $quantity = htmlspecialchars($_POST['quantity']);
+          $publicId = htmlspecialchars($_POST['public']);
+          $typeId = htmlspecialchars($_POST['type']);
+          $conditionId = htmlspecialchars($_POST['condition']);
+          $adminId= htmlspecialchars($_POST['admin']);
+          
+          $backController->createResourceMovieBook($data);
+        }
+
         else{
           require "app/Views/errors/404.php";
           // throw new Exception("La page demandée n'existe pas", 404);

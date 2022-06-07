@@ -415,5 +415,15 @@ class AdminController extends Controller {
         }
         
     }
-	
+
+	public function createResourceMovieBook($data)
+	{
+		
+		$adminManager = new \Climactions\Models\RessourcesModel();
+		
+		$admin = $adminManager->insertResourceMovieBook($data);
+		
+		header("Location: app\Views\admin\resource.php");
+
+	}	
 }
