@@ -30,6 +30,7 @@ require_once 'layouts/header.php';?>
         <h2>Nos partenaires</h2>
         <div class="partenaires-img">
             <img src="./Public/img/partenaires/logo-ademe.svg" alt="ademe">
+            <img src="./Public/img/partenaires/logo-gbs.jpg" alt="greta bretagne sud">
         </div>
     </section>
 </main>
