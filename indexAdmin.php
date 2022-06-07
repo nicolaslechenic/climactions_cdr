@@ -203,6 +203,7 @@ try {
 
 
         // method page home.php 
+
         elseif($_GET['action'] == 'readAdmin'){
           isConnect();
           $backController->readAdmin($_GET['id']);
@@ -211,7 +212,6 @@ try {
           isConnect();
           $backController->deleteOneAdmin($_GET['id']);
         }
-
 
         // les méthodes de la page email.php
 
@@ -232,6 +232,14 @@ try {
           isConnect();
           $id = $_GET['id'];
           $backController->deleteInfo($id);
+        }
+
+        // enregistrement d'un image
+
+        elseif($_GET['action'] == 'upload'){
+          isConnect();
+          $file = $_FILES['image'];
+          $path = $backController->upload($file);
         }
 
         else{
